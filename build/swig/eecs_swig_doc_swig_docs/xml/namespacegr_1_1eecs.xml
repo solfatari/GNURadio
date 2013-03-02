@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+  <compounddef id="namespacegr_1_1eecs" kind="namespace">
+    <compoundname>gr::eecs</compoundname>
+    <innerclass refid="classgr_1_1eecs_1_1d__theta" prot="public">gr::eecs::d_theta</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h" line="29"/>
+  </compounddef>
+</doxygen>

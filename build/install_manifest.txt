@@ -1,0 +1,13 @@
+/usr/local/include/eecs/api.h
+/usr/local/include/eecs/d_theta.h
+/usr/local/lib/libgnuradio-eecs.so
+/usr/local/lib/python2.7/dist-packages/eecs/_eecs_swig.so
+/usr/local/lib/python2.7/dist-packages/eecs/eecs_swig.py
+/usr/local/lib/python2.7/dist-packages/eecs/eecs_swig.pyc
+/usr/local/lib/python2.7/dist-packages/eecs/eecs_swig.pyo
+/usr/local/include/eecs/eecs/swig/eecs_swig.i
+/usr/local/include/eecs/eecs/swig/eecs_swig_doc.i
+/usr/local/lib/python2.7/dist-packages/eecs/__init__.py
+/usr/local/lib/python2.7/dist-packages/eecs/__init__.pyc
+/usr/local/lib/python2.7/dist-packages/eecs/__init__.pyo
+/usr/local/share/gnuradio/grc/blocks/eecs_d_theta.xml
