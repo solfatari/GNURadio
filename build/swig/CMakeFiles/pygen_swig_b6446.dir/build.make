@@ -58,6 +58,7 @@ swig/eecs_swig.pyo: swig/eecs_swig.py
 swig/eecs_swigPYTHON_wrap.cxx: /usr/local/include/gnuradio/swig/gr_shared_ptr.i
 swig/eecs_swigPYTHON_wrap.cxx: /usr/local/include/gruel/swig/gruel_common.i
 swig/eecs_swigPYTHON_wrap.cxx: ../swig/eecs_swig.i
+swig/eecs_swigPYTHON_wrap.cxx: swig/eecs_swig_doc.i
 swig/eecs_swigPYTHON_wrap.cxx: /usr/local/include/gnuradio/swig/gnuradio.i
 swig/eecs_swigPYTHON_wrap.cxx: swig/eecs_swig.tag
 swig/eecs_swigPYTHON_wrap.cxx: ../swig/eecs_swig.i
@@ -68,17 +69,17 @@ swig/eecs_swigPYTHON_wrap.cxx: ../swig/eecs_swig.i
 
 swig/eecs_swig.py: swig/eecs_swigPYTHON_wrap.cxx
 
+swig/eecs_swig_doc.i: swig/eecs_swig_doc_swig_docs/xml/index.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating eecs_swig_doc.i"
+	cd /home/chris/workspace/GNURadio/gr-eecs/docs/doxygen && /usr/bin/python -B /home/chris/workspace/GNURadio/gr-eecs/docs/doxygen/swig_doc.py /home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swig_doc_swig_docs/xml /home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swig_doc.i
+
 swig/eecs_swig.tag: swig/eecs_swig_doc.i
 swig/eecs_swig.tag: swig/_eecs_swig_swig_tag
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating eecs_swig.tag"
 	cd /home/chris/workspace/GNURadio/gr-eecs/build/swig && ./_eecs_swig_swig_tag
 	cd /home/chris/workspace/GNURadio/gr-eecs/build/swig && /usr/bin/cmake -E touch /home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swig.tag
-
-swig/eecs_swig_doc.i: swig/eecs_swig_doc_swig_docs/xml/index.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating eecs_swig_doc.i"
-	cd /home/chris/workspace/GNURadio/gr-eecs/docs/doxygen && /usr/bin/python -B /home/chris/workspace/GNURadio/gr-eecs/docs/doxygen/swig_doc.py /home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swig_doc_swig_docs/xml /home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swig_doc.i
 
 swig/eecs_swig_doc_swig_docs/xml/index.xml: swig/_eecs_swig_doc_tag
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles $(CMAKE_PROGRESS_6)
@@ -91,8 +92,8 @@ pygen_swig_b6446: swig/eecs_swig.pyc
 pygen_swig_b6446: swig/eecs_swig.pyo
 pygen_swig_b6446: swig/eecs_swigPYTHON_wrap.cxx
 pygen_swig_b6446: swig/eecs_swig.py
-pygen_swig_b6446: swig/eecs_swig.tag
 pygen_swig_b6446: swig/eecs_swig_doc.i
+pygen_swig_b6446: swig/eecs_swig.tag
 pygen_swig_b6446: swig/eecs_swig_doc_swig_docs/xml/index.xml
 pygen_swig_b6446: swig/CMakeFiles/pygen_swig_b6446.dir/build.make
 .PHONY : pygen_swig_b6446

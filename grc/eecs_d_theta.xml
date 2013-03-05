@@ -8,7 +8,7 @@
 	<name>test</name>
 	<key>test</key>
 	<value>0</value>
-	<type>float</type>
+	<type>real</type>
   </param>
   <sink>
     <name>in</name>

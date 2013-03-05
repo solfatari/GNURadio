@@ -6,8 +6,8 @@ FILE(REMOVE_RECURSE
   "eecs_swig.pyo"
   "eecs_swigPYTHON_wrap.cxx"
   "eecs_swig.py"
-  "eecs_swig.tag"
   "eecs_swig_doc.i"
+  "eecs_swig.tag"
   "eecs_swig_doc_swig_docs/xml/index.xml"
 )
 

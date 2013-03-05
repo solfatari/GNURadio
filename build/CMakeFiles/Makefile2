@@ -207,8 +207,8 @@ swig/preinstall:
 # Target rules for target swig/CMakeFiles/_eecs_swig.dir
 
 # All Build rule for target.
-swig/CMakeFiles/_eecs_swig.dir/all: swig/CMakeFiles/_eecs_swig_doc_tag.dir/all
 swig/CMakeFiles/_eecs_swig.dir/all: lib/CMakeFiles/gnuradio-eecs.dir/all
+swig/CMakeFiles/_eecs_swig.dir/all: swig/CMakeFiles/_eecs_swig_doc_tag.dir/all
 swig/CMakeFiles/_eecs_swig.dir/all: swig/CMakeFiles/_eecs_swig_swig_tag.dir/all
 	$(MAKE) -f swig/CMakeFiles/_eecs_swig.dir/build.make swig/CMakeFiles/_eecs_swig.dir/depend
 	$(MAKE) -f swig/CMakeFiles/_eecs_swig.dir/build.make swig/CMakeFiles/_eecs_swig.dir/build
