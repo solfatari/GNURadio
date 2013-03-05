@@ -30,20 +30,28 @@ namespace gr {
   namespace eecs {
 
     d_theta::sptr
-    d_theta::make(float test)
+    d_theta::make(float freq, 
+				  float rSat,
+				  float thetaSat)
     {
-      return gnuradio::get_initial_sptr (new d_theta_impl(test));
+      return gnuradio::get_initial_sptr (new d_theta_impl(freq, 
+														  rSat,
+														  thetaSat));
     }
 
     /*
      * The private constructor
      */
-    d_theta_impl::d_theta_impl(float test)
+    d_theta_impl::d_theta_impl(float freq, 
+							   float rSat,
+							   float thetaSat)
       : gr_sync_block("d_theta",
-		      gr_make_io_signature(2,2, sizeof (float)),
+		      gr_make_io_signature(4,4, sizeof (float)),
 		      gr_make_io_signature(1,1, sizeof (float)))
-    {
-		t_test = test;
+		{
+		p_freq = freq;
+		p_rSat = rSat;
+		p_thetaSat = thetaSat;
 		}
 
     /*
@@ -58,16 +66,20 @@ namespace gr {
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
-        const float *rSat = (const float *) input_items[0];
-        const float *thetaSat = (const float *) input_items[1];
+       // const float *rSat = (const float *) input_items[0];
+       // const float *thetaSat = (const float *) input_items[1];
         float *out = (float *) output_items[0];
-// temp constants
-		float lambda = .3030303;
+//Constants
+		float lambda = 300000000/p_freq;
 		float dx1 = -(lambda/4 +lambda/2);
+		float dx2 = -(lambda/2);
+		float dx3 =  (lambda/2);
+		float dx4 =  (lambda/4 +lambda/2);
 		float k = 2*3.1415926/lambda;
+		
 
         for(int i = 0; i <noutput_items; i++){
-			out[i] = t_test + k*(sqrt(rSat[i]*rSat[i]+dx1*dx1 - 2*rSat[i]*dx1*sin(thetaSat[i])) - rSat[i]);
+			out[i] = k*(sqrt(p_rSat*p_rSat+dx1*dx1 - 2*p_rSat*dx1*sin(p_thetaSat)) - p_rSat);
 		}
 
         // Tell runtime system how many output items we produced.

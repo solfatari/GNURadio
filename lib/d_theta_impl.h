@@ -29,10 +29,14 @@ namespace gr {
     class d_theta_impl : public d_theta
     {
     private:
-      float t_test;
+      float p_freq;
+      float p_rSat;
+      float p_thetaSat;
 
     public:
-      d_theta_impl(float test);
+      d_theta_impl(float freq, 
+				   float rSat,
+				   float thetaSat);
       ~d_theta_impl();
 
       // Where all the action really happens
