@@ -50,7 +50,7 @@ namespace gr {
 							   double sampRate)
       : gr_sync_block("d_theta",
 		      gr_make_io_signature(4,4, sizeof (float)),
-		      gr_make_io_signature(1,1, sizeof (float)))
+		      gr_make_io_signature(4,4, sizeof (float)))
 		{
 		p_freq = freq;
 		p_rSat = rSat;
@@ -74,7 +74,10 @@ namespace gr {
         const float *Sat2 = (const float *) input_items[1];
         const float *Sat3 = (const float *) input_items[2];
         const float *Sat4 = (const float *) input_items[3];
-        float *out = (float *) output_items[0];
+        float *out1 = (float *) output_items[0];
+        float *out2 = (float *) output_items[1];
+        float *out3 = (float *) output_items[2];
+        float *out4 = (float *) output_items[3];
 //Constants
 		double lambda = 300000000/p_freq;
 		double dx1 = -(lambda/4 +lambda/2);
@@ -91,7 +94,10 @@ namespace gr {
 			theta[3] = findTheta(dx4, lambda);
 			getDelay(theta, delays);
 			
-			out[i] = theta[0];
+			out1[i] = theta[0];
+			out2[i] = theta[1];
+			out3[i] = theta[2];
+			out4[i] = theta[3];
 		}
 
         // Tell runtime system how many output items we produced.
