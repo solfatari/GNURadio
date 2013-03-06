@@ -94,10 +94,10 @@ namespace gr {
 			theta[3] = findTheta(dx4, lambda);
 			getDelay(theta, delays);
 			
-			out1[i] = theta[0];
-			out2[i] = theta[1];
-			out3[i] = theta[2];
-			out4[i] = theta[3];
+			out1[i] = delays[0];
+			out2[i] = delays[1];
+			out3[i] = delays[2];
+			out4[i] = delays[3];
 		}
 
         // Tell runtime system how many output items we produced.
@@ -106,7 +106,8 @@ namespace gr {
 	
 	double 
 	d_theta_impl::findTheta(double dx, double lambda){
-		double k = 2*3.1415926/lambda;
+		long double pi=acos(-1.0L)
+		double k = 2*pi/lambda;
 	
 	return k*(sqrt(p_rSat*p_rSat+dx*dx - 2*p_rSat*dx*sin(p_thetaSat)) - p_rSat);
 	}
@@ -115,12 +116,12 @@ namespace gr {
 	d_theta_impl::getDelay(double theta[3], double dt[3]){
 		if (theta[0] > theta[3]){
 			for (int i = 0; i<3; i++){
-				dt[i] = (theta[0]-theta[4])/(2*3.1415926*p_freq);
+				dt[i] = p_sampRate*(theta[i]/*-theta[4]*/)/(2*3.1415926*p_freq);
 			}
 		}
 		else{
 			for (int i = 0; i<3; i++){
-				dt[i] = (theta[0]+theta[4])/(2*3.1415926*p_freq);
+				dt[i] = p_sampRate*(theta[i]/*-theta[0]*/)/(2*3.1415926*p_freq);
 			}
 		}
 	}
