@@ -25,9 +25,15 @@ d_theta_impl.h
 /home/chris/workspace/GNURadio/gr-eecs/lib/d_theta_impl.h
 cmath
 -
+gr_delay.h
+-
 
 /home/chris/workspace/GNURadio/gr-eecs/lib/d_theta_impl.h
 eecs/d_theta.h
+-
+gr_delay.h
+-
+gr_block.h
 -
 
 /usr/local/include/gnuradio/gr_basic_block.h
@@ -74,6 +80,14 @@ complex
 
 /usr/local/include/gnuradio/gr_core_api.h
 gruel/attributes.h
+-
+
+/usr/local/include/gnuradio/gr_delay.h
+gr_core_api.h
+-
+gr_block.h
+-
+gruel/thread.h
 -
 
 /usr/local/include/gnuradio/gr_io_signature.h

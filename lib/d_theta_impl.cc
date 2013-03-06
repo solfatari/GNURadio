@@ -25,6 +25,7 @@
 #include <gr_io_signature.h>
 #include "d_theta_impl.h"
 #include <cmath>
+#include <gr_delay.h>
 
 namespace gr {
   namespace eecs {
@@ -54,7 +55,7 @@ namespace gr {
 			  p_freq(freq), p_rSat(rSat), 
 			  p_thetaSat(thetaSat), p_sampRate(sampRate)
 		{
-		
+			lambda = 300000000/p_freq;
 		}
 
     /*
@@ -78,51 +79,55 @@ namespace gr {
         float *out3 = (float *) output_items[2];
         float *out4 = (float *) output_items[3];
 //Constants
-		double lambda = 300000000/p_freq;
-		double dx1 = -1*(lambda/4 +lambda/2);
-		double dx2 = -1*(lambda/4);
-		double dx3 =  (lambda/4);
-		double dx4 =  (lambda/4 +lambda/2);
+		double (*dx);				
+			dx = (double*)malloc(4*sizeof(double));
+			dx[0] = -1*(lambda/4 +lambda/2);
+			dx[1] = -1*(lambda/4);
+			dx[2] =  (lambda/4);
+			dx[3] =  (lambda/4 +lambda/2);
 //floating variables
-		double theta[3], delays[3];
+		double (*theta);
+			theta = (double*)malloc(4*sizeof(double));
+		double (*delays);
+			delays = (double*)malloc(4*sizeof(double));
 		
         for(int i = 0; i <noutput_items; i++){
-			theta[0] = findTheta(dx1, lambda);
-			theta[1] = findTheta(dx2, lambda);
-			theta[2] = findTheta(dx3, lambda);
-			theta[3] = findTheta(dx4, lambda);
+			findTheta(dx,theta);
 			getDelay(theta, delays);
 			
-			out1[i] = theta[0];
-			out2[i] = theta[1];
-			out3[i] = theta[2];
-			out4[i] = theta[3];
+			
+			
+			out1[i] = delays[0];
+			out2[i] = delays[1];
+			out3[i] = delays[2];
+			out4[i] = delays[3];
 		}
 
         // Tell runtime system how many output items we produced.
+        delete theta;
+        delete delays;
         return noutput_items;
     }
 	
-	double 
-	d_theta_impl::findTheta(double dx, double lambda){
+	void 
+	d_theta_impl::findTheta(double* dx, double* dt){
 		double k = 2*M_PI/lambda;
-	
-	return k*(sqrt(p_rSat*p_rSat+dx*dx - 2*p_rSat*dx*sin(p_thetaSat)) - p_rSat);
+		for(int i = 0; i<4 ; i++){
+			dt[i] = k*(sqrt(p_rSat*p_rSat+dx[i]*dx[i] - 2*p_rSat*dx[i]*sin(p_thetaSat)) - p_rSat);
+		}
 	}
 	
 	void
-	d_theta_impl::getDelay(double theta[3], double dt[3]){
+	d_theta_impl::getDelay(double* theta, double* dt){
 		if (theta[0] > theta[3]){
-			for (int i = 0; i<3; i++){
-				dt[i] = p_sampRate*(theta[i]/*-theta[4]*/)/(2*M_PI*p_freq);
-			}
-		}
+			for (int i = 0; i<4; i++){
+				dt[i] = p_sampRate*(theta[i]-theta[3])/(2*M_PI*p_freq);}}
 		else{
-			for (int i = 0; i<3; i++){
-				dt[i] = p_sampRate*(theta[i]/*-theta[0]*/)/(2*M_PI*p_freq);
-			}
-		}
+			for (int i = 0; i<4; i++){
+				dt[i] = p_sampRate*(theta[i]-theta[0])/(2*M_PI*p_freq);}}
 	}
+	
+	
 	
 	void d_theta_impl::set_freq(double freq)
 	{	p_freq = freq;	}

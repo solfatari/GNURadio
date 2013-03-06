@@ -22,6 +22,8 @@
 #define INCLUDED_EECS_D_THETA_IMPL_H
 
 #include <eecs/d_theta.h>
+#include <gr_delay.h>
+#include <gr_block.h>
 
 namespace gr {
   namespace eecs {
@@ -33,9 +35,10 @@ namespace gr {
       double p_rSat;
       double p_thetaSat;
       double p_sampRate;
+      double lambda;
 	
-	  double findTheta(double dx, double lambda);
-	  void  getDelay(double theta[3], double dt[3]);
+	  void findTheta(double* dx, double* dt);
+	  void  getDelay(double* theta, double* dt);
 	  
 	  
     public:
