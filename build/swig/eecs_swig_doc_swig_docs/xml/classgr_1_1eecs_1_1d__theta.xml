@@ -19,31 +19,42 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classgr_1_1eecs_1_1d__theta_1a2507f1578fbfeaecb6f3b95d2461489a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classgr_1_1eecs_1_1d__theta_1a31833b5bedb09b30c64eecb4d696079d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classgr_1_1eecs_1_1d__theta_1a148d48b04383552a09824450a4e095ef" kindref="member">sptr</ref></type>
         <definition>static sptr gr::eecs::d_theta::make</definition>
-        <argsstring>(float test)</argsstring>
+        <argsstring>(double freq=990000000, double rSat=10, double thetaSat=0)</argsstring>
         <name>make</name>
         <param>
-          <type>float</type>
-          <declname>test</declname>
+          <type>double</type>
+          <declname>freq</declname>
+          <defval>990000000</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rSat</declname>
+          <defval>10</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>thetaSat</declname>
+          <defval>0</defval>
         </param>
         <briefdescription>
 <para>Return a shared_ptr to a new instance of <ref refid="classgr_1_1eecs_1_1d__theta" kindref="compound">eecs::d_theta</ref>. </para>        </briefdescription>
         <detaileddescription>
-<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1eecs_1_1d__theta" kindref="compound">eecs::d_theta</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1eecs_1_1d__theta_1a2507f1578fbfeaecb6f3b95d2461489a" kindref="member">eecs::d_theta::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
+<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1eecs_1_1d__theta" kindref="compound">eecs::d_theta</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1eecs_1_1d__theta_1a31833b5bedb09b30c64eecb4d696079d" kindref="member">eecs::d_theta::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h" line="49"/>
+        <location file="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h" line="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>&lt;+description of block+&gt; </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h" line="37" bodyfile="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h" bodystart="36" bodyend="50"/>
+    <location file="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h" line="37" bodyfile="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h" bodystart="36" bodyend="52"/>
     <listofallmembers>
-      <member refid="classgr_1_1eecs_1_1d__theta_1a2507f1578fbfeaecb6f3b95d2461489a" prot="public" virt="non-virtual"><scope>gr::eecs::d_theta</scope><name>make</name></member>
+      <member refid="classgr_1_1eecs_1_1d__theta_1a31833b5bedb09b30c64eecb4d696079d" prot="public" virt="non-virtual"><scope>gr::eecs::d_theta</scope><name>make</name></member>
       <member refid="classgr_1_1eecs_1_1d__theta_1a148d48b04383552a09824450a4e095ef" prot="public" virt="non-virtual"><scope>gr::eecs::d_theta</scope><name>sptr</name></member>
     </listofallmembers>
   </compounddef>

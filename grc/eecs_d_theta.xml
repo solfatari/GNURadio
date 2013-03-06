@@ -3,7 +3,7 @@
   <key>eecs_d_theta</key>
   <category>EECS</category>
   <import>import eecs</import>
-  <make>eecs.d_theta($test)</make>
+  <make>eecs.d_theta(freq=$freq, rSat=$rSat, thetaSat=$thetaSat,)</make>
   <param>
 	<name>Frequency</name>
 	<key>freq</key>
@@ -25,7 +25,7 @@
   <sink>
     <name>rs_in</name>
     <type>float</type>
-    <nports>2</nports>
+    <nports>4</nports>
   </sink>
   <source>
     <name>out</name>

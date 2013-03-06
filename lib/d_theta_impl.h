@@ -29,16 +29,16 @@ namespace gr {
     class d_theta_impl : public d_theta
     {
     private:
-      float p_freq;
-      float p_rSat;
-      float p_thetaSat;
+      double p_freq;
+      double p_rSat;
+      double p_thetaSat;
 	
-	  float findTheta(float dx, float lambda);
-	  void getDelay(float theta[3], float dt[3]);
+	  double findTheta(double dx, double lambda);
+	  void  getDelay(double theta[3], double dt[3]);
     public:
-      d_theta_impl(float freq, 
-				   float rSat,
-				   float thetaSat);
+      d_theta_impl(double freq, 
+				   double rSat,
+				   double thetaSat);
       ~d_theta_impl();
 
       // Where all the action really happens

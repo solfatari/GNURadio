@@ -46,9 +46,9 @@ namespace gr {
         * class. eecs::d_theta::make is the public interface for
         * creating new instances.
         */
-       static sptr make(float freq = 990000000, 
-						float rSat = 10,
-						float thetaSat = 0);
+       static sptr make(double freq = 990000000, 
+						double rSat = 10,
+						double thetaSat = 0);
     };
 
   } // namespace eecs

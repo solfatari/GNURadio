@@ -4374,22 +4374,6 @@ namespace swig
 #include "eecs/d_theta.h"
 
 
-SWIGINTERN int
-SWIG_AsVal_float (PyObject * obj, float *val)
-{
-  double v;
-  int res = SWIG_AsVal_double (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < -FLT_MAX || v > FLT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< float >(v);
-    }
-  }  
-  return res;
-}
-
-
 SWIGINTERNINLINE PyObject* 
 SWIG_From_unsigned_SS_long  (unsigned long value)
 {
@@ -4477,6 +4461,22 @@ SWIGINTERNINLINE PyObject *
 SWIG_From_float  (float value)
 {    
   return SWIG_From_double  (value);
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_float (PyObject * obj, float *val)
+{
+  double v;
+  int res = SWIG_AsVal_double (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < -FLT_MAX || v > FLT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< float >(v);
+    }
+  }  
+  return res;
 }
 
 
@@ -5684,24 +5684,48 @@ SWIGINTERN PyObject *SwigPyIterator_swigregister(PyObject *SWIGUNUSEDPARM(self),
 
 SWIGINTERN PyObject *_wrap_d_theta_make(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  float arg1 ;
-  float val1 ;
+  double arg1 = (double) 990000000 ;
+  double arg2 = (double) 10 ;
+  double arg3 = (double) 0 ;
+  double val1 ;
   int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   char *  kwnames[] = {
-    (char *) "test", NULL 
+    (char *) "freq",(char *) "rSat",(char *) "thetaSat", NULL 
   };
   gr::eecs::d_theta::sptr result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:d_theta_make",kwnames,&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_float(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "d_theta_make" "', argument " "1"" of type '" "float""'");
-  } 
-  arg1 = static_cast< float >(val1);
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|OOO:d_theta_make",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  if (obj0) {
+    ecode1 = SWIG_AsVal_double(obj0, &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "d_theta_make" "', argument " "1"" of type '" "double""'");
+    } 
+    arg1 = static_cast< double >(val1);
+  }
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "d_theta_make" "', argument " "2"" of type '" "double""'");
+    } 
+    arg2 = static_cast< double >(val2);
+  }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "d_theta_make" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
   {
     try {
-      result = gr::eecs::d_theta::make(arg1);
+      result = gr::eecs::d_theta::make(arg1,arg2,arg3);
     }
     catch(std::exception &e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
@@ -5913,32 +5937,56 @@ fail:
 SWIGINTERN PyObject *_wrap_d_theta_sptr_make(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   boost::shared_ptr< gr::eecs::d_theta > *arg1 = (boost::shared_ptr< gr::eecs::d_theta > *) 0 ;
-  float arg2 ;
+  double arg2 = (double) 990000000 ;
+  double arg3 = (double) 10 ;
+  double arg4 = (double) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  float val2 ;
+  double val2 ;
   int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
   char *  kwnames[] = {
-    (char *) "self",(char *) "test", NULL 
+    (char *) "self",(char *) "freq",(char *) "rSat",(char *) "thetaSat", NULL 
   };
   gr::eecs::d_theta::sptr result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:d_theta_sptr_make",kwnames,&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|OOO:d_theta_sptr_make",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_boost__shared_ptrT_gr__eecs__d_theta_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "d_theta_sptr_make" "', argument " "1"" of type '" "boost::shared_ptr< gr::eecs::d_theta > *""'"); 
   }
   arg1 = reinterpret_cast< boost::shared_ptr< gr::eecs::d_theta > * >(argp1);
-  ecode2 = SWIG_AsVal_float(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "d_theta_sptr_make" "', argument " "2"" of type '" "float""'");
-  } 
-  arg2 = static_cast< float >(val2);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "d_theta_sptr_make" "', argument " "2"" of type '" "double""'");
+    } 
+    arg2 = static_cast< double >(val2);
+  }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "d_theta_sptr_make" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "d_theta_sptr_make" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
-      result = (*arg1)->make(arg2);
+      result = (*arg1)->make(arg2,arg3,arg4);
     }
     catch(std::exception &e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
@@ -8104,13 +8152,13 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"SwigPyIterator_swigregister", SwigPyIterator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"d_theta_make", (PyCFunction) _wrap_d_theta_make, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"d_theta_make(float test) -> sptr\n"
+		"d_theta_make(double freq = 990000000, double rSat = 10, double thetaSat = 0) -> sptr\n"
 		"\n"
 		"Return a shared_ptr to a new instance of eecs::d_theta.\n"
 		"\n"
 		"To avoid accidental use of raw pointers, eecs::d_theta's constructor is in a private implementation class. eecs::d_theta::make is the public interface for creating new instances.\n"
 		"\n"
-		"Params: (test)\n"
+		"Params: (freq, rSat, thetaSat)\n"
 		""},
 	 { (char *)"delete_d_theta", _wrap_delete_d_theta, METH_VARARGS, (char *)"delete_d_theta(d_theta self)"},
 	 { (char *)"d_theta_swigregister", d_theta_swigregister, METH_VARARGS, NULL},
@@ -8121,13 +8169,14 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"d_theta_sptr___deref__", _wrap_d_theta_sptr___deref__, METH_VARARGS, (char *)"d_theta_sptr___deref__(d_theta_sptr self) -> d_theta"},
 	 { (char *)"delete_d_theta_sptr", _wrap_delete_d_theta_sptr, METH_VARARGS, (char *)"delete_d_theta_sptr(d_theta_sptr self)"},
 	 { (char *)"d_theta_sptr_make", (PyCFunction) _wrap_d_theta_sptr_make, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"d_theta_sptr_make(d_theta_sptr self, float test) -> sptr\n"
+		"d_theta_sptr_make(d_theta_sptr self, double freq = 990000000, double rSat = 10, \n"
+		"    double thetaSat = 0) -> sptr\n"
 		"\n"
 		"Return a shared_ptr to a new instance of eecs::d_theta.\n"
 		"\n"
 		"To avoid accidental use of raw pointers, eecs::d_theta's constructor is in a private implementation class. eecs::d_theta::make is the public interface for creating new instances.\n"
 		"\n"
-		"Params: (test)\n"
+		"Params: (freq, rSat, thetaSat)\n"
 		""},
 	 { (char *)"d_theta_sptr_history", _wrap_d_theta_sptr_history, METH_VARARGS, (char *)"d_theta_sptr_history(d_theta_sptr self) -> unsigned int"},
 	 { (char *)"d_theta_sptr_output_multiple", _wrap_d_theta_sptr_output_multiple, METH_VARARGS, (char *)"d_theta_sptr_output_multiple(d_theta_sptr self) -> int"},

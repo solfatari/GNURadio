@@ -30,9 +30,9 @@ namespace gr {
   namespace eecs {
 
     d_theta::sptr
-    d_theta::make(float freq, 
-				  float rSat,
-				  float thetaSat)
+    d_theta::make(double freq, 
+				  double rSat,
+				  double thetaSat)
     {
       return gnuradio::get_initial_sptr (new d_theta_impl(freq, 
 														  rSat,
@@ -42,9 +42,9 @@ namespace gr {
     /*
      * The private constructor
      */
-    d_theta_impl::d_theta_impl(float freq, 
-							   float rSat,
-							   float thetaSat)
+    d_theta_impl::d_theta_impl(double freq, 
+							   double rSat,
+							   double thetaSat)
       : gr_sync_block("d_theta",
 		      gr_make_io_signature(4,4, sizeof (float)),
 		      gr_make_io_signature(1,1, sizeof (float)))
@@ -72,13 +72,13 @@ namespace gr {
         const float *Sat4 = (const float *) input_items[3];
         float *out = (float *) output_items[0];
 //Constants
-		float lambda = 300000000/p_freq;
-		float dx1 = -(lambda/4 +lambda/2);
-		float dx2 = -(lambda/2);
-		float dx3 =  (lambda/2);
-		float dx4 =  (lambda/4 +lambda/2);
+		double lambda = 300000000/p_freq;
+		double dx1 = -(lambda/4 +lambda/2);
+		double dx2 = -(lambda/2);
+		double dx3 =  (lambda/2);
+		double dx4 =  (lambda/4 +lambda/2);
 //floating variables
-		float theta[3], delays[3];
+		double theta[3], delays[3];
 		
 		
         for(int i = 0; i <noutput_items; i++){
@@ -95,15 +95,15 @@ namespace gr {
         return noutput_items;
     }
 	
-	float 
-	d_theta_impl::findTheta(float dx, float lambda){
-		float k = 2*3.1415926/lambda;
+	double 
+	d_theta_impl::findTheta(double dx, double lambda){
+		double k = 2*3.1415926/lambda;
 	
 	return k*(sqrt(p_rSat*p_rSat+dx*dx - 2*p_rSat*dx*sin(p_thetaSat)) - p_rSat);
 	}
 	
 	void
-	d_theta_impl::getDelay(float theta[3], float dt[3]){
+	d_theta_impl::getDelay(double theta[3], double dt[3]){
 		if (theta[0] > theta[3]){
 			for (int i = 0; i<3; i++){
 				dt[i] = (theta[0]-theta[4])/(2*3.1415926*p_freq);
@@ -114,7 +114,6 @@ namespace gr {
 				dt[i] = (theta[0]+theta[4])/(2*3.1415926*p_freq);
 			}
 		}
-	
 	}
 	
 	
