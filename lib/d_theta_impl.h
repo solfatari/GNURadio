@@ -32,13 +32,15 @@ namespace gr {
       double p_freq;
       double p_rSat;
       double p_thetaSat;
+      double p_sampRate;
 	
 	  double findTheta(double dx, double lambda);
 	  void  getDelay(double theta[3], double dt[3]);
     public:
       d_theta_impl(double freq, 
 				   double rSat,
-				   double thetaSat);
+				   double thetaSat,
+				   double sampRate);
       ~d_theta_impl();
 
       // Where all the action really happens

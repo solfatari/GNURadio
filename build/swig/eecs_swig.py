@@ -160,17 +160,18 @@ class d_theta(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
-    def make(freq = 990000000, rSat = 10, thetaSat = 0):
+    def make(freq = 990000000, rSat = 10, thetaSat = 0, sampRate = 32000):
         """
-        make(double freq = 990000000, double rSat = 10, double thetaSat = 0) -> sptr
+        make(double freq = 990000000, double rSat = 10, double thetaSat = 0, 
+            double sampRate = 32000) -> sptr
 
         Return a shared_ptr to a new instance of eecs::d_theta.
 
         To avoid accidental use of raw pointers, eecs::d_theta's constructor is in a private implementation class. eecs::d_theta::make is the public interface for creating new instances.
 
-        Params: (freq, rSat, thetaSat)
+        Params: (freq, rSat, thetaSat, sampRate)
         """
-        return _eecs_swig.d_theta_make(freq, rSat, thetaSat)
+        return _eecs_swig.d_theta_make(freq, rSat, thetaSat, sampRate)
 
     make = staticmethod(make)
     __swig_destroy__ = _eecs_swig.delete_d_theta
@@ -178,17 +179,18 @@ class d_theta(object):
 d_theta_swigregister = _eecs_swig.d_theta_swigregister
 d_theta_swigregister(d_theta)
 
-def d_theta_make(freq = 990000000, rSat = 10, thetaSat = 0):
+def d_theta_make(freq = 990000000, rSat = 10, thetaSat = 0, sampRate = 32000):
   """
-    d_theta_make(double freq = 990000000, double rSat = 10, double thetaSat = 0) -> sptr
+    d_theta_make(double freq = 990000000, double rSat = 10, double thetaSat = 0, 
+        double sampRate = 32000) -> sptr
 
     Return a shared_ptr to a new instance of eecs::d_theta.
 
     To avoid accidental use of raw pointers, eecs::d_theta's constructor is in a private implementation class. eecs::d_theta::make is the public interface for creating new instances.
 
-    Params: (freq, rSat, thetaSat)
+    Params: (freq, rSat, thetaSat, sampRate)
     """
-  return _eecs_swig.d_theta_make(freq, rSat, thetaSat)
+  return _eecs_swig.d_theta_make(freq, rSat, thetaSat, sampRate)
 
 class d_theta_sptr(object):
     """Proxy of C++ boost::shared_ptr<(gr::eecs::d_theta)> class"""
@@ -208,17 +210,18 @@ class d_theta_sptr(object):
 
     __swig_destroy__ = _eecs_swig.delete_d_theta_sptr
     __del__ = lambda self : None;
-    def make(self, freq = 990000000, rSat = 10, thetaSat = 0):
+    def make(self, freq = 990000000, rSat = 10, thetaSat = 0, sampRate = 32000):
         """
-        make(self, double freq = 990000000, double rSat = 10, double thetaSat = 0) -> sptr
+        make(self, double freq = 990000000, double rSat = 10, double thetaSat = 0, 
+            double sampRate = 32000) -> sptr
 
         Return a shared_ptr to a new instance of eecs::d_theta.
 
         To avoid accidental use of raw pointers, eecs::d_theta's constructor is in a private implementation class. eecs::d_theta::make is the public interface for creating new instances.
 
-        Params: (freq, rSat, thetaSat)
+        Params: (freq, rSat, thetaSat, sampRate)
         """
-        return _eecs_swig.d_theta_sptr_make(self, freq, rSat, thetaSat)
+        return _eecs_swig.d_theta_sptr_make(self, freq, rSat, thetaSat, sampRate)
 
     def history(self):
         """history(self) -> unsigned int"""

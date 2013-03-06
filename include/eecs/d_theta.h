@@ -48,7 +48,8 @@ namespace gr {
         */
        static sptr make(double freq = 990000000, 
 						double rSat = 10,
-						double thetaSat = 0);
+						double thetaSat = 0,
+						double sampRate = 32000);
     };
 
   } // namespace eecs

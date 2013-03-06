@@ -83,7 +83,7 @@
   </compound>
   <compound refid="classgr_1_1eecs_1_1d__theta" kind="class"><name>gr::eecs::d_theta</name>
     <member refid="classgr_1_1eecs_1_1d__theta_1a148d48b04383552a09824450a4e095ef" kind="typedef"><name>sptr</name></member>
-    <member refid="classgr_1_1eecs_1_1d__theta_1a31833b5bedb09b30c64eecb4d696079d" kind="function"><name>make</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1a74653452c6004feee9dcd2e41b1142d9" kind="function"><name>make</name></member>
   </compound>
   <compound refid="classstd_1_1deque" kind="class"><name>std::deque</name>
     <member refid="classstd_1_1deque_1a090b92581de438d2e14bedc190f0b0f9" kind="variable"><name>elements</name></member>

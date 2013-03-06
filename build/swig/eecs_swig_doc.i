@@ -96,7 +96,7 @@ Params: (NONE)"
 
 To avoid accidental use of raw pointers, eecs::d_theta's constructor is in a private implementation class. eecs::d_theta::make is the public interface for creating new instances.
 
-Params: (freq, rSat, thetaSat)"
+Params: (freq, rSat, thetaSat, sampRate)"
 
 %feature("docstring") std::deque "STL class."
 

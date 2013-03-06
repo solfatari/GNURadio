@@ -32,11 +32,13 @@ namespace gr {
     d_theta::sptr
     d_theta::make(double freq, 
 				  double rSat,
-				  double thetaSat)
+				  double thetaSat,
+				  double sampRate)
     {
       return gnuradio::get_initial_sptr (new d_theta_impl(freq, 
 														  rSat,
-														  thetaSat));
+														  thetaSat,
+														  sampRate));
     }
 
     /*
@@ -44,7 +46,8 @@ namespace gr {
      */
     d_theta_impl::d_theta_impl(double freq, 
 							   double rSat,
-							   double thetaSat)
+							   double thetaSat,
+							   double sampRate)
       : gr_sync_block("d_theta",
 		      gr_make_io_signature(4,4, sizeof (float)),
 		      gr_make_io_signature(1,1, sizeof (float)))
@@ -52,6 +55,7 @@ namespace gr {
 		p_freq = freq;
 		p_rSat = rSat;
 		p_thetaSat = thetaSat;
+		p_sampRate = sampRate;
 		}
 
     /*
@@ -80,7 +84,6 @@ namespace gr {
 //floating variables
 		double theta[3], delays[3];
 		
-		
         for(int i = 0; i <noutput_items; i++){
 			theta[0] = findTheta(dx1, lambda);
 			theta[1] = findTheta(dx2, lambda);
@@ -88,7 +91,7 @@ namespace gr {
 			theta[3] = findTheta(dx4, lambda);
 			getDelay(theta, delays);
 			
-			out[i] = delays[0];
+			out[i] = theta[0];
 		}
 
         // Tell runtime system how many output items we produced.
