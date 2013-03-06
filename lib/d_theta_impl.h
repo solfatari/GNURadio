@@ -22,6 +22,8 @@
 #define INCLUDED_EECS_D_THETA_IMPL_H
 
 #include <eecs/d_theta.h>
+#include <gr_delay.h>
+#include <gr_block.h>
 
 namespace gr {
   namespace eecs {
@@ -29,12 +31,34 @@ namespace gr {
     class d_theta_impl : public d_theta
     {
     private:
-      float t_test;
-
+      double p_freq;
+      double p_rSat;
+      double p_thetaSat;
+      double p_sampRate;
+      double lambda;
+	
+	  void findTheta(double* dx, double* dt);
+	  void  getDelay(double* theta, double* dt);
+	  
+	  
     public:
-      d_theta_impl(float test);
+      d_theta_impl(double freq, 
+				   double rSat,
+				   double thetaSat,
+				   double sampRate);
       ~d_theta_impl();
-
+	  
+	  double freq() const{ return p_freq;}
+	  double rSat() const{ return p_rSat;}
+	  double thetaSat() const{ return p_thetaSat;}
+	  double sampRate() const{ return p_sampRate;}
+	  
+	  
+	  void set_freq(double freq);
+	  void set_rSat(double rSat);
+	  void set_thetaSat(double thetaSat);
+	  void set_sampRate(double sampRate);
+	  
       // Where all the action really happens
       int work(int noutput_items,
 	       gr_vector_const_void_star &input_items,

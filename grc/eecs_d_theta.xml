@@ -3,20 +3,43 @@
   <key>eecs_d_theta</key>
   <category>EECS</category>
   <import>import eecs</import>
-  <make>eecs.d_theta($test)</make>
+  <make>eecs.d_theta(freq=$freq, rSat=$rSat, thetaSat=$thetaSat, sampRate=$sampRate)</make>
+  <callback>set_freq($freq)</callback>
+  <callback>set_rSat($freq)</callback>
+  <callback>set_thetaSat($freq)</callback>
+  <callback>set_sampRate($freq)</callback>
   <param>
-	<name>test</name>
-	<key>test</key>
+	<name>Frequency</name>
+	<key>freq</key>
+	<value>990000000</value>
+	<type>real</type>
+  </param>
+  <param>
+	<name>Satellite Distance</name>
+	<key>rSat</key>
+	<value>10</value>
+	<type>real</type>
+  </param>
+  <param>
+	<name>Angle from broadside</name>
+	<key>thetaSat</key>
 	<value>0</value>
 	<type>real</type>
   </param>
+  <param>
+	<name>Sampling Rate</name>
+	<key>sampRate</key>
+	<value>320000</value>
+	<type>real</type>
+  </param>
   <sink>
-    <name>in</name>
+    <name>rs_in</name>
     <type>float</type>
-    <nports>2</nports>
+    <nports>4</nports>
   </sink>
   <source>
     <name>out</name>
     <type>float</type>
+    <nports>4</nports>
   </source>
 </block>
