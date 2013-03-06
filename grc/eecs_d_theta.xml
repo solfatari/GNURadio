@@ -4,6 +4,7 @@
   <category>EECS</category>
   <import>import eecs</import>
   <make>eecs.d_theta(freq=$freq, rSat=$rSat, thetaSat=$thetaSat, sampRate=$sampRate)</make>
+  <callback>set_freq($freq)</callback>
   <param>
 	<name>Frequency</name>
 	<key>freq</key>

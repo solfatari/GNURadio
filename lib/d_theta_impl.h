@@ -36,13 +36,19 @@ namespace gr {
 	
 	  double findTheta(double dx, double lambda);
 	  void  getDelay(double theta[3], double dt[3]);
+	  
+	  
     public:
       d_theta_impl(double freq, 
 				   double rSat,
 				   double thetaSat,
 				   double sampRate);
       ~d_theta_impl();
-
+	  
+	  double freq() const{ return p_freq;}
+	  
+	  void set_freq(double freq);
+	  
       // Where all the action really happens
       int work(int noutput_items,
 	       gr_vector_const_void_star &input_items,

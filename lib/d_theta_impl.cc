@@ -52,10 +52,8 @@ namespace gr {
 		      gr_make_io_signature(4,4, sizeof (float)),
 		      gr_make_io_signature(4,4, sizeof (float)))
 		{
-		p_freq = freq;
-		p_rSat = rSat;
-		p_thetaSat = thetaSat;
-		p_sampRate = sampRate;
+		p_freq(freq), // =? 
+		
 		}
 
     /*
@@ -94,10 +92,10 @@ namespace gr {
 			theta[3] = findTheta(dx4, lambda);
 			getDelay(theta, delays);
 			
-			out1[i] = delays[0];
-			out2[i] = delays[1];
-			out3[i] = delays[2];
-			out4[i] = delays[3];
+			out1[i] = theta[0];
+			out2[i] = theta[1];
+			out3[i] = theta[2];
+			out4[i] = theta[3];
 		}
 
         // Tell runtime system how many output items we produced.
@@ -125,6 +123,9 @@ namespace gr {
 		}
 	}
 	
+	void d_theta_impl::set_freq(double freq){
+		p_freq = freq;
+	}
 	
 	
   } /* namespace eecs */
