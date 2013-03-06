@@ -66,8 +66,10 @@ namespace gr {
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
-       // const float *rSat = (const float *) input_items[0];
-       // const float *thetaSat = (const float *) input_items[1];
+        const float *Sat1 = (const float *) input_items[0];
+        const float *Sat2 = (const float *) input_items[1];
+        const float *Sat3 = (const float *) input_items[2];
+        const float *Sat4 = (const float *) input_items[3];
         float *out = (float *) output_items[0];
 //Constants
 		float lambda = 300000000/p_freq;
@@ -75,17 +77,48 @@ namespace gr {
 		float dx2 = -(lambda/2);
 		float dx3 =  (lambda/2);
 		float dx4 =  (lambda/4 +lambda/2);
-		float k = 2*3.1415926/lambda;
+//floating variables
+		float theta[3], delays[3];
 		
-
+		
         for(int i = 0; i <noutput_items; i++){
-			out[i] = k*(sqrt(p_rSat*p_rSat+dx1*dx1 - 2*p_rSat*dx1*sin(p_thetaSat)) - p_rSat);
+			theta[0] = findTheta(dx1, lambda);
+			theta[1] = findTheta(dx2, lambda);
+			theta[2] = findTheta(dx3, lambda);
+			theta[3] = findTheta(dx4, lambda);
+			getDelay(theta, delays);
+			
+			out[i] = delays[0];
 		}
 
         // Tell runtime system how many output items we produced.
         return noutput_items;
     }
-
+	
+	float 
+	d_theta_impl::findTheta(float dx, float lambda){
+		float k = 2*3.1415926/lambda;
+	
+	return k*(sqrt(p_rSat*p_rSat+dx*dx - 2*p_rSat*dx*sin(p_thetaSat)) - p_rSat);
+	}
+	
+	void
+	d_theta_impl::getDelay(float theta[3], float dt[3]){
+		if (theta[0] > theta[3]){
+			for (int i = 0; i<3; i++){
+				dt[i] = (theta[0]-theta[4])/(2*3.1415926*p_freq);
+			}
+		}
+		else{
+			for (int i = 0; i<3; i++){
+				dt[i] = (theta[0]+theta[4])/(2*3.1415926*p_freq);
+			}
+		}
+	
+	}
+	
+	
+	
   } /* namespace eecs */
 } /* namespace gr */
 

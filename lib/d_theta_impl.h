@@ -32,7 +32,9 @@ namespace gr {
       float p_freq;
       float p_rSat;
       float p_thetaSat;
-
+	
+	  float findTheta(float dx, float lambda);
+	  void getDelay(float theta[3], float dt[3]);
     public:
       d_theta_impl(float freq, 
 				   float rSat,
