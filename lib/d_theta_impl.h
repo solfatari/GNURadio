@@ -38,7 +38,7 @@ namespace gr {
       double lambda;
 	
 	  void findTheta(double* dx, double* dt);
-	  void  getDelay(double* theta, double* dt);
+	  void  getDelay(double* theta, int* dt);
 	  
 	  
     public:
