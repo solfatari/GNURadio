@@ -106,8 +106,7 @@ namespace gr {
 	
 	double 
 	d_theta_impl::findTheta(double dx, double lambda){
-		long double pi=acos(-1.0L)
-		double k = 2*pi/lambda;
+		double k = 2*3.1415926/lambda;
 	
 	return k*(sqrt(p_rSat*p_rSat+dx*dx - 2*p_rSat*dx*sin(p_thetaSat)) - p_rSat);
 	}
