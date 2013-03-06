@@ -52,8 +52,14 @@ namespace gr {
 						double sampRate);
 	
 		virtual double freq() const = 0;
+		virtual double rSat() const = 0;
+		virtual double thetaSat() const = 0;
+		virtual double sampRate() const = 0;
 		
 		virtual void set_freq(double freq) = 0;
+		virtual void set_rSat(double rSat) = 0;
+		virtual void set_thetaSat(double thetaSat) = 0;
+		virtual void set_sampRate(double sampRate) = 0;
     };
 
   } // namespace eecs

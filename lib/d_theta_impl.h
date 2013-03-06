@@ -46,8 +46,15 @@ namespace gr {
       ~d_theta_impl();
 	  
 	  double freq() const{ return p_freq;}
+	  double rSat() const{ return p_rSat;}
+	  double thetaSat() const{ return p_thetaSat;}
+	  double sampRate() const{ return p_sampRate;}
+	  
 	  
 	  void set_freq(double freq);
+	  void set_rSat(double rSat);
+	  void set_thetaSat(double thetaSat);
+	  void set_sampRate(double sampRate);
 	  
       // Where all the action really happens
       int work(int noutput_items,

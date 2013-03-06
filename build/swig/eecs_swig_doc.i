@@ -98,6 +98,38 @@ To avoid accidental use of raw pointers, eecs::d_theta's constructor is in a pri
 
 Params: (freq, rSat, thetaSat, sampRate)"
 
+%feature("docstring") gr::eecs::d_theta::freq "
+
+Params: (NONE)"
+
+%feature("docstring") gr::eecs::d_theta::rSat "
+
+Params: (NONE)"
+
+%feature("docstring") gr::eecs::d_theta::thetaSat "
+
+Params: (NONE)"
+
+%feature("docstring") gr::eecs::d_theta::sampRate "
+
+Params: (NONE)"
+
+%feature("docstring") gr::eecs::d_theta::set_freq "
+
+Params: (freq)"
+
+%feature("docstring") gr::eecs::d_theta::set_rSat "
+
+Params: (rSat)"
+
+%feature("docstring") gr::eecs::d_theta::set_thetaSat "
+
+Params: (thetaSat)"
+
+%feature("docstring") gr::eecs::d_theta::set_sampRate "
+
+Params: (sampRate)"
+
 %feature("docstring") std::deque "STL class."
 
 %feature("docstring") std::domain_error "STL class."

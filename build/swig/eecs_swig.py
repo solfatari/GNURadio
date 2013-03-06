@@ -158,12 +158,11 @@ SwigPyIterator_swigregister(SwigPyIterator)
 class d_theta(object):
     """<+description of block+>"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    def make(freq = 990000000, rSat = 10, thetaSat = 0, sampRate = 32000):
+    def make(*args, **kwargs):
         """
-        make(double freq = 990000000, double rSat = 10, double thetaSat = 0, 
-            double sampRate = 32000) -> sptr
+        make(double freq, double rSat, double thetaSat, double sampRate) -> sptr
 
         Return a shared_ptr to a new instance of eecs::d_theta.
 
@@ -171,18 +170,81 @@ class d_theta(object):
 
         Params: (freq, rSat, thetaSat, sampRate)
         """
-        return _eecs_swig.d_theta_make(freq, rSat, thetaSat, sampRate)
+        return _eecs_swig.d_theta_make(*args, **kwargs)
 
     make = staticmethod(make)
+    def freq(self):
+        """
+        freq(self) -> double
+
+        Params: (NONE)
+        """
+        return _eecs_swig.d_theta_freq(self)
+
+    def rSat(self):
+        """
+        rSat(self) -> double
+
+        Params: (NONE)
+        """
+        return _eecs_swig.d_theta_rSat(self)
+
+    def thetaSat(self):
+        """
+        thetaSat(self) -> double
+
+        Params: (NONE)
+        """
+        return _eecs_swig.d_theta_thetaSat(self)
+
+    def sampRate(self):
+        """
+        sampRate(self) -> double
+
+        Params: (NONE)
+        """
+        return _eecs_swig.d_theta_sampRate(self)
+
+    def set_freq(self, *args, **kwargs):
+        """
+        set_freq(self, double freq)
+
+        Params: (freq)
+        """
+        return _eecs_swig.d_theta_set_freq(self, *args, **kwargs)
+
+    def set_rSat(self, *args, **kwargs):
+        """
+        set_rSat(self, double rSat)
+
+        Params: (rSat)
+        """
+        return _eecs_swig.d_theta_set_rSat(self, *args, **kwargs)
+
+    def set_thetaSat(self, *args, **kwargs):
+        """
+        set_thetaSat(self, double thetaSat)
+
+        Params: (thetaSat)
+        """
+        return _eecs_swig.d_theta_set_thetaSat(self, *args, **kwargs)
+
+    def set_sampRate(self, *args, **kwargs):
+        """
+        set_sampRate(self, double sampRate)
+
+        Params: (sampRate)
+        """
+        return _eecs_swig.d_theta_set_sampRate(self, *args, **kwargs)
+
     __swig_destroy__ = _eecs_swig.delete_d_theta
     __del__ = lambda self : None;
 d_theta_swigregister = _eecs_swig.d_theta_swigregister
 d_theta_swigregister(d_theta)
 
-def d_theta_make(freq = 990000000, rSat = 10, thetaSat = 0, sampRate = 32000):
+def d_theta_make(*args, **kwargs):
   """
-    d_theta_make(double freq = 990000000, double rSat = 10, double thetaSat = 0, 
-        double sampRate = 32000) -> sptr
+    d_theta_make(double freq, double rSat, double thetaSat, double sampRate) -> sptr
 
     Return a shared_ptr to a new instance of eecs::d_theta.
 
@@ -190,7 +252,7 @@ def d_theta_make(freq = 990000000, rSat = 10, thetaSat = 0, sampRate = 32000):
 
     Params: (freq, rSat, thetaSat, sampRate)
     """
-  return _eecs_swig.d_theta_make(freq, rSat, thetaSat, sampRate)
+  return _eecs_swig.d_theta_make(*args, **kwargs)
 
 class d_theta_sptr(object):
     """Proxy of C++ boost::shared_ptr<(gr::eecs::d_theta)> class"""
@@ -210,10 +272,9 @@ class d_theta_sptr(object):
 
     __swig_destroy__ = _eecs_swig.delete_d_theta_sptr
     __del__ = lambda self : None;
-    def make(self, freq = 990000000, rSat = 10, thetaSat = 0, sampRate = 32000):
+    def make(self, *args, **kwargs):
         """
-        make(self, double freq = 990000000, double rSat = 10, double thetaSat = 0, 
-            double sampRate = 32000) -> sptr
+        make(self, double freq, double rSat, double thetaSat, double sampRate) -> sptr
 
         Return a shared_ptr to a new instance of eecs::d_theta.
 
@@ -221,7 +282,71 @@ class d_theta_sptr(object):
 
         Params: (freq, rSat, thetaSat, sampRate)
         """
-        return _eecs_swig.d_theta_sptr_make(self, freq, rSat, thetaSat, sampRate)
+        return _eecs_swig.d_theta_sptr_make(self, *args, **kwargs)
+
+    def freq(self):
+        """
+        freq(self) -> double
+
+        Params: (NONE)
+        """
+        return _eecs_swig.d_theta_sptr_freq(self)
+
+    def rSat(self):
+        """
+        rSat(self) -> double
+
+        Params: (NONE)
+        """
+        return _eecs_swig.d_theta_sptr_rSat(self)
+
+    def thetaSat(self):
+        """
+        thetaSat(self) -> double
+
+        Params: (NONE)
+        """
+        return _eecs_swig.d_theta_sptr_thetaSat(self)
+
+    def sampRate(self):
+        """
+        sampRate(self) -> double
+
+        Params: (NONE)
+        """
+        return _eecs_swig.d_theta_sptr_sampRate(self)
+
+    def set_freq(self, *args, **kwargs):
+        """
+        set_freq(self, double freq)
+
+        Params: (freq)
+        """
+        return _eecs_swig.d_theta_sptr_set_freq(self, *args, **kwargs)
+
+    def set_rSat(self, *args, **kwargs):
+        """
+        set_rSat(self, double rSat)
+
+        Params: (rSat)
+        """
+        return _eecs_swig.d_theta_sptr_set_rSat(self, *args, **kwargs)
+
+    def set_thetaSat(self, *args, **kwargs):
+        """
+        set_thetaSat(self, double thetaSat)
+
+        Params: (thetaSat)
+        """
+        return _eecs_swig.d_theta_sptr_set_thetaSat(self, *args, **kwargs)
+
+    def set_sampRate(self, *args, **kwargs):
+        """
+        set_sampRate(self, double sampRate)
+
+        Params: (sampRate)
+        """
+        return _eecs_swig.d_theta_sptr_set_sampRate(self, *args, **kwargs)
 
     def history(self):
         """history(self) -> unsigned int"""

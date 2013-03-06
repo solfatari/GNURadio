@@ -50,9 +50,10 @@ namespace gr {
 							   double sampRate)
       : gr_sync_block("d_theta",
 		      gr_make_io_signature(4,4, sizeof (float)),
-		      gr_make_io_signature(4,4, sizeof (float)))
+		      gr_make_io_signature(4,4, sizeof (float))),
+			  p_freq(freq), p_rSat(rSat), 
+			  p_thetaSat(thetaSat), p_sampRate(sampRate)
 		{
-		p_freq(freq), // =? 
 		
 		}
 
@@ -78,9 +79,9 @@ namespace gr {
         float *out4 = (float *) output_items[3];
 //Constants
 		double lambda = 300000000/p_freq;
-		double dx1 = -(lambda/4 +lambda/2);
-		double dx2 = -(lambda/2);
-		double dx3 =  (lambda/2);
+		double dx1 = -1*(lambda/4 +lambda/2);
+		double dx2 = -1*(lambda/4);
+		double dx3 =  (lambda/4);
 		double dx4 =  (lambda/4 +lambda/2);
 //floating variables
 		double theta[3], delays[3];
@@ -104,7 +105,7 @@ namespace gr {
 	
 	double 
 	d_theta_impl::findTheta(double dx, double lambda){
-		double k = 2*3.1415926/lambda;
+		double k = 2*M_PI/lambda;
 	
 	return k*(sqrt(p_rSat*p_rSat+dx*dx - 2*p_rSat*dx*sin(p_thetaSat)) - p_rSat);
 	}
@@ -113,20 +114,24 @@ namespace gr {
 	d_theta_impl::getDelay(double theta[3], double dt[3]){
 		if (theta[0] > theta[3]){
 			for (int i = 0; i<3; i++){
-				dt[i] = p_sampRate*(theta[i]/*-theta[4]*/)/(2*3.1415926*p_freq);
+				dt[i] = p_sampRate*(theta[i]/*-theta[4]*/)/(2*M_PI*p_freq);
 			}
 		}
 		else{
 			for (int i = 0; i<3; i++){
-				dt[i] = p_sampRate*(theta[i]/*-theta[0]*/)/(2*3.1415926*p_freq);
+				dt[i] = p_sampRate*(theta[i]/*-theta[0]*/)/(2*M_PI*p_freq);
 			}
 		}
 	}
 	
-	void d_theta_impl::set_freq(double freq){
-		p_freq = freq;
-	}
-	
+	void d_theta_impl::set_freq(double freq)
+	{	p_freq = freq;	}
+	void d_theta_impl::set_rSat(double rSat)
+	{	p_rSat = rSat;	}
+	void d_theta_impl::set_thetaSat(double thetaSat)
+	{	p_thetaSat = thetaSat;	}
+	void d_theta_impl::set_sampRate(double sampRate)
+	{	p_sampRate = sampRate;	}
 	
   } /* namespace eecs */
 } /* namespace gr */
