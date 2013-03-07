@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+  <compounddef id="dir_4cf2728dfb68f228942d9ca7a2c5fa7c" kind="dir">
+    <compoundname>/home/matthew/workspace/GNURadio/include/eecs/</compoundname>
+    <innerfile refid="api_8h">api.h</innerfile>
+    <innerfile refid="d__theta_8h">d_theta.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/matthew/workspace/GNURadio/include/eecs/"/>
+  </compounddef>
+</doxygen>
