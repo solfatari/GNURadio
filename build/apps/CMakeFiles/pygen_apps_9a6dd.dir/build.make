@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chris/workspace/GNURadio/gr-eecs
+CMAKE_SOURCE_DIR = /home/matthew/workspace/GNURadio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chris/workspace/GNURadio/gr-eecs/build
+CMAKE_BINARY_DIR = /home/matthew/workspace/GNURadio/build
 
 # Utility rule file for pygen_apps_9a6dd.
 
@@ -53,10 +53,10 @@ apps/CMakeFiles/pygen_apps_9a6dd.dir/build: pygen_apps_9a6dd
 .PHONY : apps/CMakeFiles/pygen_apps_9a6dd.dir/build
 
 apps/CMakeFiles/pygen_apps_9a6dd.dir/clean:
-	cd /home/chris/workspace/GNURadio/gr-eecs/build/apps && $(CMAKE_COMMAND) -P CMakeFiles/pygen_apps_9a6dd.dir/cmake_clean.cmake
+	cd /home/matthew/workspace/GNURadio/build/apps && $(CMAKE_COMMAND) -P CMakeFiles/pygen_apps_9a6dd.dir/cmake_clean.cmake
 .PHONY : apps/CMakeFiles/pygen_apps_9a6dd.dir/clean
 
 apps/CMakeFiles/pygen_apps_9a6dd.dir/depend:
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chris/workspace/GNURadio/gr-eecs /home/chris/workspace/GNURadio/gr-eecs/apps /home/chris/workspace/GNURadio/gr-eecs/build /home/chris/workspace/GNURadio/gr-eecs/build/apps /home/chris/workspace/GNURadio/gr-eecs/build/apps/CMakeFiles/pygen_apps_9a6dd.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/matthew/workspace/GNURadio/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/matthew/workspace/GNURadio /home/matthew/workspace/GNURadio/apps /home/matthew/workspace/GNURadio/build /home/matthew/workspace/GNURadio/build/apps /home/matthew/workspace/GNURadio/build/apps/CMakeFiles/pygen_apps_9a6dd.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : apps/CMakeFiles/pygen_apps_9a6dd.dir/depend
 

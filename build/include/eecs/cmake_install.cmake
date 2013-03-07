@@ -1,4 +1,4 @@
-# Install script for directory: /home/chris/workspace/GNURadio/gr-eecs/include/eecs
+# Install script for directory: /home/matthew/workspace/GNURadio/include/eecs
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,8 +34,8 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/eecs" TYPE FILE FILES
-    "/home/chris/workspace/GNURadio/gr-eecs/include/eecs/api.h"
-    "/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h"
+    "/home/matthew/workspace/GNURadio/include/eecs/api.h"
+    "/home/matthew/workspace/GNURadio/include/eecs/d_theta.h"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

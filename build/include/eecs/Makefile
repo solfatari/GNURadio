@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chris/workspace/GNURadio/gr-eecs
+CMAKE_SOURCE_DIR = /home/matthew/workspace/GNURadio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chris/workspace/GNURadio/gr-eecs/build
+CMAKE_BINARY_DIR = /home/matthew/workspace/GNURadio/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -117,14 +117,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles /home/chris/workspace/GNURadio/gr-eecs/build/include/eecs/CMakeFiles/progress.marks
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(MAKE) -f CMakeFiles/Makefile2 include/eecs/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles 0
+	cd /home/matthew/workspace/GNURadio/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/matthew/workspace/GNURadio/build/CMakeFiles /home/matthew/workspace/GNURadio/build/include/eecs/CMakeFiles/progress.marks
+	cd /home/matthew/workspace/GNURadio/build && $(MAKE) -f CMakeFiles/Makefile2 include/eecs/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/matthew/workspace/GNURadio/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(MAKE) -f CMakeFiles/Makefile2 include/eecs/clean
+	cd /home/matthew/workspace/GNURadio/build && $(MAKE) -f CMakeFiles/Makefile2 include/eecs/clean
 .PHONY : clean
 
 # The main clean target
@@ -133,17 +133,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(MAKE) -f CMakeFiles/Makefile2 include/eecs/preinstall
+	cd /home/matthew/workspace/GNURadio/build && $(MAKE) -f CMakeFiles/Makefile2 include/eecs/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(MAKE) -f CMakeFiles/Makefile2 include/eecs/preinstall
+	cd /home/matthew/workspace/GNURadio/build && $(MAKE) -f CMakeFiles/Makefile2 include/eecs/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/matthew/workspace/GNURadio/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -170,6 +170,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/matthew/workspace/GNURadio/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

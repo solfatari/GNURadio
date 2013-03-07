@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chris/workspace/GNURadio/gr-eecs
+CMAKE_SOURCE_DIR = /home/matthew/workspace/GNURadio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chris/workspace/GNURadio/gr-eecs/build
+CMAKE_BINARY_DIR = /home/matthew/workspace/GNURadio/build
 
 # Utility rule file for uninstall.
 
@@ -43,7 +43,7 @@ CMAKE_BINARY_DIR = /home/chris/workspace/GNURadio/gr-eecs/build
 include CMakeFiles/uninstall.dir/progress.make
 
 CMakeFiles/uninstall:
-	/usr/bin/cmake -P /home/chris/workspace/GNURadio/gr-eecs/build/cmake_uninstall.cmake
+	/usr/bin/cmake -P /home/matthew/workspace/GNURadio/build/cmake_uninstall.cmake
 
 uninstall: CMakeFiles/uninstall
 uninstall: CMakeFiles/uninstall.dir/build.make
@@ -58,6 +58,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chris/workspace/GNURadio/gr-eecs /home/chris/workspace/GNURadio/gr-eecs /home/chris/workspace/GNURadio/gr-eecs/build /home/chris/workspace/GNURadio/gr-eecs/build /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/matthew/workspace/GNURadio/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/matthew/workspace/GNURadio /home/matthew/workspace/GNURadio /home/matthew/workspace/GNURadio/build /home/matthew/workspace/GNURadio/build /home/matthew/workspace/GNURadio/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 
