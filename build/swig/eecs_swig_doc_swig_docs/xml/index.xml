@@ -83,7 +83,15 @@
   </compound>
   <compound refid="classgr_1_1eecs_1_1d__theta" kind="class"><name>gr::eecs::d_theta</name>
     <member refid="classgr_1_1eecs_1_1d__theta_1a148d48b04383552a09824450a4e095ef" kind="typedef"><name>sptr</name></member>
-    <member refid="classgr_1_1eecs_1_1d__theta_1a2507f1578fbfeaecb6f3b95d2461489a" kind="function"><name>make</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1a1b06eed80271f2d7f9a1064882ad80c2" kind="function"><name>make</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1a774ca3acd4876db4880465c337a9b07b" kind="function"><name>freq</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1aadda48d4d284d1bcaa30d3556eb50164" kind="function"><name>rSat</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1ace99a60572deab8e78425c9f973d3a82" kind="function"><name>thetaSat</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1a78d6afd1fb0f21450483011c37365b7d" kind="function"><name>sampRate</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1afa6f35104835c68a78c2a76535b2fb42" kind="function"><name>set_freq</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1a03c62bb61f9ecd4e33789fb469d10da8" kind="function"><name>set_rSat</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1abcd94b0f78392323a26982b608a1d6f9" kind="function"><name>set_thetaSat</name></member>
+    <member refid="classgr_1_1eecs_1_1d__theta_1ab609daabaf5c083d5f1a13d5bb300ff1" kind="function"><name>set_sampRate</name></member>
   </compound>
   <compound refid="classstd_1_1deque" kind="class"><name>std::deque</name>
     <member refid="classstd_1_1deque_1a090b92581de438d2e14bedc190f0b0f9" kind="variable"><name>elements</name></member>

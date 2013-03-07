@@ -25,25 +25,37 @@
 #include <gr_io_signature.h>
 #include "d_theta_impl.h"
 #include <cmath>
+#include <gr_delay.h>
 
 namespace gr {
   namespace eecs {
 
     d_theta::sptr
-    d_theta::make(float test)
+    d_theta::make(double freq, 
+				  double rSat,
+				  double thetaSat,
+				  double sampRate)
     {
-      return gnuradio::get_initial_sptr (new d_theta_impl(test));
+      return gnuradio::get_initial_sptr (new d_theta_impl(freq, 
+														  rSat,
+														  thetaSat,
+														  sampRate));
     }
 
     /*
      * The private constructor
      */
-    d_theta_impl::d_theta_impl(float test)
+    d_theta_impl::d_theta_impl(double freq, 
+							   double rSat,
+							   double thetaSat,
+							   double sampRate)
       : gr_sync_block("d_theta",
-		      gr_make_io_signature(2,2, sizeof (float)),
-		      gr_make_io_signature(1,1, sizeof (float)))
-    {
-		t_test = test;
+		      gr_make_io_signature(4,4, sizeof (float)),
+		      gr_make_io_signature(4,4, sizeof (float))),
+			  p_freq(freq), p_rSat(rSat), 
+			  p_thetaSat(thetaSat), p_sampRate(sampRate)
+		{
+			lambda = 300000000/p_freq;
 		}
 
     /*
@@ -58,22 +70,76 @@ namespace gr {
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
-        const float *rSat = (const float *) input_items[0];
-        const float *thetaSat = (const float *) input_items[1];
-        float *out = (float *) output_items[0];
-// temp constants
-		float lambda = .3030303;
-		float dx1 = -(lambda/4 +lambda/2);
-		float k = 2*3.1415926/lambda;
-
+        const float *Sat1 = (const float *) input_items[0];
+        const float *Sat2 = (const float *) input_items[1];
+        const float *Sat3 = (const float *) input_items[2];
+        const float *Sat4 = (const float *) input_items[3];
+        float *out1 = (float *) output_items[0];
+        float *out2 = (float *) output_items[1];
+        float *out3 = (float *) output_items[2];
+        float *out4 = (float *) output_items[3];
+//Constants
+		double (*dx);				
+			dx = (double*)malloc(4*sizeof(double));
+			dx[0] = -1*(lambda/4 +lambda/2);
+			dx[1] = -1*(lambda/4);
+			dx[2] =  (lambda/4);
+			dx[3] =  (lambda/4 +lambda/2);
+//floating variables
+		double (*theta);
+			theta = (double*)malloc(4*sizeof(double));
+		int (*delays);
+			delays = (int*)malloc(4*sizeof(int));
+		
         for(int i = 0; i <noutput_items; i++){
-			out[i] = t_test + k*(sqrt(rSat[i]*rSat[i]+dx1*dx1 - 2*rSat[i]*dx1*sin(thetaSat[i])) - rSat[i]);
+			findTheta(dx,theta);
+			getDelay(theta, delays);
+			
+			//Gonn start doing stupid shit
+			
+			
+			
+			out1[i] = delays[0];
+			out2[i] = delays[1];
+			out3[i] = delays[2];
+			out4[i] = delays[3];
 		}
 
         // Tell runtime system how many output items we produced.
+        delete theta;
+        delete delays;
         return noutput_items;
     }
-
+	
+	void 
+	d_theta_impl::findTheta(double* dx, double* dt){
+		double k = 2*M_PI/lambda;
+		for(int i = 0; i<4 ; i++){
+			dt[i] = k*(sqrt(p_rSat*p_rSat+dx[i]*dx[i] - 2*p_rSat*dx[i]*sin(p_thetaSat)) - p_rSat);
+		}
+	}
+	
+	void
+	d_theta_impl::getDelay(double* theta, int* dt){
+		if (theta[0] > theta[3]){
+			for (int i = 0; i<4; i++){
+				dt[i] = floor(p_sampRate*(theta[i]-theta[3])/(2*M_PI*p_freq)+.5);}}
+		else{
+			for (int i = 0; i<4; i++){
+				dt[i] = floor(p_sampRate*(theta[i]-theta[0])/(2*M_PI*p_freq)+.5);}}
+	}
+	
+	
+	
+	void d_theta_impl::set_freq(double freq)
+	{	p_freq = freq;	}
+	void d_theta_impl::set_rSat(double rSat)
+	{	p_rSat = rSat;	}
+	void d_theta_impl::set_thetaSat(double thetaSat)
+	{	p_thetaSat = thetaSat;	}
+	void d_theta_impl::set_sampRate(double sampRate)
+	{	p_sampRate = sampRate;	}
+	
   } /* namespace eecs */
 } /* namespace gr */
 
