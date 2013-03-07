@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.3">
+  <compounddef id="dir_2f2bff6d4c6b09f35c423eb66dbb3518" kind="dir">
+    <compoundname>/home/sdr/workspace/GNURadio/include/</compoundname>
+    <innerdir refid="dir_170b7c01579d3fecb8e1810f0746c87d">/home/sdr/workspace/GNURadio/include/eecs/</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/sdr/workspace/GNURadio/include/"/>
+  </compounddef>
+</doxygen>
