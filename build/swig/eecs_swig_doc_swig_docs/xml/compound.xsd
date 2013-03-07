@@ -764,7 +764,6 @@
       <xsd:enumeration value="warning" />
       <xsd:enumeration value="pre" />
       <xsd:enumeration value="post" />
-      <xsd:enumeration value="copyright" />
       <xsd:enumeration value="invariant" />
       <xsd:enumeration value="remark" />
       <xsd:enumeration value="attention" />

@@ -71,6 +71,7 @@ swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o: /usr/local/include/gn
 swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o: /usr/local/include/gnuradio/gr_complex.h
 swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o: /usr/local/include/gnuradio/gr_core_api.h
 swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o: /usr/local/include/gnuradio/gr_io_signature.h
+swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o: /usr/local/include/gnuradio/gr_logger.h
 swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o: /usr/local/include/gnuradio/gr_msg_accepter.h
 swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o: /usr/local/include/gnuradio/gr_runtime_types.h
 swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o: /usr/local/include/gnuradio/gr_sptr_magic.h

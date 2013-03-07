@@ -4,7 +4,7 @@
 #=============================================================================
 # Special targets provided by cmake.
 
-# Disable implicit rules so canonical targets will work.
+# Disable implicit rules so canoncical targets will work.
 .SUFFIXES:
 
 # Remove some rules from gmake that .SUFFIXES does not remove.
@@ -32,18 +32,15 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chris/workspace/GNURadio/gr-eecs
+CMAKE_SOURCE_DIR = /home/sdr/workspace/GNURadio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chris/workspace/GNURadio/gr-eecs/build
+CMAKE_BINARY_DIR = /home/sdr/workspace/GNURadio/build
 
 # Utility rule file for uninstall.
 
-# Include the progress variables for this target.
-include CMakeFiles/uninstall.dir/progress.make
-
 CMakeFiles/uninstall:
-	/usr/bin/cmake -P /home/chris/workspace/GNURadio/gr-eecs/build/cmake_uninstall.cmake
+	/usr/bin/cmake -P /home/sdr/workspace/GNURadio/build/cmake_uninstall.cmake
 
 uninstall: CMakeFiles/uninstall
 uninstall: CMakeFiles/uninstall.dir/build.make
@@ -58,6 +55,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/chris/workspace/GNURadio/gr-eecs/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chris/workspace/GNURadio/gr-eecs /home/chris/workspace/GNURadio/gr-eecs /home/chris/workspace/GNURadio/gr-eecs/build /home/chris/workspace/GNURadio/gr-eecs/build /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sdr/workspace/GNURadio/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sdr/workspace/GNURadio /home/sdr/workspace/GNURadio /home/sdr/workspace/GNURadio/build /home/sdr/workspace/GNURadio/build /home/sdr/workspace/GNURadio/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

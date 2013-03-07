@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.3">
   <compounddef id="classstd_1_1string" kind="class" prot="public">
     <compoundname>std::string</compoundname>
     <basecompoundref prot="public" virt="non-virtual">std::basic_string&lt; char &gt;</basecompoundref>
@@ -12,22 +12,22 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="541">
+      <node id="538">
         <label>std::basic_string&lt; char &gt;</label>
       </node>
-      <node id="540">
+      <node id="537">
         <label>std::string</label>
-        <childnode refid="541" relation="public-inheritance">
+        <childnode refid="538" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="543">
+      <node id="540">
         <label>std::basic_string&lt; char &gt;</label>
       </node>
-      <node id="542">
+      <node id="539">
         <label>std::string</label>
-        <childnode refid="543" relation="public-inheritance">
+        <childnode refid="540" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

@@ -6,5 +6,5 @@
 
 #IncludeRegexTransform: 
 
-/home/chris/workspace/GNURadio/gr-eecs/build/swig/_eecs_swig_swig_tag.cpp
+/home/sdr/workspace/GNURadio/build/swig/_eecs_swig_swig_tag.cpp
 

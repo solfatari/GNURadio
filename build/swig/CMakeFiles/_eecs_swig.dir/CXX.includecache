@@ -16,7 +16,7 @@ eecs/api.h
 gr_sync_block.h
 -
 
-/home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swigPYTHON_wrap.cxx
+/home/sdr/workspace/GNURadio/build/swig/eecs_swigPYTHON_wrap.cxx
 Python.h
 -
 string.h
@@ -24,7 +24,7 @@ string.h
 stdexcept
 -
 gnuradio_swig_bug_workaround.h
-/home/chris/workspace/GNURadio/gr-eecs/build/swig/gnuradio_swig_bug_workaround.h
+/home/sdr/workspace/GNURadio/build/swig/gnuradio_swig_bug_workaround.h
 gr_types.h
 -
 stddef.h
@@ -40,8 +40,6 @@ stdexcept
 string
 -
 stdexcept
--
-stddef.h
 -
 float.h
 -
@@ -68,7 +66,7 @@ functional
 iterator
 -
 eecs/d_theta.h
-/home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs/d_theta.h
+/home/sdr/workspace/GNURadio/build/swig/eecs/d_theta.h
 limits.h
 -
 
@@ -445,6 +443,8 @@ gr_basic_block.h
 -
 gr_tags.h
 -
+gr_logger.h
+-
 
 /usr/local/include/gnuradio/gr_complex.h
 complex
@@ -458,6 +458,34 @@ gruel/attributes.h
 gr_core_api.h
 -
 gr_runtime_types.h
+-
+
+/usr/local/include/gnuradio/gr_logger.h
+gr_core_api.h
+-
+assert.h
+-
+iostream
+-
+log4cxx/logger.h
+-
+log4cxx/logmanager.h
+-
+log4cxx/basicconfigurator.h
+-
+log4cxx/xml/domconfigurator.h
+-
+log4cxx/propertyconfigurator.h
+-
+log4cxx/helpers/pool.h
+-
+log4cxx/fileappender.h
+-
+log4cxx/rollingfileappender.h
+-
+log4cxx/consoleappender.h
+-
+log4cxx/patternlayout.h
 -
 
 /usr/local/include/gnuradio/gr_msg_accepter.h

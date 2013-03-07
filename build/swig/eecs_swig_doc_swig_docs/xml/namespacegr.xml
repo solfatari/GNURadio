@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.3">
   <compounddef id="namespacegr" kind="namespace">
     <compoundname>gr</compoundname>
     <innernamespace refid="namespacegr_1_1eecs">gr::eecs</innernamespace>
@@ -7,6 +7,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h" line="28"/>
+    <location file="/home/sdr/workspace/GNURadio/include/eecs/d_theta.h" line="28"/>
   </compounddef>
 </doxygen>

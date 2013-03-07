@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.3">
   <compounddef id="classstd_1_1wostream" kind="class" prot="public">
     <compoundname>std::wostream</compoundname>
     <basecompoundref prot="public" virt="non-virtual">std::basic_ostream&lt; wchar_t &gt;</basecompoundref>
@@ -8,42 +8,42 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="634">
+      <node id="625">
         <label>std::wostream</label>
-        <childnode refid="635" relation="public-inheritance">
+        <childnode refid="626" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="635">
+      <node id="626">
         <label>std::basic_ostream&lt; wchar_t &gt;</label>
-        <childnode refid="636" relation="public-inheritance">
+        <childnode refid="627" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="636">
+      <node id="627">
         <label>std::basic_ios&lt; Char &gt;</label>
-        <childnode refid="637" relation="public-inheritance">
+        <childnode refid="628" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="637">
+      <node id="628">
         <label>std::ios_base</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="638">
+      <node id="629">
         <label>std::wostream</label>
-        <childnode refid="639" relation="public-inheritance">
+        <childnode refid="630" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="639">
+      <node id="630">
         <label>std::basic_ostream&lt; wchar_t &gt;</label>
-        <childnode refid="640" relation="public-inheritance">
+        <childnode refid="631" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="640">
+      <node id="631">
         <label>std::basic_ios&lt; Char &gt;</label>
-        <childnode refid="641" relation="public-inheritance">
+        <childnode refid="632" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="641">
+      <node id="632">
         <label>std::ios_base</label>
       </node>
     </collaborationgraph>

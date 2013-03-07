@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.3">
   <compounddef id="classstd_1_1list" kind="class" prot="public">
     <compoundname>std::list</compoundname>
     <innerclass refid="classstd_1_1list_1_1const__iterator" prot="public">std::list::const_iterator</innerclass>
@@ -13,8 +13,8 @@
         <defname>T</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classstd_1_1list_1a682e5c7c91eb377d0cb4f019b2b81a5d" prot="public" static="no" mutable="no">
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classstd_1_1list_1a682e5c7c91eb377d0cb4f019b2b81a5d" prot="private" static="no" mutable="no">
         <type>T</type>
         <definition>T std::list&lt; T &gt;::elements</definition>
         <argsstring></argsstring>
@@ -45,7 +45,7 @@
     </collaborationgraph>
     <location file="[STL]" line="1"/>
     <listofallmembers>
-      <member refid="classstd_1_1list_1a682e5c7c91eb377d0cb4f019b2b81a5d" prot="public" virt="non-virtual"><scope>std::list</scope><name>elements</name></member>
+      <member refid="classstd_1_1list_1a682e5c7c91eb377d0cb4f019b2b81a5d" prot="private" virt="non-virtual"><scope>std::list</scope><name>elements</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

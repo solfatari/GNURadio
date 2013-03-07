@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.3">
   <compounddef id="classstd_1_1queue" kind="class" prot="public">
     <compoundname>std::queue</compoundname>
     <templateparamlist>
@@ -9,8 +9,8 @@
         <defname>T</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classstd_1_1queue_1aebacc4dcb935c5e54144e881eb41e356" prot="public" static="no" mutable="no">
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classstd_1_1queue_1aebacc4dcb935c5e54144e881eb41e356" prot="private" static="no" mutable="no">
         <type>T</type>
         <definition>T std::queue&lt; T &gt;::elements</definition>
         <argsstring></argsstring>
@@ -41,7 +41,7 @@
     </collaborationgraph>
     <location file="[STL]" line="1"/>
     <listofallmembers>
-      <member refid="classstd_1_1queue_1aebacc4dcb935c5e54144e881eb41e356" prot="public" virt="non-virtual"><scope>std::queue</scope><name>elements</name></member>
+      <member refid="classstd_1_1queue_1aebacc4dcb935c5e54144e881eb41e356" prot="private" virt="non-virtual"><scope>std::queue</scope><name>elements</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

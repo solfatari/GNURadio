@@ -8,7 +8,7 @@ default_target: all
 #=============================================================================
 # Special targets provided by cmake.
 
-# Disable implicit rules so canonical targets will work.
+# Disable implicit rules so canoncical targets will work.
 .SUFFIXES:
 
 # Remove some rules from gmake that .SUFFIXES does not remove.
@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chris/workspace/GNURadio/gr-eecs
+CMAKE_SOURCE_DIR = /home/sdr/workspace/GNURadio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chris/workspace/GNURadio/gr-eecs/build
+CMAKE_BINARY_DIR = /home/sdr/workspace/GNURadio/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -117,9 +117,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sdr/workspace/GNURadio/build/CMakeFiles /home/sdr/workspace/GNURadio/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chris/workspace/GNURadio/gr-eecs/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sdr/workspace/GNURadio/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -225,30 +225,30 @@ _eecs_swig_swig_tag/fast:
 .PHONY : _eecs_swig_swig_tag/fast
 
 #=============================================================================
-# Target rules for targets named pygen_swig_b6446
+# Target rules for targets named pygen_swig_3c0bc
 
 # Build rule for target.
-pygen_swig_b6446: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pygen_swig_b6446
-.PHONY : pygen_swig_b6446
+pygen_swig_3c0bc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pygen_swig_3c0bc
+.PHONY : pygen_swig_3c0bc
 
 # fast build rule for target.
-pygen_swig_b6446/fast:
-	$(MAKE) -f swig/CMakeFiles/pygen_swig_b6446.dir/build.make swig/CMakeFiles/pygen_swig_b6446.dir/build
-.PHONY : pygen_swig_b6446/fast
+pygen_swig_3c0bc/fast:
+	$(MAKE) -f swig/CMakeFiles/pygen_swig_3c0bc.dir/build.make swig/CMakeFiles/pygen_swig_3c0bc.dir/build
+.PHONY : pygen_swig_3c0bc/fast
 
 #=============================================================================
-# Target rules for targets named pygen_python_059b8
+# Target rules for targets named pygen_python_747bb
 
 # Build rule for target.
-pygen_python_059b8: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pygen_python_059b8
-.PHONY : pygen_python_059b8
+pygen_python_747bb: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pygen_python_747bb
+.PHONY : pygen_python_747bb
 
 # fast build rule for target.
-pygen_python_059b8/fast:
-	$(MAKE) -f python/CMakeFiles/pygen_python_059b8.dir/build.make python/CMakeFiles/pygen_python_059b8.dir/build
-.PHONY : pygen_python_059b8/fast
+pygen_python_747bb/fast:
+	$(MAKE) -f python/CMakeFiles/pygen_python_747bb.dir/build.make python/CMakeFiles/pygen_python_747bb.dir/build
+.PHONY : pygen_python_747bb/fast
 
 #=============================================================================
 # Target rules for targets named pygen_apps_9a6dd
@@ -282,8 +282,8 @@ help:
 	@echo "... _eecs_swig"
 	@echo "... _eecs_swig_doc_tag"
 	@echo "... _eecs_swig_swig_tag"
-	@echo "... pygen_swig_b6446"
-	@echo "... pygen_python_059b8"
+	@echo "... pygen_swig_3c0bc"
+	@echo "... pygen_python_747bb"
 	@echo "... pygen_apps_9a6dd"
 .PHONY : help
 

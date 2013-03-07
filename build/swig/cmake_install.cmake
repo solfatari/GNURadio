@@ -1,4 +1,4 @@
-# Install script for directory: /home/chris/workspace/GNURadio/gr-eecs/swig
+# Install script for directory: /home/sdr/workspace/GNURadio/swig
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/eecs/_eecs_swig.so"
          RPATH "")
   ENDIF()
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/eecs" TYPE MODULE FILES "/home/chris/workspace/GNURadio/gr-eecs/build/swig/_eecs_swig.so")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/eecs" TYPE MODULE FILES "/home/sdr/workspace/GNURadio/build/swig/_eecs_swig.so")
   IF(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/eecs/_eecs_swig.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/eecs/_eecs_swig.so")
     FILE(RPATH_REMOVE
@@ -51,20 +51,20 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/eecs" TYPE FILE FILES "/home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swig.py")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/eecs" TYPE FILE FILES "/home/sdr/workspace/GNURadio/build/swig/eecs_swig.py")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/eecs" TYPE FILE FILES
-    "/home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swig.pyc"
-    "/home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swig.pyo"
+    "/home/sdr/workspace/GNURadio/build/swig/eecs_swig.pyc"
+    "/home/sdr/workspace/GNURadio/build/swig/eecs_swig.pyo"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/eecs/eecs/swig" TYPE FILE FILES
-    "/home/chris/workspace/GNURadio/gr-eecs/swig/eecs_swig.i"
-    "/home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swig_doc.i"
+    "/home/sdr/workspace/GNURadio/swig/eecs_swig.i"
+    "/home/sdr/workspace/GNURadio/build/swig/eecs_swig_doc.i"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

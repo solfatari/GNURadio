@@ -1,4 +1,4 @@
-# Install script for directory: /home/chris/workspace/GNURadio/gr-eecs/apps
+# Install script for directory: /home/sdr/workspace/GNURadio/apps
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

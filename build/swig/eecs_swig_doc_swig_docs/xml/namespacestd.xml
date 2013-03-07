@@ -1,12 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.3">
   <compounddef id="namespacestd" kind="namespace">
     <compoundname>std</compoundname>
     <innerclass refid="classstd_1_1allocator" prot="public">std::allocator</innerclass>
     <innerclass refid="classstd_1_1auto__ptr" prot="public">std::auto_ptr</innerclass>
-    <innerclass refid="classstd_1_1smart__ptr" prot="public">std::smart_ptr</innerclass>
-    <innerclass refid="classstd_1_1unique__ptr" prot="public">std::unique_ptr</innerclass>
-    <innerclass refid="classstd_1_1weak__ptr" prot="public">std::weak_ptr</innerclass>
     <innerclass refid="classstd_1_1ios__base" prot="public">std::ios_base</innerclass>
     <innerclass refid="classstd_1_1basic__ios" prot="public">std::basic_ios</innerclass>
     <innerclass refid="classstd_1_1basic__istream" prot="public">std::basic_istream</innerclass>

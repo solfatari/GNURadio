@@ -1,4 +1,4 @@
-# Install script for directory: /home/chris/workspace/GNURadio/gr-eecs
+# Install script for directory: /home/sdr/workspace/GNURadio
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,13 +34,13 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/chris/workspace/GNURadio/gr-eecs/build/include/eecs/cmake_install.cmake")
-  INCLUDE("/home/chris/workspace/GNURadio/gr-eecs/build/lib/cmake_install.cmake")
-  INCLUDE("/home/chris/workspace/GNURadio/gr-eecs/build/swig/cmake_install.cmake")
-  INCLUDE("/home/chris/workspace/GNURadio/gr-eecs/build/python/cmake_install.cmake")
-  INCLUDE("/home/chris/workspace/GNURadio/gr-eecs/build/grc/cmake_install.cmake")
-  INCLUDE("/home/chris/workspace/GNURadio/gr-eecs/build/apps/cmake_install.cmake")
-  INCLUDE("/home/chris/workspace/GNURadio/gr-eecs/build/docs/cmake_install.cmake")
+  INCLUDE("/home/sdr/workspace/GNURadio/build/include/eecs/cmake_install.cmake")
+  INCLUDE("/home/sdr/workspace/GNURadio/build/lib/cmake_install.cmake")
+  INCLUDE("/home/sdr/workspace/GNURadio/build/swig/cmake_install.cmake")
+  INCLUDE("/home/sdr/workspace/GNURadio/build/python/cmake_install.cmake")
+  INCLUDE("/home/sdr/workspace/GNURadio/build/grc/cmake_install.cmake")
+  INCLUDE("/home/sdr/workspace/GNURadio/build/apps/cmake_install.cmake")
+  INCLUDE("/home/sdr/workspace/GNURadio/build/docs/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -50,7 +50,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/chris/workspace/GNURadio/gr-eecs/build/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/sdr/workspace/GNURadio/build/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/chris/workspace/GNURadio/gr-eecs/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/sdr/workspace/GNURadio/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

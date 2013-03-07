@@ -1,32 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.3">
   <compounddef id="api_8h" kind="file">
     <compoundname>api.h</compoundname>
     <includes local="no">gruel/attributes.h</includes>
-    <includedby refid="d__theta_8h" local="no">/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>gruel/attributes.h</label>
       </node>
       <node id="0">
-        <label>/home/chris/workspace/GNURadio/gr-eecs/include/eecs/api.h</label>
+        <label>/home/sdr/workspace/GNURadio/include/eecs/api.h</label>
         <link refid="api.h"/>
         <childnode refid="1" relation="include">
         </childnode>
       </node>
     </incdepgraph>
-    <invincdepgraph>
-      <node id="3">
-        <label>/home/chris/workspace/GNURadio/gr-eecs/include/eecs/d_theta.h</label>
-        <link refid="d__theta_8h"/>
-      </node>
-      <node id="2">
-        <label>/home/chris/workspace/GNURadio/gr-eecs/include/eecs/api.h</label>
-        <link refid="api.h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-    </invincdepgraph>
       <sectiondef kind="define">
       <memberdef kind="define" id="api_8h_1a5524d3826ebb86335deea544fe341109" prot="public" static="no">
         <name>EECS_API</name>
@@ -37,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/api.h" line="30" bodyfile="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/api.h" bodystart="30" bodyend="-1"/>
+        <location file="/home/sdr/workspace/GNURadio/include/eecs/api.h" line="30" bodyfile="/home/sdr/workspace/GNURadio/include/eecs/api.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -79,6 +66,6 @@
 <codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>INCLUDED_EECS_API_H<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/chris/workspace/GNURadio/gr-eecs/include/eecs/api.h"/>
+    <location file="/home/sdr/workspace/GNURadio/include/eecs/api.h"/>
   </compounddef>
 </doxygen>

@@ -7,6 +7,7 @@ lib/CMakeFiles/test-eecs.dir/qa_eecs.cc.o: /usr/local/include/gruel/attributes.h
 
 lib/CMakeFiles/test-eecs.dir/test_eecs.cc.o: ../lib/qa_eecs.h
 lib/CMakeFiles/test-eecs.dir/test_eecs.cc.o: ../lib/test_eecs.cc
+lib/CMakeFiles/test-eecs.dir/test_eecs.cc.o: /usr/local/include/gnuradio/config.h
 lib/CMakeFiles/test-eecs.dir/test_eecs.cc.o: /usr/local/include/gnuradio/gr_core_api.h
 lib/CMakeFiles/test-eecs.dir/test_eecs.cc.o: /usr/local/include/gnuradio/gr_unittests.h
 lib/CMakeFiles/test-eecs.dir/test_eecs.cc.o: /usr/local/include/gruel/attributes.h

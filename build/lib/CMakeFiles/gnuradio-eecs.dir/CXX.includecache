@@ -16,25 +16,27 @@ eecs/api.h
 gr_sync_block.h
 -
 
-/home/chris/workspace/GNURadio/gr-eecs/lib/d_theta_impl.cc
+/home/sdr/workspace/GNURadio/lib/d_theta_impl.cc
 config.h
-/home/chris/workspace/GNURadio/gr-eecs/lib/config.h
+/home/sdr/workspace/GNURadio/lib/config.h
 gr_io_signature.h
 -
 d_theta_impl.h
-/home/chris/workspace/GNURadio/gr-eecs/lib/d_theta_impl.h
+/home/sdr/workspace/GNURadio/lib/d_theta_impl.h
 cmath
 -
 gr_delay.h
 -
 
-/home/chris/workspace/GNURadio/gr-eecs/lib/d_theta_impl.h
+/home/sdr/workspace/GNURadio/lib/d_theta_impl.h
 eecs/d_theta.h
 -
 gr_delay.h
 -
 gr_block.h
 -
+
+/usr/local/include/gnuradio/config.h
 
 /usr/local/include/gnuradio/gr_basic_block.h
 gr_core_api.h
@@ -73,6 +75,8 @@ gr_basic_block.h
 -
 gr_tags.h
 -
+gr_logger.h
+-
 
 /usr/local/include/gnuradio/gr_complex.h
 complex
@@ -94,6 +98,34 @@ gruel/thread.h
 gr_core_api.h
 -
 gr_runtime_types.h
+-
+
+/usr/local/include/gnuradio/gr_logger.h
+gr_core_api.h
+-
+assert.h
+-
+iostream
+-
+log4cxx/logger.h
+-
+log4cxx/logmanager.h
+-
+log4cxx/basicconfigurator.h
+-
+log4cxx/xml/domconfigurator.h
+-
+log4cxx/propertyconfigurator.h
+-
+log4cxx/helpers/pool.h
+-
+log4cxx/fileappender.h
+-
+log4cxx/rollingfileappender.h
+-
+log4cxx/consoleappender.h
+-
+log4cxx/patternlayout.h
 -
 
 /usr/local/include/gnuradio/gr_msg_accepter.h

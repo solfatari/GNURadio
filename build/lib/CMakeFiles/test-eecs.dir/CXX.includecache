@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/chris/workspace/GNURadio/gr-eecs/lib/qa_eecs.cc
+/home/sdr/workspace/GNURadio/lib/qa_eecs.cc
 qa_eecs.h
-/home/chris/workspace/GNURadio/gr-eecs/lib/qa_eecs.h
+/home/sdr/workspace/GNURadio/lib/qa_eecs.h
 
-/home/chris/workspace/GNURadio/gr-eecs/lib/qa_eecs.h
+/home/sdr/workspace/GNURadio/lib/qa_eecs.h
 gruel/attributes.h
 -
 cppunit/TestSuite.h
 -
 
-/home/chris/workspace/GNURadio/gr-eecs/lib/test_eecs.cc
+/home/sdr/workspace/GNURadio/lib/test_eecs.cc
 cppunit/TextTestRunner.h
 -
 cppunit/XmlOutputter.h
@@ -24,9 +24,11 @@ cppunit/XmlOutputter.h
 gr_unittests.h
 -
 qa_eecs.h
-/home/chris/workspace/GNURadio/gr-eecs/lib/qa_eecs.h
+/home/sdr/workspace/GNURadio/lib/qa_eecs.h
 iostream
 -
+
+/usr/local/include/gnuradio/config.h
 
 /usr/local/include/gnuradio/gr_core_api.h
 gruel/attributes.h

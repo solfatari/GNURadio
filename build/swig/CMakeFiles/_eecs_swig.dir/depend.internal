@@ -4,7 +4,7 @@
 swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o
  ../include/eecs/api.h
  ../include/eecs/d_theta.h
- /home/chris/workspace/GNURadio/gr-eecs/build/swig/eecs_swigPYTHON_wrap.cxx
+ /home/sdr/workspace/GNURadio/build/swig/eecs_swigPYTHON_wrap.cxx
  /usr/include/python2.7/Python.h
  /usr/include/python2.7/abstract.h
  /usr/include/python2.7/boolobject.h
@@ -72,6 +72,7 @@ swig/CMakeFiles/_eecs_swig.dir/eecs_swigPYTHON_wrap.cxx.o
  /usr/local/include/gnuradio/gr_complex.h
  /usr/local/include/gnuradio/gr_core_api.h
  /usr/local/include/gnuradio/gr_io_signature.h
+ /usr/local/include/gnuradio/gr_logger.h
  /usr/local/include/gnuradio/gr_msg_accepter.h
  /usr/local/include/gnuradio/gr_runtime_types.h
  /usr/local/include/gnuradio/gr_sptr_magic.h
