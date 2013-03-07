@@ -25,6 +25,7 @@
 #include <gr_io_signature.h>
 #include "d_theta_impl.h"
 #include <cmath>
+#include <volk/volk.h>
 #include <gr_delay.h>
 
 namespace gr {
@@ -50,8 +51,8 @@ namespace gr {
 							   double thetaSat,
 							   double sampRate)
       : gr_sync_block("d_theta",
-		      gr_make_io_signature(4,4, sizeof (float)),
-		      gr_make_io_signature(4,4, sizeof (float))),
+		      gr_make_io_signature(4,4, sizeof (gr_complex)),
+		      gr_make_io_signature(4,4, sizeof (gr_complex))),
 			  p_freq(freq), p_rSat(rSat), 
 			  p_thetaSat(thetaSat), p_sampRate(sampRate)
 		{
@@ -70,14 +71,14 @@ namespace gr {
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
-        const float *Sat1 = (const float *) input_items[0];
-        const float *Sat2 = (const float *) input_items[1];
-        const float *Sat3 = (const float *) input_items[2];
-        const float *Sat4 = (const float *) input_items[3];
-        float *out1 = (float *) output_items[0];
-        float *out2 = (float *) output_items[1];
-        float *out3 = (float *) output_items[2];
-        float *out4 = (float *) output_items[3];
+        gr_complex *Sat1 = (gr_complex *) input_items[0];
+        gr_complex *Sat2 = (gr_complex *) input_items[1];
+        gr_complex *Sat3 = (gr_complex *) input_items[2];
+        gr_complex *Sat4 = (gr_complex *) input_items[3];
+        gr_complex *out1 = (gr_complex *) output_items[0];
+        gr_complex *out2 = (gr_complex *) output_items[1];
+        gr_complex *out3 = (gr_complex *) output_items[2];
+        gr_complex *out4 = (gr_complex *) output_items[3];
 //Constants
 		double (*dx);				
 			dx = (double*)malloc(4*sizeof(double));
@@ -90,20 +91,42 @@ namespace gr {
 			theta = (double*)malloc(4*sizeof(double));
 		int (*delays);
 			delays = (int*)malloc(4*sizeof(int));
-		
-        for(int i = 0; i <noutput_items; i++){
+		//Gonn start doing stupid shit
+		 int d_vlen = 1;
+		 int noi = d_vlen*noutput_items;
+
+			
+					 		
+    //    for(int i = 0; i <noutput_items; i++){}
 			findTheta(dx,theta);
-			getDelay(theta, delays);
+			//getDelay(theta, delays);
+//preload outputbuffer
+memcpy(out1, Sat1, noi*sizeof(gr_complex));
+memcpy(out2, Sat2, noi*sizeof(gr_complex));
+memcpy(out3, Sat3, noi*sizeof(gr_complex));
+memcpy(out4, Sat4, noi*sizeof(gr_complex));
+
+  if(is_unaligned()) {
+    for(size_t i = 1;i < input_items.size(); i++)
+      volk_32fc_x2_multiply_32fc_u(out1, Sat1, Sat1, noi);
+      volk_32fc_x2_multiply_32fc_u(out2, Sat2, Sat2, noi);
+      volk_32fc_x2_multiply_32fc_u(out3, Sat3, Sat3, noi);
+      volk_32fc_x2_multiply_32fc_u(out4, Sat4, Sat4, noi);
+  }
+  else {
+    for(size_t i = 1;i < input_items.size(); i++)
+      volk_32fc_x2_multiply_32fc_a(out1, Sat1, Sat1, noi);
+      volk_32fc_x2_multiply_32fc_a(out2, Sat2, Sat2, noi);
+      volk_32fc_x2_multiply_32fc_a(out3, Sat3, Sat3, noi);
+      volk_32fc_x2_multiply_32fc_a(out4, Sat4, Sat4, noi);
+  }
+      
 			
-			//Gonn start doing stupid shit
-			
-			
-			
-			out1[i] = delays[0];
-			out2[i] = delays[1];
-			out3[i] = delays[2];
-			out4[i] = delays[3];
-		}
+//			out1[i] = theta[0];
+//			out2[i] = theta[1];
+//			out3[i] = theta[2];
+//			out4[i] = theta[3];
+	
 
         // Tell runtime system how many output items we produced.
         delete theta;
@@ -140,6 +163,7 @@ namespace gr {
 	void d_theta_impl::set_sampRate(double sampRate)
 	{	p_sampRate = sampRate;	}
 	
-  } /* namespace eecs */
+  }
+   /* namespace eecs */
 } /* namespace gr */
 

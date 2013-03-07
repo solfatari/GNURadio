@@ -34,12 +34,12 @@
   </param>
   <sink>
     <name>rs_in</name>
-    <type>float</type>
+    <type>complex</type>
     <nports>4</nports>
   </sink>
   <source>
     <name>out</name>
-    <type>float</type>
+    <type>complex</type>
     <nports>4</nports>
   </source>
 </block>
