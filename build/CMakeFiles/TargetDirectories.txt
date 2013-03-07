@@ -1,9 +1,0 @@
-/home/sdr/workspace/GNURadio/build/swig/CMakeFiles/_eecs_swig.dir
-/home/sdr/workspace/GNURadio/build/swig/CMakeFiles/_eecs_swig_doc_tag.dir
-/home/sdr/workspace/GNURadio/build/swig/CMakeFiles/_eecs_swig_swig_tag.dir
-/home/sdr/workspace/GNURadio/build/lib/CMakeFiles/gnuradio-eecs.dir
-/home/sdr/workspace/GNURadio/build/apps/CMakeFiles/pygen_apps_9a6dd.dir
-/home/sdr/workspace/GNURadio/build/python/CMakeFiles/pygen_python_747bb.dir
-/home/sdr/workspace/GNURadio/build/swig/CMakeFiles/pygen_swig_3c0bc.dir
-/home/sdr/workspace/GNURadio/build/lib/CMakeFiles/test-eecs.dir
-/home/sdr/workspace/GNURadio/build/CMakeFiles/uninstall.dir
