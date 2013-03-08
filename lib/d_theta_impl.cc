@@ -25,7 +25,12 @@
 #include <gr_io_signature.h>
 #include "d_theta_impl.h"
 #include <cmath>
+<<<<<<< HEAD
 //#include <gr_delay.h>
+=======
+#include <volk/volk.h>
+#include <gr_delay.h>
+>>>>>>> cc44f7a9e75ace7b72b724712ff60ee3024ac1f6
 
 namespace gr {
   namespace eecs {
@@ -87,6 +92,7 @@ namespace gr {
 			dx[2] =  (lambda/4);
 			dx[3] =  (lambda/4 +lambda/2);
 //floating variables
+
 		float (*theta);
 			theta = (float*)malloc(4*sizeof(float));
 		
@@ -142,6 +148,7 @@ namespace gr {
 	void d_theta_impl::set_sampRate(float sampRate)
 	{	p_sampRate = sampRate;	}
 	
-  } /* namespace eecs */
+  }
+   /* namespace eecs */
 } /* namespace gr */
 
