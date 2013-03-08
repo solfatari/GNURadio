@@ -5,9 +5,9 @@
   <import>import eecs</import>
   <make>eecs.d_theta($freq, $rSat, $thetaSat, $sampRate)</make>
   <callback>set_freq($freq)</callback>
-  <callback>set_rSat($freq)</callback>
-  <callback>set_thetaSat($freq)</callback>
-  <callback>set_sampRate($freq)</callback>
+  <callback>set_rSat($rSat)</callback>
+  <callback>set_thetaSat($thetaSat)</callback>
+  <callback>set_sampRate($sampRate)</callback>
   <param>
 	<name>Frequency</name>
 	<key>freq</key>
@@ -23,13 +23,11 @@
   <param>
 	<name>Angle from broadside</name>
 	<key>thetaSat</key>
-	<value>0</value>
 	<type>real</type>
   </param>
   <param>
 	<name>Sampling Rate</name>
 	<key>sampRate</key>
-	<value>320000</value>
 	<type>real</type>
   </param>
   <sink>

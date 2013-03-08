@@ -79,8 +79,9 @@ namespace gr {
         gr_complex *out3 = (gr_complex *) output_items[2];
         gr_complex *out4 = (gr_complex *) output_items[3];
 //Constants
-		float (*dx);				
-			dx = (float*)malloc(4*sizeof(float));
+	//	float (*dx);				
+	//		dx = (float*)malloc(4*sizeof(float));
+	float dx[3];
 			dx[0] = -1*(lambda/4 +lambda/2);
 			dx[1] = -1*(lambda/4);
 			dx[2] =  (lambda/4);
@@ -93,6 +94,11 @@ namespace gr {
 		//	delays = (int*)malloc(4*sizeof(int));
 		
 		findTheta(dx,theta);
+       // theta[0] = 2*M_PI/lambda*(sqrt(p_rSat*p_rSat+dx[0]*dx[0] - 2*p_rSat*dx[0]*sin(p_thetaSat)) - p_rSat);
+        //theta[1] = 2*M_PI/lambda*(sqrt(p_rSat*p_rSat+dx[1]*dx[1] - 2*p_rSat*dx[1]*sin(p_thetaSat)) - p_rSat);
+        //theta[2] = 2*M_PI/lambda*(sqrt(p_rSat*p_rSat+dx[2]*dx[2] - 2*p_rSat*dx[2]*sin(p_thetaSat)) - p_rSat);
+        //theta[3] = 2*M_PI/lambda*(sqrt(p_rSat*p_rSat+dx[3]*dx[3] - 2*p_rSat*dx[3]*sin(p_thetaSat)) - p_rSat);
+        
         for(int i = 0; i <noutput_items; i++){
 			//getDelay(theta, delays);
 			out1[i] = Sat1[i]*gr_complex(cos(theta[0]), sin(theta[0]));
@@ -102,7 +108,7 @@ namespace gr {
 		}
 
         // Tell runtime system how many output items we produced.
-        delete theta;
+        //delete theta;
 //        delete delays;
         return noutput_items;
     }
