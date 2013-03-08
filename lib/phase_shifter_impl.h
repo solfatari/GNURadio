@@ -1,48 +1,42 @@
-/* -*- c++ -*- */
-/* 
- * Copyright 2013 <+YOU OR YOUR COMPANY+>.
- * 
- * This is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3, or (at your option)
- * any later version.
- * 
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this software; see the file COPYING.  If not, write to
- * the Free Software Foundation, Inc., 51 Franklin Street,
- * Boston, MA 02110-1301, USA.
- */
-
 #ifndef INCLUDED_EECS_PHASE_SHIFTER_IMPL_H
 #define INCLUDED_EECS_PHASE_SHIFTER_IMPL_H
 
 #include <eecs/phase_shifter.h>
 
 namespace gr {
-  namespace eecs {
+	namespace eecs {
 
-    class phase_shifter_impl : public phase_shifter
-    {
-    private:
-      // Nothing to declare in this block.
+		class phase_shifter_impl : public phase_shifter
+		{
+			private:
+			float d_Rs;
+			float d_dx;
+			float d_theta;
+			float d_wl;
+			float d_ph0;
 
-    public:
-      phase_shifter_impl(float Rs, float dx, float theta, float wl, float ph0);
-      ~phase_shifter_impl();
+			public:
+			phase_shifter_impl(float Rs, float dx, float theta, float wl, float ph0);
+			~phase_shifter_impl();
 
-      // Where all the action really happens
-      int work(int noutput_items,
-	       gr_vector_const_void_star &input_items,
-	       gr_vector_void_star &output_items);
-    };
+			float Rs() const { return d_Rs; }
+			float dx() const { return d_dx; }
+			float theta() const { return d_theta; }
+			float wl() const { return d_wl; }
+			float ph0() const { return d_ph0; }
 
-  } // namespace eecs
-} // namespace gr
+			void set_Rs(float Rs);
+			void set_dx(float dx);
+			void set_theta(float theta);
+			void set_wl(float wl);
+			void set_ph0(float ph0);
 
-#endif /* INCLUDED_EECS_PHASE_SHIFTER_IMPL_H */
+			int work(int noutput_items,
+			       gr_vector_const_void_star &input_items,
+			       gr_vector_void_star &output_items);
+		};
 
+	}
+}
+
+#endif

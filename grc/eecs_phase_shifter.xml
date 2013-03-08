@@ -1,38 +1,56 @@
-<?xml version="1.0"?>
 <block>
-  <name>phase_shifter</name>
-  <key>eecs_phase_shifter</key>
-  <category>eecs</category>
-  <import>import eecs</import>
-  <make>eecs.phase_shifter(Rs, dx, theta, wl, ph0)</make>
-  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
-       Sub-nodes:
-       * name
-       * key (makes the value accessible as $keyname, e.g. in the make node)
-       * type -->
-  <param>
-    <name>...</name>
-    <key>...</key>
-    <type>...</type>
-  </param>
-
-  <!-- Make one 'sink' node per input. Sub-nodes:
-       * name (an identifier for the GUI)
-       * type
-       * vlen
-       * optional (set to 1 for optional inputs) -->
-  <sink>
-    <name>in</name>
-    <type><!-- e.g. int, real, complex, byte, short, xxx_vector, ...--></type>
-  </sink>
-
-  <!-- Make one 'source' node per output. Sub-nodes:
-       * name (an identifier for the GUI)
-       * type
-       * vlen
-       * optional (set to 1 for optional inputs) -->
-  <source>
-    <name>out</name>
-    <type><!-- e.g. int, real, complex, byte, short, xxx_vector, ...--></type>
-  </source>
+	<name>Phase Shifter</name>
+	<key>eecs_phase_shifter</key>
+	<category>EECS</category>
+	<import>import eecs</import>
+	<make>eecs.phase_shifter($Rs, $dx, $theta, $wl, $ph0)</make>
+	<callback>set_Rs($Rs)</callback>
+	<callback>set_theta($theta)</callback>
+	<callback>set_wl($wl)</callback>
+	<callback>set_ph0($ph0)</callback>
+	<param>
+		<name>dist. to tx</name>
+		<key>Rs</key>
+		<type>real</type>
+	</param>
+	<param>
+		<name>dist. b/w elements</name>
+		<key>dx</key>
+		<type>real</type>
+	</param>
+	<param>
+		<name>theta</name>
+		<key>theta</key>
+		<type>real</type>
+	</param>
+	<param>
+		<name>wavelength</name>
+		<key>wl</key>
+		<type>real</type>
+	</param>
+	<param>
+		<name>phase_0</name>
+		<key>ph0</key>
+		<type>real</type>
+	</param>
+	<sink>
+		<name>in</name>
+		<type>complex</type>
+	</sink>
+	<source>
+		<name>out0</name>
+		<type>complex</type>
+	</source>
+	<source>
+		<name>out1</name>
+		<type>complex</type>
+	</source>
+	<source>
+		<name>out2</name>
+		<type>complex</type>
+	</source>
+	<source>
+		<name>out3</name>
+		<type>complex</type>
+	</source>
 </block>
