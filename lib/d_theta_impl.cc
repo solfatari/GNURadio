@@ -88,12 +88,12 @@ namespace gr {
 //floating variables
 		float (*theta);
 			theta = (float*)malloc(4*sizeof(float));
-		float test = .1;
+		
 		//int (*delays);
 		//	delays = (int*)malloc(4*sizeof(int));
 		
+		findTheta(dx,theta);
         for(int i = 0; i <noutput_items; i++){
-			findTheta(dx,theta);
 			//getDelay(theta, delays);
 			out1[i] = Sat1[i]*gr_complex(cos(theta[0]), sin(theta[0]));
 			out2[i] = Sat2[i]*gr_complex(cos(theta[1]), sin(theta[1]));

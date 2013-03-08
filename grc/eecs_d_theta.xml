@@ -3,7 +3,7 @@
   <key>eecs_d_theta</key>
   <category>EECS</category>
   <import>import eecs</import>
-  <make>eecs.d_theta(freq=$freq, rSat=$rSat, thetaSat=$thetaSat, sampRate=$sampRate)</make>
+  <make>eecs.d_theta($freq, $rSat, $thetaSat, $sampRate)</make>
   <callback>set_freq($freq)</callback>
   <callback>set_rSat($freq)</callback>
   <callback>set_thetaSat($freq)</callback>
@@ -34,12 +34,12 @@
   </param>
   <sink>
     <name>rs_in</name>
-    <type>float</type>
+    <type>complex</type>
     <nports>4</nports>
   </sink>
   <source>
     <name>out</name>
-    <type>float</type>
+    <type>complex</type>
     <nports>4</nports>
   </source>
 </block>
