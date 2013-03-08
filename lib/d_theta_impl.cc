@@ -88,12 +88,14 @@ namespace gr {
 //floating variables
 		double (*theta);
 			theta = (double*)malloc(4*sizeof(double));
-		double (*delays);
-			delays = (double*)malloc(4*sizeof(double));
+		int (*delays);
+			delays = (int*)malloc(4*sizeof(int));
 		
         for(int i = 0; i <noutput_items; i++){
 			findTheta(dx,theta);
 			getDelay(theta, delays);
+			
+			//Gonn start doing stupid shit
 			
 			
 			
@@ -118,13 +120,13 @@ namespace gr {
 	}
 	
 	void
-	d_theta_impl::getDelay(double* theta, double* dt){
+	d_theta_impl::getDelay(double* theta, int* dt){
 		if (theta[0] > theta[3]){
 			for (int i = 0; i<4; i++){
-				dt[i] = p_sampRate*(theta[i]-theta[3])/(2*M_PI*p_freq);}}
+				dt[i] = floor(p_sampRate*(theta[i]-theta[3])/(2*M_PI*p_freq)+.5);}}
 		else{
 			for (int i = 0; i<4; i++){
-				dt[i] = p_sampRate*(theta[i]-theta[0])/(2*M_PI*p_freq);}}
+				dt[i] = floor(p_sampRate*(theta[i]-theta[0])/(2*M_PI*p_freq)+.5);}}
 	}
 	
 	
