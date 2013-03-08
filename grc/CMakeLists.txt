@@ -19,5 +19,6 @@
 
 install(FILES
     eecs_d_theta.xml
-    eecs_phase_shifter.xml DESTINATION share/gnuradio/grc/blocks
+    eecs_phase_shifter.xml
+    eecs_rev_phase_shifter.xml DESTINATION share/gnuradio/grc/blocks
 )
