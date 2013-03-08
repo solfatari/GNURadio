@@ -22,7 +22,6 @@
 #define INCLUDED_EECS_D_THETA_IMPL_H
 
 #include <eecs/d_theta.h>
-#include <gr_delay.h>
 #include <gr_block.h>
 
 namespace gr {
@@ -31,33 +30,33 @@ namespace gr {
     class d_theta_impl : public d_theta
     {
     private:
-      double p_freq;
-      double p_rSat;
-      double p_thetaSat;
-      double p_sampRate;
-      double lambda;
+      float p_freq;
+      float p_rSat;
+      float p_thetaSat;
+      float p_sampRate;
+      float lambda;
 	
-	  void findTheta(double* dx, double* dt);
-	  void  getDelay(double* theta, int* dt);
+	  void findTheta(float* dx, float* dt);
+	  void  getDelay(float* theta, int* dt);
 	  
 	  
     public:
-      d_theta_impl(double freq, 
-				   double rSat,
-				   double thetaSat,
-				   double sampRate);
+      d_theta_impl(float freq, 
+				   float rSat,
+				   float thetaSat,
+				   float sampRate);
       ~d_theta_impl();
 	  
-	  double freq() const{ return p_freq;}
-	  double rSat() const{ return p_rSat;}
-	  double thetaSat() const{ return p_thetaSat;}
-	  double sampRate() const{ return p_sampRate;}
+	  float freq() const{ return p_freq;}
+	  float rSat() const{ return p_rSat;}
+	  float thetaSat() const{ return p_thetaSat;}
+	  float sampRate() const{ return p_sampRate;}
 	  
 	  
-	  void set_freq(double freq);
-	  void set_rSat(double rSat);
-	  void set_thetaSat(double thetaSat);
-	  void set_sampRate(double sampRate);
+	  void set_freq(float freq);
+	  void set_rSat(float rSat);
+	  void set_thetaSat(float thetaSat);
+	  void set_sampRate(float sampRate);
 	  
       // Where all the action really happens
       int work(int noutput_items,
