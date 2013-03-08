@@ -22,5 +22,6 @@
 ########################################################################
 install(FILES
     api.h
-    d_theta.h DESTINATION include/eecs
+    d_theta.h
+    phase_shifter.h DESTINATION include/eecs
 )

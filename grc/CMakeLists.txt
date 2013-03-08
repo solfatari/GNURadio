@@ -18,5 +18,6 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    eecs_d_theta.xml DESTINATION share/gnuradio/grc/blocks
+    eecs_d_theta.xml
+    eecs_phase_shifter.xml DESTINATION share/gnuradio/grc/blocks
 )

@@ -9,8 +9,11 @@
 
 %{
 #include "eecs/d_theta.h"
+#include "eecs/phase_shifter.h"
 %}
 
 
 %include "eecs/d_theta.h"
 GR_SWIG_BLOCK_MAGIC2(eecs, d_theta);
+%include "eecs/phase_shifter.h"
+GR_SWIG_BLOCK_MAGIC2(eecs, phase_shifter);
