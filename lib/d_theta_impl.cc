@@ -25,12 +25,7 @@
 #include <gr_io_signature.h>
 #include "d_theta_impl.h"
 #include <cmath>
-<<<<<<< HEAD
-//#include <gr_delay.h>
-=======
-#include <volk/volk.h>
-#include <gr_delay.h>
->>>>>>> cc44f7a9e75ace7b72b724712ff60ee3024ac1f6
+
 
 namespace gr {
   namespace eecs {
@@ -123,7 +118,7 @@ namespace gr {
 	d_theta_impl::findTheta(float* dx, float* dt){
 		float k = 2*M_PI/lambda;
 		for(int i = 0; i<4 ; i++){
-			dt[i] = k*(sqrt(p_rSat*p_rSat+dx[i]*dx[i] - 2*p_rSat*dx[i]*sin(p_thetaSat)) - p_rSat);
+			dt[i] = -1*k*(sqrt(p_rSat*p_rSat+dx[i]*dx[i] - 2*p_rSat*dx[i]*sin(p_thetaSat)) - p_rSat);
 		}
 	}
 	
