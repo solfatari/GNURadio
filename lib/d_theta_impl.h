@@ -37,8 +37,6 @@ namespace gr {
       float lambda;
 	
 	  void findTheta(float* dx, float* dt);
-	  void  getDelay(float* theta, int* dt);
-	  
 	  
     public:
       d_theta_impl(float freq, 

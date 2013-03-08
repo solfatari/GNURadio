@@ -38,6 +38,6 @@
   <source>
     <name>out</name>
     <type>complex</type>
-    <nports>4</nports>
+    <nports>1</nports>
   </source>
 </block>
