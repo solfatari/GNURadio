@@ -1,0 +1,56 @@
+<block>
+	<name>Phase Shifter</name>
+	<key>eecs_phase_shifter</key>
+	<category>EECS</category>
+	<import>import eecs</import>
+	<make>eecs.phase_shifter($Rs, $dx, $theta, $wl, $ph0)</make>
+	<callback>set_Rs($Rs)</callback>
+	<callback>set_theta($theta)</callback>
+	<callback>set_wl($wl)</callback>
+	<callback>set_ph0($ph0)</callback>
+	<param>
+		<name>dist. to tx</name>
+		<key>Rs</key>
+		<type>real</type>
+	</param>
+	<param>
+		<name>dist. b/w elements</name>
+		<key>dx</key>
+		<type>real</type>
+	</param>
+	<param>
+		<name>theta</name>
+		<key>theta</key>
+		<type>real</type>
+	</param>
+	<param>
+		<name>wavelength</name>
+		<key>wl</key>
+		<type>real</type>
+	</param>
+	<param>
+		<name>phase_0</name>
+		<key>ph0</key>
+		<type>real</type>
+	</param>
+	<sink>
+		<name>in</name>
+		<type>complex</type>
+	</sink>
+	<source>
+		<name>out0</name>
+		<type>complex</type>
+	</source>
+	<source>
+		<name>out1</name>
+		<type>complex</type>
+	</source>
+	<source>
+		<name>out2</name>
+		<type>complex</type>
+	</source>
+	<source>
+		<name>out3</name>
+		<type>complex</type>
+	</source>
+</block>
