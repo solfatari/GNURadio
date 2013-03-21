@@ -50,7 +50,9 @@ namespace gr {
 		      gr_make_io_signature(4, 4, sizeof (gr_complex)),
 		      gr_make_io_signature(4, 4, sizeof (gr_complex))),
 		      p_freq(freq), p_sampRate(sampRate), p_nSamples(nSamples)
-    {}
+    {
+		set_history(2);
+		}
 
     /*
      * Our virtual destructor.
