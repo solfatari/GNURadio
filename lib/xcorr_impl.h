@@ -33,7 +33,7 @@ namespace gr {
       float p_sampRate;
       int p_nSamples;
 
-	  void 	x_corr(gr_complex* r1, gr_complex* r2, gr_complex* xout);
+	  void 	x_corr(const gr_complex* r1, const gr_complex* r2, gr_complex* xout);
 	  float findTheta(gr_complex* sig);
 	
     public:

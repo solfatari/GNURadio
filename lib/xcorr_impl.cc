@@ -50,7 +50,9 @@ namespace gr {
 		      gr_make_io_signature(4, 4, sizeof (gr_complex)),
 		      gr_make_io_signature(4, 4, sizeof (gr_complex))),
 		      p_freq(freq), p_sampRate(sampRate), p_nSamples(nSamples)
-    {}
+    {
+		set_history(512);
+	}
 
     /*
      * Our virtual destructor.
@@ -62,7 +64,7 @@ namespace gr {
     void
     xcorr_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
     {
-      ninput_items_required[0] = noutput_items;
+      ninput_items_required[0] = 512;
     }
 
     int
@@ -80,9 +82,16 @@ namespace gr {
 		gr_complex *out3 = (gr_complex *) output_items[2];
 		gr_complex *out4 = (gr_complex *) output_items[3];
 		
+		gr_complex *(*xcor);
+		xcor = (gr_complex**)malloc(3*sizeof(gr_complex *));
+		for (int i =0; i<3; i++){
+			xcor[i] = (gr_complex*)malloc((2*512-1)*sizeof(gr_complex));
+		}
+
 		float (*theta);
 			theta = (float*)malloc(4*sizeof(float));
 			
+		x_corr(Sat1, Sat2, xcor[0]);
 		
 		for(int i = 0; i <noutput_items; i++){
 			out1[i] = Sat1[i]*gr_complex(cos(theta[0]), sin(theta[0]));
@@ -90,7 +99,6 @@ namespace gr {
 			out3[i] = Sat3[i]*gr_complex(cos(theta[2]), sin(theta[2]));
 			out4[i] = Sat4[i]*gr_complex(cos(theta[3]), sin(theta[3]));
 			
-			//fout[i] = out1[0] + out2[0] + out3[0] + out4[0];
 		}     
         
         
@@ -100,7 +108,7 @@ namespace gr {
         return noutput_items;
     }
     
-	void xcorr_impl::x_corr(gr_complex* r1, gr_complex* r2, gr_complex* xout)
+	void xcorr_impl::x_corr(const gr_complex* r1, const gr_complex* r2, gr_complex* xout)
 	{
 		for(int i = 0; i < p_nSamples-1; i++){							// for i = 1:len
 			xout[i] = 0;												//   xcor12(i) = 0;
@@ -123,13 +131,10 @@ namespace gr {
 				max_val = real(sig[i]);
 				max_index = i;
 		}}
-	return (max_index - p_nSamples)/p_sampRate*2*M_PI*p_freq;
+	return (max_index - p_nSamples)/(p_sampRate*2*M_PI*p_freq);
 	}
 
 		
-	
-	
-	
 	void xcorr_impl::set_freq(float freq)
 	{	p_freq = freq;	}
 	void xcorr_impl::set_sampRate(float sampRate)
