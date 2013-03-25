@@ -23,56 +23,40 @@
 #endif
 
 #include <gr_io_signature.h>
-#include "xcorr_impl.h"
+#include "x_corr_impl.h"
 #include <cmath>
 #include <complex>
 
 namespace gr {
   namespace eecs {
 
-    xcorr::sptr
-    xcorr::make(float freq, 
+    x_corr::sptr
+    x_corr::make(float freq, 
 				float sampRate,
 				int nSamples)
     {
-      return gnuradio::get_initial_sptr (new xcorr_impl(freq, 
+      return gnuradio::get_initial_sptr (new x_corr_impl(freq, 
 													    sampRate,
 													    nSamples));
     }
 
-    /*
-     * The private constructor
-     */
-    xcorr_impl::xcorr_impl( float freq, 
+    x_corr_impl::x_corr_impl(float freq, 
 							float sampRate,
 							int nSamples)
-      : gr_block("xcorr",
+      : gr_sync_block("x_corr",
 		      gr_make_io_signature(4, 4, sizeof (gr_complex)),
 		      gr_make_io_signature(4, 4, sizeof (gr_complex))),
 		      p_freq(freq), p_sampRate(sampRate), p_nSamples(nSamples)
-    {
-		set_history(512);
-	}
+		{
+		set_history(2);
+		}
 
-
-    /*
-     * Our virtual destructor.
-     */
-    xcorr_impl::~xcorr_impl()
-    {
-    }
-
-    void
-    xcorr_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
-    {
-      ninput_items_required[0] = 512;
-    }
+    x_corr_impl::~x_corr_impl(){}
 
     int
-    xcorr_impl::general_work (int noutput_items,
-                       gr_vector_int &ninput_items,
-                       gr_vector_const_void_star &input_items,
-                       gr_vector_void_star &output_items)
+    x_corr_impl::work(int noutput_items,
+			  gr_vector_const_void_star &input_items,
+			  gr_vector_void_star &output_items)
     {
         const gr_complex *Sat1 = (const gr_complex *) input_items[0];
         const gr_complex *Sat2 = (const gr_complex *) input_items[1];
@@ -83,33 +67,21 @@ namespace gr {
 		gr_complex *out3 = (gr_complex *) output_items[2];
 		gr_complex *out4 = (gr_complex *) output_items[3];
 		
-		gr_complex *(*xcor);
-		xcor = (gr_complex**)malloc(3*sizeof(gr_complex *));
-		for (int i =0; i<3; i++){
-			xcor[i] = (gr_complex*)malloc((2*512-1)*sizeof(gr_complex));
-		}
-
 		float (*theta);
 			theta = (float*)malloc(4*sizeof(float));
 			
-		x_corr(Sat1, Sat2, xcor[0]);
 		
 		for(int i = 0; i <noutput_items; i++){
 			out1[i] = Sat1[i]*gr_complex(cos(theta[0]), sin(theta[0]));
 			out2[i] = Sat2[i]*gr_complex(cos(theta[1]), sin(theta[1]));
 			out3[i] = Sat3[i]*gr_complex(cos(theta[2]), sin(theta[2]));
 			out4[i] = Sat4[i]*gr_complex(cos(theta[3]), sin(theta[3]));
-			
 		}     
         
-        
-        
-        consume_each (noutput_items);
-        // Tell runtime system how many output items we produced.
         return noutput_items;
     }
     
-	void xcorr_impl::x_corr(const gr_complex* r1, const gr_complex* r2, gr_complex* xout)
+	void x_corr_impl::xcorr(gr_complex* r1, gr_complex* r2, gr_complex* xout)
 	{
 		for(int i = 0; i < p_nSamples-1; i++){							// for i = 1:len
 			xout[i] = 0;												//   xcor12(i) = 0;
@@ -123,7 +95,7 @@ namespace gr {
 					}}
 	}
 	
-	float xcorr_impl::findTheta(gr_complex* sig){
+	float x_corr_impl::findTheta(gr_complex* sig){
 		float max_val = 0;
 		int max_index = 0;
 		
@@ -132,15 +104,14 @@ namespace gr {
 				max_val = real(sig[i]);
 				max_index = i;
 		}}
-	return (max_index - p_nSamples)/(p_sampRate*2*M_PI*p_freq);
+	return (max_index - p_nSamples)/p_sampRate*2*M_PI*p_freq;
 	}
 
-		
-	void xcorr_impl::set_freq(float freq)
+	void x_corr_impl::set_freq(float freq)
 	{	p_freq = freq;	}
-	void xcorr_impl::set_sampRate(float sampRate)
+	void x_corr_impl::set_sampRate(float sampRate)
 	{	p_sampRate = sampRate;	}
-	void xcorr_impl::set_nSamples(int nSamples)
+	void x_corr_impl::set_nSamples(int nSamples)
 	{	p_nSamples = nSamples;}
 	
   } /* namespace eecs */
