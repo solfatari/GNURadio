@@ -1,0 +1,32 @@
+<block>
+  <name>X corr</name>
+  <key>eecs_x_corr</key>
+  <category>EECS</category>
+  <import>import eecs</import>
+  <make>eecs.x_corr($freq, $sampRate, $nSamples)</make>
+  <param>
+    <name>Freq</name>
+    <key>freq</key>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Samprate</name>
+    <key>sampRate</key>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Nsamples</name>
+    <key>nSamples</key>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <nports>4</nports>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <nports>4</nports>
+  </source>
+</block>
