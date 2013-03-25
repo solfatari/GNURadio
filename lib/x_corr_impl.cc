@@ -66,16 +66,27 @@ namespace gr {
 		gr_complex *out2 = (gr_complex *) output_items[1];
 		gr_complex *out3 = (gr_complex *) output_items[2];
 		gr_complex *out4 = (gr_complex *) output_items[3];
+		Sat1 += 512; Sat2 += 512; Sat3 += 512; Sat4 += 512;// ensure that sample range is valid.
 		
+		gr_complex *(*xcor);
+		xcor = (gr_complex**)malloc(3*sizeof(gr_complex *));
+		for (int i =0; i<3; i++){
+			xcor[i] = (gr_complex*)malloc((2*512-1)*sizeof(gr_complex));}
 		float (*theta);
-			theta = (float*)malloc(4*sizeof(float));
-			
+			theta = (float*)malloc(4*sizeof(float));	
+//////////		
+		x_corr(Sat1, Sat2, xcor[0]);
+		x_corr(Sat1, Sat2, xcor[1]);
+		x_corr(Sat1, Sat2, xcor[2]);
 		
 		for(int i = 0; i <noutput_items; i++){
-			out1[i] = Sat1[i]*gr_complex(cos(theta[0]), sin(theta[0]));
-			out2[i] = Sat2[i]*gr_complex(cos(theta[1]), sin(theta[1]));
-			out3[i] = Sat3[i]*gr_complex(cos(theta[2]), sin(theta[2]));
-			out4[i] = Sat4[i]*gr_complex(cos(theta[3]), sin(theta[3]));
+			//out1[i] = Sat1[i]*gr_complex(cos(theta[0]), sin(theta[0]));
+			//out2[i] = Sat2[i]*gr_complex(cos(theta[1]), sin(theta[1]));
+			//out3[i] = Sat3[i]*gr_complex(cos(theta[2]), sin(theta[2]));
+			out1[i] = xcor[0][i];
+			out2[i] = xcor[1][i];
+			out3[i] = xcor[2][i];
+			out4[i] = Sat4[i]*gr_complex(cos(theta[3]), sin(theta[3]));	
 		}     
         
         return noutput_items;
