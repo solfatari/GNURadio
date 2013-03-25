@@ -25,5 +25,5 @@ install(FILES
     d_theta.h
     phase_shifter.h
     rev_phase_shifter.h
-    xcorr.h DESTINATION include/eecs
+    x_corr.h DESTINATION include/eecs
 )

@@ -16,9 +16,9 @@
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-
 install(FILES
     eecs_d_theta.xml
     eecs_phase_shifter.xml
-    eecs_rev_phase_shifter.xml DESTINATION share/gnuradio/grc/blocks
+    eecs_rev_phase_shifter.xml
+    eecs_x_corr.xml DESTINATION share/gnuradio/grc/blocks
 )

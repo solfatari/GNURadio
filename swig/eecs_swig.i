@@ -11,6 +11,7 @@
 #include "eecs/d_theta.h"
 #include "eecs/phase_shifter.h"
 #include "eecs/rev_phase_shifter.h"
+#include "eecs/x_corr.h"
 %}
 
 
@@ -20,3 +21,5 @@ GR_SWIG_BLOCK_MAGIC2(eecs, d_theta);
 GR_SWIG_BLOCK_MAGIC2(eecs, phase_shifter);
 %include "eecs/rev_phase_shifter.h"
 GR_SWIG_BLOCK_MAGIC2(eecs, rev_phase_shifter);
+%include "eecs/x_corr.h"
+GR_SWIG_BLOCK_MAGIC2(eecs, x_corr);

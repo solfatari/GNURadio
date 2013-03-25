@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Mar  7 17:32:23 2013
+# Generated: Mon Mar 25 19:10:40 2013
 ##################################################
 
 from gnuradio import analog
@@ -16,6 +16,7 @@ from gnuradio.wxgui import scopesink2
 from grc_gnuradio import wxgui as grc_wxgui
 from optparse import OptionParser
 import eecs
+import math
 import wx
 
 class top_block(grc_wxgui.top_block_gui):
@@ -28,13 +29,37 @@ class top_block(grc_wxgui.top_block_gui):
 		##################################################
 		# Variables
 		##################################################
-		self.theta = theta = 3.14159/8
-		self.samp_rate = samp_rate = 32000
-		self.freq = freq = 1000
+		self.fc = fc = 1000*1000
+		self.wl = wl = 300e6/fc
+		self.theta = theta = 0
+		self.samp_rate = samp_rate = 32000*1000
 
 		##################################################
 		# Blocks
 		##################################################
+		_theta_sizer = wx.BoxSizer(wx.VERTICAL)
+		self._theta_text_box = forms.text_box(
+			parent=self.GetWin(),
+			sizer=_theta_sizer,
+			value=self.theta,
+			callback=self.set_theta,
+			label="theta",
+			converter=forms.float_converter(),
+			proportion=0,
+		)
+		self._theta_slider = forms.slider(
+			parent=self.GetWin(),
+			sizer=_theta_sizer,
+			value=self.theta,
+			callback=self.set_theta,
+			minimum=-1*math.pi/2*0+-90,
+			maximum=math.pi/2*0+90,
+			num_steps=360*0+180,
+			style=wx.SL_HORIZONTAL,
+			cast=float,
+			proportion=1,
+		)
+		self.Add(_theta_sizer)
 		self.wxgui_scopesink2_0 = scopesink2.scope_sink_f(
 			self.GetWin(),
 			title="Scope Plot",
@@ -49,54 +74,49 @@ class top_block(grc_wxgui.top_block_gui):
 			y_axis_label="Counts",
 		)
 		self.Add(self.wxgui_scopesink2_0.win)
-		_theta_sizer = wx.BoxSizer(wx.VERTICAL)
-		self._theta_text_box = forms.text_box(
-			parent=self.GetWin(),
-			sizer=_theta_sizer,
-			value=self.theta,
-			callback=self.set_theta,
-			label='theta',
-			converter=forms.float_converter(),
-			proportion=0,
-		)
-		self._theta_slider = forms.slider(
-			parent=self.GetWin(),
-			sizer=_theta_sizer,
-			value=self.theta,
-			callback=self.set_theta,
-			minimum=-3.14159/2,
-			maximum=3.14159/2,
-			num_steps=180,
-			style=wx.SL_HORIZONTAL,
-			cast=float,
-			proportion=1,
-		)
-		self.Add(_theta_sizer)
-		self.gr_complex_to_real_0_2 = gr.complex_to_real(1)
-		self.gr_complex_to_real_0_1 = gr.complex_to_real(1)
-		self.gr_complex_to_real_0_0 = gr.complex_to_real(1)
-		self.gr_complex_to_real_0 = gr.complex_to_real(1)
-		self.eecs_d_theta_0 = eecs.d_theta(freq=freq, rSat=10, thetaSat=0, sampRate=samp_rate)
-		self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate)
-		self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, freq, 1, 0)
+		self.gr_throttle_0 = gr.throttle(gr.sizeof_gr_complex*1, samp_rate)
+		self.eecs_x_corr_0 = eecs.x_corr(fc, samp_rate, 512)
+		self.eecs_phase_shifter_0 = eecs.phase_shifter(10*wl, wl/2, theta*math.pi/180, wl, 0)
+		self.blocks_complex_to_mag_0_2 = blocks.complex_to_mag(1)
+		self.blocks_complex_to_mag_0_1 = blocks.complex_to_mag(1)
+		self.blocks_complex_to_mag_0_0 = blocks.complex_to_mag(1)
+		self.blocks_complex_to_mag_0 = blocks.complex_to_mag(1)
+		self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_SIN_WAVE, fc, 1, 0)
 
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.eecs_d_theta_0, 3), (self.gr_complex_to_real_0_0, 0))
-		self.connect((self.eecs_d_theta_0, 2), (self.gr_complex_to_real_0_1, 0))
-		self.connect((self.eecs_d_theta_0, 1), (self.gr_complex_to_real_0_2, 0))
-		self.connect((self.eecs_d_theta_0, 0), (self.gr_complex_to_real_0, 0))
-		self.connect((self.gr_complex_to_real_0, 0), (self.wxgui_scopesink2_0, 0))
-		self.connect((self.gr_complex_to_real_0_2, 0), (self.wxgui_scopesink2_0, 1))
-		self.connect((self.gr_complex_to_real_0_1, 0), (self.wxgui_scopesink2_0, 2))
-		self.connect((self.gr_complex_to_real_0_0, 0), (self.wxgui_scopesink2_0, 3))
-		self.connect((self.blocks_throttle_0, 0), (self.eecs_d_theta_0, 0))
-		self.connect((self.blocks_throttle_0, 0), (self.eecs_d_theta_0, 1))
-		self.connect((self.blocks_throttle_0, 0), (self.eecs_d_theta_0, 2))
-		self.connect((self.blocks_throttle_0, 0), (self.eecs_d_theta_0, 3))
-		self.connect((self.analog_sig_source_x_0, 0), (self.blocks_throttle_0, 0))
+		self.connect((self.analog_sig_source_x_0, 0), (self.gr_throttle_0, 0))
+		self.connect((self.gr_throttle_0, 0), (self.eecs_phase_shifter_0, 0))
+		self.connect((self.blocks_complex_to_mag_0_0, 0), (self.wxgui_scopesink2_0, 3))
+		self.connect((self.blocks_complex_to_mag_0_1, 0), (self.wxgui_scopesink2_0, 2))
+		self.connect((self.blocks_complex_to_mag_0_2, 0), (self.wxgui_scopesink2_0, 1))
+		self.connect((self.blocks_complex_to_mag_0, 0), (self.wxgui_scopesink2_0, 0))
+		self.connect((self.eecs_phase_shifter_0, 0), (self.eecs_x_corr_0, 0))
+		self.connect((self.eecs_phase_shifter_0, 1), (self.eecs_x_corr_0, 1))
+		self.connect((self.eecs_phase_shifter_0, 2), (self.eecs_x_corr_0, 2))
+		self.connect((self.eecs_phase_shifter_0, 3), (self.eecs_x_corr_0, 3))
+		self.connect((self.eecs_x_corr_0, 0), (self.blocks_complex_to_mag_0, 0))
+		self.connect((self.eecs_x_corr_0, 1), (self.blocks_complex_to_mag_0_2, 0))
+		self.connect((self.eecs_x_corr_0, 2), (self.blocks_complex_to_mag_0_1, 0))
+		self.connect((self.eecs_x_corr_0, 3), (self.blocks_complex_to_mag_0_0, 0))
 
+
+	def get_fc(self):
+		return self.fc
+
+	def set_fc(self, fc):
+		self.fc = fc
+		self.analog_sig_source_x_0.set_frequency(self.fc)
+		self.set_wl(300e6/self.fc)
+
+	def get_wl(self):
+		return self.wl
+
+	def set_wl(self, wl):
+		self.wl = wl
+		self.eecs_phase_shifter_0.set_Rs(10*self.wl)
+		self.eecs_phase_shifter_0.set_wl(self.wl)
 
 	def get_theta(self):
 		return self.theta
@@ -105,26 +125,16 @@ class top_block(grc_wxgui.top_block_gui):
 		self.theta = theta
 		self._theta_slider.set_value(self.theta)
 		self._theta_text_box.set_value(self.theta)
+		self.eecs_phase_shifter_0.set_theta(self.theta*math.pi/180)
 
 	def get_samp_rate(self):
 		return self.samp_rate
 
 	def set_samp_rate(self, samp_rate):
 		self.samp_rate = samp_rate
-		self.blocks_throttle_0.set_sample_rate(self.samp_rate)
 		self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
 		self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
-
-	def get_freq(self):
-		return self.freq
-
-	def set_freq(self, freq):
-		self.freq = freq
-		self.analog_sig_source_x_0.set_frequency(self.freq)
-		self.eecs_d_theta_0.set_freq(self.freq)
-		self.eecs_d_theta_0.set_rSat(self.freq)
-		self.eecs_d_theta_0.set_thetaSat(self.freq)
-		self.eecs_d_theta_0.set_sampRate(self.freq)
+		self.gr_throttle_0.set_sample_rate(self.samp_rate)
 
 if __name__ == '__main__':
 	parser = OptionParser(option_class=eng_option, usage="%prog: [options]")
