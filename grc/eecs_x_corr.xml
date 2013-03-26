@@ -1,22 +1,28 @@
 <block>
-  <name>X corr</name>
+  <name>Cross Correlation</name>
   <key>eecs_x_corr</key>
   <category>EECS</category>
   <import>import eecs</import>
   <make>eecs.x_corr($freq, $sampRate, $nSamples)</make>
+  <callback>set_freq($freq)</callback>
+  <callback>set_sampRate($sampRate)</callback>
+  <callback>set_nSamples($nSamples)</callback>
   <param>
     <name>Freq</name>
     <key>freq</key>
+    <value>990000000</value>
     <type>real</type>
   </param>
   <param>
     <name>Samprate</name>
     <key>sampRate</key>
+    <value>samp_rate</value>
     <type>real</type>
   </param>
   <param>
     <name>Nsamples</name>
     <key>nSamples</key>
+    <value>512</value>
     <type>int</type>
   </param>
   <sink>
