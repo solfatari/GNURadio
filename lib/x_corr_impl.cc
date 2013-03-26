@@ -72,7 +72,7 @@ namespace gr {
 
 		float xcor[2][p_nSamples];		
 
-		float (*theta) = new float[3];
+		float theta[3];
 //////////		
 		xcorr(Sat1, Sat2, xcor[0]);
 		//xcorr(Sat2, Sat3, xcor[1]);
@@ -82,8 +82,8 @@ namespace gr {
 		theta[2] =0;
 		theta[3] =0;
 		for(int i = 0; i <noutput_items; i++){
-			out1[i] = theta[0];//Sat1[i]*gr_complex(cos(theta[0]), sin(theta[0]));
-			out2[i] = theta[1];//Sat2[i]*gr_complex(cos(theta[1]), sin(theta[1]));
+			out1[i] = Sat1[i];//*gr_complex(cos(theta[0]), sin(theta[0]));
+			out2[i] = Sat2[i]*gr_complex(cos(-1*theta[1]*M_PI/180), sin(-1*theta[1]*M_PI/180));
 			out3[i] = theta[0];//Sat3[i]*gr_complex(cos(theta[2]), sin(theta[2]));
 			out4[i] = theta[1];//Sat4[i]*gr_complex(cos(theta[3]), sin(theta[3]));	
 		}     
@@ -119,8 +119,18 @@ namespace gr {
 				max_val = sig[i];
 				max_index = i;
 		}}
-	return (max_index - p_nSamples)/p_sampRate*2*p_freq*180;
+	return dp((max_index - p_nSamples)/p_sampRate*2*p_freq*180);
 	}
+	
+	float x_corr_impl::dp(float phase){
+		if (phase < -360 || phase == -360)
+			return dp(phase+360);
+		else if (phase > 360 || phase == 360)
+			return dp(phase -360);
+		else
+			return(phase);
+	}
+
 
 	void x_corr_impl::set_freq(float freq)
 	{	p_freq = freq;	}

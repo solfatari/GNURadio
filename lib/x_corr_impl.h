@@ -35,6 +35,7 @@ namespace gr {
 
 	  void 	xcorr(const gr_complex* r1, const gr_complex* r2, float xout[]);
 	  float findTheta(float sig[]);
+	  float dp(float phase);
 
     public:
       x_corr_impl(float freq,
