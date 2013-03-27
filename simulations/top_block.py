@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Mar 26 20:24:51 2013
+# Generated: Tue Mar 26 23:26:53 2013
 ##################################################
 
 from gnuradio import analog
@@ -59,20 +59,6 @@ class top_block(grc_wxgui.top_block_gui):
 			proportion=1,
 		)
 		self.Add(_theta_sizer)
-		self.wxgui_scopesink2_0_1 = scopesink2.scope_sink_f(
-			self.GetWin(),
-			title="Scope Plot",
-			sample_rate=samp_rate,
-			v_scale=0,
-			v_offset=0,
-			t_scale=0,
-			ac_couple=False,
-			xy_mode=False,
-			num_inputs=4,
-			trig_mode=gr.gr_TRIG_MODE_AUTO,
-			y_axis_label="Counts",
-		)
-		self.Add(self.wxgui_scopesink2_0_1.win)
 		self.wxgui_scopesink2_0_0_0 = scopesink2.scope_sink_f(
 			self.GetWin(),
 			title="Scope Plot",
@@ -85,14 +71,13 @@ class top_block(grc_wxgui.top_block_gui):
 			num_inputs=1,
 			trig_mode=gr.gr_TRIG_MODE_AUTO,
 			y_axis_label="Counts",
+			size=((700,200)),
 		)
 		self.Add(self.wxgui_scopesink2_0_0_0.win)
 		self.gr_throttle_0 = gr.throttle(gr.sizeof_gr_complex*1, samp_rate)
 		self.gr_complex_to_real_0_2_1_0 = gr.complex_to_real(1)
-		self.gr_complex_to_real_0_2_1 = gr.complex_to_real(1)
-		self.gr_complex_to_real_0_2_0_0 = gr.complex_to_real(1)
-		self.gr_complex_to_real_0_1 = gr.complex_to_real(1)
-		self.gr_complex_to_real_0_0_0 = gr.complex_to_real(1)
+		self.eecs_x_corr_1_1 = eecs.x_corr(fc, samp_rate, 128)
+		self.eecs_x_corr_1_0 = eecs.x_corr(fc, samp_rate, 128)
 		self.eecs_x_corr_1 = eecs.x_corr(fc, samp_rate, 128)
 		self.eecs_phase_shifter_0 = eecs.phase_shifter(20*wl, wl/2, theta*math.pi/180, wl, 0)
 		self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_SIN_WAVE, fc, 1, 0)
@@ -102,18 +87,14 @@ class top_block(grc_wxgui.top_block_gui):
 		##################################################
 		self.connect((self.analog_sig_source_x_0, 0), (self.gr_throttle_0, 0))
 		self.connect((self.gr_throttle_0, 0), (self.eecs_phase_shifter_0, 0))
-		self.connect((self.gr_complex_to_real_0_1, 0), (self.wxgui_scopesink2_0_1, 0))
-		self.connect((self.gr_complex_to_real_0_2_1, 0), (self.wxgui_scopesink2_0_1, 1))
-		self.connect((self.gr_complex_to_real_0_0_0, 0), (self.wxgui_scopesink2_0_1, 2))
-		self.connect((self.gr_complex_to_real_0_2_0_0, 0), (self.wxgui_scopesink2_0_1, 3))
-		self.connect((self.eecs_phase_shifter_0, 0), (self.gr_complex_to_real_0_1, 0))
-		self.connect((self.eecs_phase_shifter_0, 1), (self.gr_complex_to_real_0_2_1, 0))
-		self.connect((self.eecs_phase_shifter_0, 2), (self.gr_complex_to_real_0_0_0, 0))
-		self.connect((self.eecs_phase_shifter_0, 3), (self.gr_complex_to_real_0_2_0_0, 0))
 		self.connect((self.eecs_phase_shifter_0, 0), (self.eecs_x_corr_1, 0))
 		self.connect((self.eecs_phase_shifter_0, 1), (self.eecs_x_corr_1, 1))
-		self.connect((self.eecs_x_corr_1, 0), (self.gr_complex_to_real_0_2_1_0, 0))
 		self.connect((self.gr_complex_to_real_0_2_1_0, 0), (self.wxgui_scopesink2_0_0_0, 0))
+		self.connect((self.eecs_x_corr_1_1, 0), (self.gr_complex_to_real_0_2_1_0, 0))
+		self.connect((self.eecs_x_corr_1, 0), (self.eecs_x_corr_1_1, 0))
+		self.connect((self.eecs_x_corr_1_0, 0), (self.eecs_x_corr_1_1, 1))
+		self.connect((self.eecs_phase_shifter_0, 2), (self.eecs_x_corr_1_0, 0))
+		self.connect((self.eecs_phase_shifter_0, 3), (self.eecs_x_corr_1_0, 1))
 
 
 	def get_fc(self):
@@ -125,6 +106,8 @@ class top_block(grc_wxgui.top_block_gui):
 		self.analog_sig_source_x_0.set_frequency(self.fc)
 		self.set_samp_rate(self.fc*10)
 		self.eecs_x_corr_1.set_freq(self.fc)
+		self.eecs_x_corr_1_1.set_freq(self.fc)
+		self.eecs_x_corr_1_0.set_freq(self.fc)
 
 	def get_wl(self):
 		return self.wl
@@ -150,8 +133,9 @@ class top_block(grc_wxgui.top_block_gui):
 		self.samp_rate = samp_rate
 		self.gr_throttle_0.set_sample_rate(self.samp_rate)
 		self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
-		self.wxgui_scopesink2_0_1.set_sample_rate(self.samp_rate)
 		self.eecs_x_corr_1.set_sampRate(self.samp_rate)
+		self.eecs_x_corr_1_1.set_sampRate(self.samp_rate)
+		self.eecs_x_corr_1_0.set_sampRate(self.samp_rate)
 		self.wxgui_scopesink2_0_0_0.set_sample_rate(self.samp_rate)
 
 if __name__ == '__main__':

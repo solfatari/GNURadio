@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Mar 26 20:19:39 2013</timestamp>
+  <timestamp>Tue Mar 26 23:27:18 2013</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -100,75 +100,6 @@
     <param>
       <key>_coordinate</key>
       <value>(184, 4)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>gr_complex_to_real</key>
-    <param>
-      <key>id</key>
-      <value>gr_complex_to_real_0_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(158, 538)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>gr_complex_to_real</key>
-    <param>
-      <key>id</key>
-      <value>gr_complex_to_real_0_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(153, 609)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>gr_complex_to_real</key>
-    <param>
-      <key>id</key>
-      <value>gr_complex_to_real_0_2_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(153, 644)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -354,7 +285,7 @@
     <key>gr_complex_to_real</key>
     <param>
       <key>id</key>
-      <value>gr_complex_to_real_0_2_1</value>
+      <value>gr_complex_to_real_0_2_1_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -366,7 +297,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(158, 573)</value>
+      <value>(774, 407)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -374,38 +305,30 @@
     </param>
   </block>
   <block>
-    <key>eecs_phase_shifter</key>
+    <key>eecs_x_corr</key>
     <param>
       <key>id</key>
-      <value>eecs_phase_shifter_0</value>
+      <value>eecs_x_corr_1_1</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>Rs</key>
-      <value>20*wl</value>
+      <key>freq</key>
+      <value>fc</value>
     </param>
     <param>
-      <key>dx</key>
-      <value>wl/2</value>
+      <key>sampRate</key>
+      <value>samp_rate</value>
     </param>
     <param>
-      <key>theta</key>
-      <value>theta*math.pi/180</value>
-    </param>
-    <param>
-      <key>wl</key>
-      <value>wl</value>
-    </param>
-    <param>
-      <key>ph0</key>
-      <value>0</value>
+      <key>nSamples</key>
+      <value>128</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(119, 299)</value>
+      <value>(653, 216)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -420,7 +343,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>type</key>
@@ -480,7 +403,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(365, 446)</value>
+      <value>(368, 569)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -488,30 +411,91 @@
     </param>
   </block>
   <block>
-    <key>eecs_x_corr</key>
+    <key>gr_complex_to_real</key>
     <param>
       <key>id</key>
-      <value>eecs_x_corr_1</value>
+      <value>gr_complex_to_real_0_1</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
-      <key>freq</key>
-      <value>fc</value>
-    </param>
-    <param>
-      <key>sampRate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>nSamples</key>
-      <value>128</value>
+      <key>vlen</key>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(440, 261)</value>
+      <value>(158, 538)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>gr_complex_to_real</key>
+    <param>
+      <key>id</key>
+      <value>gr_complex_to_real_0_2_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(158, 573)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>gr_complex_to_real</key>
+    <param>
+      <key>id</key>
+      <value>gr_complex_to_real_0_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(154, 609)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>gr_complex_to_real</key>
+    <param>
+      <key>id</key>
+      <value>gr_complex_to_real_0_2_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(153, 644)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -566,7 +550,7 @@
     </param>
     <param>
       <key>win_size</key>
-      <value></value>
+      <value>(700,200)</value>
     </param>
     <param>
       <key>grid_pos</key>
@@ -586,7 +570,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(773, 262)</value>
+      <value>(716, 47)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -594,22 +578,100 @@
     </param>
   </block>
   <block>
-    <key>gr_complex_to_real</key>
+    <key>eecs_phase_shifter</key>
     <param>
       <key>id</key>
-      <value>gr_complex_to_real_0_2_1_0</value>
+      <value>eecs_phase_shifter_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>vlen</key>
-      <value>1</value>
+      <key>Rs</key>
+      <value>20*wl</value>
+    </param>
+    <param>
+      <key>dx</key>
+      <value>wl/2</value>
+    </param>
+    <param>
+      <key>theta</key>
+      <value>theta*math.pi/180</value>
+    </param>
+    <param>
+      <key>wl</key>
+      <value>wl</value>
+    </param>
+    <param>
+      <key>ph0</key>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(609, 368)</value>
+      <value>(157, 312)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eecs_x_corr</key>
+    <param>
+      <key>id</key>
+      <value>eecs_x_corr_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>freq</key>
+      <value>fc</value>
+    </param>
+    <param>
+      <key>sampRate</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>nSamples</key>
+      <value>128</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(451, 108)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eecs_x_corr</key>
+    <param>
+      <key>id</key>
+      <value>eecs_x_corr_1_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>freq</key>
+      <value>fc</value>
+    </param>
+    <param>
+      <key>sampRate</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>nSamples</key>
+      <value>128</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(445, 192)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -689,15 +751,39 @@
     <sink_key>1</sink_key>
   </connection>
   <connection>
-    <source_block_id>eecs_x_corr_1</source_block_id>
+    <source_block_id>gr_complex_to_real_0_2_1_0</source_block_id>
+    <sink_block_id>wxgui_scopesink2_0_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>eecs_x_corr_1_1</source_block_id>
     <sink_block_id>gr_complex_to_real_0_2_1_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>gr_complex_to_real_0_2_1_0</source_block_id>
-    <sink_block_id>wxgui_scopesink2_0_0_0</sink_block_id>
+    <source_block_id>eecs_x_corr_1</source_block_id>
+    <sink_block_id>eecs_x_corr_1_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>eecs_x_corr_1_0</source_block_id>
+    <sink_block_id>eecs_x_corr_1_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>eecs_phase_shifter_0</source_block_id>
+    <sink_block_id>eecs_x_corr_1_0</sink_block_id>
+    <source_key>2</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>eecs_phase_shifter_0</source_block_id>
+    <sink_block_id>eecs_x_corr_1_0</sink_block_id>
+    <source_key>3</source_key>
+    <sink_key>1</sink_key>
   </connection>
 </flow_graph>
