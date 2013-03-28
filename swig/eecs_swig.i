@@ -12,6 +12,7 @@
 #include "eecs/phase_shifter.h"
 #include "eecs/rev_phase_shifter.h"
 #include "eecs/x_corr.h"
+#include "eecs/xcor2.h"
 %}
 
 
@@ -23,3 +24,6 @@ GR_SWIG_BLOCK_MAGIC2(eecs, phase_shifter);
 GR_SWIG_BLOCK_MAGIC2(eecs, rev_phase_shifter);
 %include "eecs/x_corr.h"
 GR_SWIG_BLOCK_MAGIC2(eecs, x_corr);
+
+%include "eecs/xcor2.h"
+GR_SWIG_BLOCK_MAGIC2(eecs, xcor2);
