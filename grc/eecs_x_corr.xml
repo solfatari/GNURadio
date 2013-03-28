@@ -28,11 +28,11 @@
   <sink>
     <name>in</name>
     <type>complex</type>
-    <nports>4</nports>
+    <nports>2</nports>
   </sink>
   <source>
     <name>out</name>
     <type>complex</type>
-    <nports>4</nports>
+    <nports>1</nports>
   </source>
 </block>
