@@ -29,7 +29,7 @@ namespace gr {
   namespace eecs {
 
     /*!
-     * \brief <+description of block+>
+     * Mudda fucking Cross correlation all up in this bitch!
      * \ingroup eecs
      *
      */
@@ -46,7 +46,14 @@ namespace gr {
         * class. eecs::xcor2::make is the public interface for
         * creating new instances.
         */
-       static sptr make();
+       static sptr make(float sampRate,
+						 int nSamples);
+		
+		virtual float sampRate() const = 0;
+		virtual int	  nSamples() const = 0;
+		
+		virtual void set_sampRate(float sampRate) = 0;
+		virtual void set_nSamples(int nSamples) = 0;
     };
 
   } // namespace eecs

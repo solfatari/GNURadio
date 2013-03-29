@@ -1,38 +1,31 @@
-<?xml version="1.0"?>
 <block>
-  <name>xcor2</name>
+  <name>Cross Correlation No-Freq</name>
   <key>eecs_xcor2</key>
-  <category>eecs</category>
+  <category>EECS</category>
   <import>import eecs</import>
-  <make>eecs.xcor2()</make>
-  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
-       Sub-nodes:
-       * name
-       * key (makes the value accessible as $keyname, e.g. in the make node)
-       * type -->
+  <make>eecs.xcor2($sampRate, $nSamples)</make>
+  <callback>set_sampRate($sampRate)</callback>
+  <callback>set_nSamples($nSamples)</callback>
   <param>
-    <name>...</name>
-    <key>...</key>
-    <type>...</type>
+    <name>Samprate</name>
+    <key>sampRate</key>
+    <value>samp_rate</value>
+    <type>real</type>
   </param>
-
-  <!-- Make one 'sink' node per input. Sub-nodes:
-       * name (an identifier for the GUI)
-       * type
-       * vlen
-       * optional (set to 1 for optional inputs) -->
+  <param>
+    <name>Nsamples</name>
+    <key>nSamples</key>
+    <value>512</value>
+    <type>int</type>
+  </param>
   <sink>
     <name>in</name>
-    <type><!-- e.g. int, real, complex, byte, short, xxx_vector, ...--></type>
+    <type>complex</type>
+    <nports>2</nports>
   </sink>
-
-  <!-- Make one 'source' node per output. Sub-nodes:
-       * name (an identifier for the GUI)
-       * type
-       * vlen
-       * optional (set to 1 for optional inputs) -->
   <source>
     <name>out</name>
-    <type><!-- e.g. int, real, complex, byte, short, xxx_vector, ...--></type>
+    <type>complex</type>
+    <nports>2</nports>
   </source>
 </block>
