@@ -32,8 +32,9 @@ namespace gr {
 		float p_sampRate;
 		int p_nSamples;
 		
-		void 	xcorr(const gr_complex* r1, const gr_complex* r2, float xout[]);
-		float findTheta(float sig[]);
+		void 	xcorr(const gr_complex* r1, const gr_complex* r2, gr_complex xout[]);
+		int findTheta(gr_complex sig[]);
+    
     public:
       xcor2_impl(float sampRate,
 				  int nSamples);

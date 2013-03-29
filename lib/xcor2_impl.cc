@@ -42,7 +42,8 @@ namespace gr {
 							int nSamples)
       : gr_sync_block("xcor2",
 		      gr_make_io_signature(2, 2, sizeof (gr_complex)),
-		      gr_make_io_signature(2, 2, sizeof (gr_complex)))
+		      gr_make_io_signature(2, 2, sizeof (gr_complex))),
+		      p_sampRate(sampRate), p_nSamples(nSamples)
     {
 	set_history(p_nSamples);
 	}
@@ -63,26 +64,24 @@ namespace gr {
         
         Sat1 += p_nSamples; Sat2 += p_nSamples;
         
-        float xcor[2*p_nSamples];
-		float theta;
+        gr_complex xcor[2*p_nSamples];
+		int offset;
         xcorr(Sat1, Sat2, xcor);
-		theta =findTheta(xcor);
+		offset =findTheta(xcor);
         
         for(int i = 0; i <noutput_items; i++){
 			out1[i] = Sat1[i];
-			out2[i] = Sat2[i];
+			out2[i] = Sat2[i-offset];
 		}  
        
         return noutput_items;
     }
 
-	void xcor2_impl::xcorr(const gr_complex* grc_r1, const gr_complex* grc_r2, float xout[])
+	void xcor2_impl::xcorr(const gr_complex* r1, const gr_complex* r2, gr_complex xout[])
 	{
-		float r1[p_nSamples] ,r2[p_nSamples];
-		for (int i =0; i< p_nSamples; i++){
-			r1[i] = real(grc_r1[i]);
-			r2[i] = real(grc_r2[i]);
-		}
+		//gr_complex r1;
+		//	r1 = gnuradio.gr.conjugate_cc(ir1);
+		
 		for(int i = 0; i < p_nSamples-1; i++){							
 			xout[i] = 0;												
 			for (int j = 0; j <= i; j++){								
@@ -95,18 +94,25 @@ namespace gr {
 					}}
 	}
 
-	float xcor2_impl::findTheta(float sig[]){
+	int xcor2_impl::findTheta(gr_complex sig[]){
 		float max_val = 0;
 		int max_index = 0;
 		
-		for (int i = 0; i < p_nSamples-1; i++){							//for i = 1:len
-			if (sig[i] > max_val){
-				max_val = sig[i];
+		for (int i = 0; i < 2*p_nSamples-1; i++){							//for i = 1:len
+			if (abs(sig[i]) > max_val){
+				max_val = abs(sig[i]);
 				max_index = i;
 		}}
-	return (max_index - p_nSamples);
+		if (max_index < p_nSamples)
+			return -1*(p_nSamples - max_index);
+		else
+			return (max_index - p_nSamples);
 	}
 	
+	void xcor2_impl::set_sampRate(float sampRate)
+	{	p_sampRate = sampRate;	}
+	void xcor2_impl::set_nSamples(int nSamples)
+	{	p_nSamples = nSamples;}
   } /* namespace eecs */
 } /* namespace gr */
 
