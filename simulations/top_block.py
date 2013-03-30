@@ -2,11 +2,10 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Mar 28 22:46:26 2013
+# Generated: Sat Mar 30 13:23:43 2013
 ##################################################
 
 from gnuradio import analog
-from gnuradio import blocks
 from gnuradio import eng_notation
 from gnuradio import gr
 from gnuradio.eng_option import eng_option
@@ -32,7 +31,7 @@ class top_block(grc_wxgui.top_block_gui):
 		self.fc = fc = 1000
 		self.wl = wl = 300e6/fc
 		self.theta = theta = 0
-		self.samp_rate = samp_rate = fc*10
+		self.samp_rate = samp_rate = fc*5
 
 		##################################################
 		# Blocks
@@ -69,22 +68,19 @@ class top_block(grc_wxgui.top_block_gui):
 			t_scale=0,
 			ac_couple=False,
 			xy_mode=False,
-			num_inputs=3,
+			num_inputs=2,
 			trig_mode=gr.gr_TRIG_MODE_AUTO,
 			y_axis_label="Counts",
 			size=((700,200)),
 		)
 		self.Add(self.wxgui_scopesink2_0_0_0.win)
 		self.gr_throttle_0 = gr.throttle(gr.sizeof_gr_complex*1, samp_rate)
-		self.gr_null_sink_1 = gr.null_sink(gr.sizeof_gr_complex*1)
 		self.gr_null_sink_0_0 = gr.null_sink(gr.sizeof_gr_complex*1)
 		self.gr_null_sink_0 = gr.null_sink(gr.sizeof_gr_complex*1)
+		self.gr_complex_to_real_0_2_1_0_0_0 = gr.complex_to_real(1)
 		self.gr_complex_to_real_0_2_1_0_0 = gr.complex_to_real(1)
-		self.gr_complex_to_real_0_2_1_0 = gr.complex_to_real(1)
-		self.gr_complex_to_real_0_2_1 = gr.complex_to_real(1)
 		self.eecs_xcor2_0 = eecs.xcor2(samp_rate, 2**8)
 		self.eecs_phase_shifter_0 = eecs.phase_shifter(20*wl, wl/2, theta*math.pi/180, wl, 0)
-		self.blocks_conjugate_cc_0 = blocks.conjugate_cc()
 		self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_SIN_WAVE, fc, 1, 0)
 
 		##################################################
@@ -92,18 +88,14 @@ class top_block(grc_wxgui.top_block_gui):
 		##################################################
 		self.connect((self.analog_sig_source_x_0, 0), (self.gr_throttle_0, 0))
 		self.connect((self.gr_throttle_0, 0), (self.eecs_phase_shifter_0, 0))
-		self.connect((self.eecs_phase_shifter_0, 1), (self.gr_complex_to_real_0_2_1, 0))
 		self.connect((self.eecs_phase_shifter_0, 2), (self.gr_null_sink_0_0, 0))
 		self.connect((self.eecs_phase_shifter_0, 3), (self.gr_null_sink_0, 0))
 		self.connect((self.gr_complex_to_real_0_2_1_0_0, 0), (self.wxgui_scopesink2_0_0_0, 1))
-		self.connect((self.gr_complex_to_real_0_2_1_0, 0), (self.wxgui_scopesink2_0_0_0, 0))
 		self.connect((self.eecs_phase_shifter_0, 1), (self.eecs_xcor2_0, 1))
 		self.connect((self.eecs_xcor2_0, 1), (self.gr_complex_to_real_0_2_1_0_0, 0))
-		self.connect((self.blocks_conjugate_cc_0, 0), (self.eecs_xcor2_0, 0))
-		self.connect((self.eecs_xcor2_0, 0), (self.gr_null_sink_1, 0))
-		self.connect((self.eecs_phase_shifter_0, 0), (self.blocks_conjugate_cc_0, 0))
-		self.connect((self.eecs_phase_shifter_0, 0), (self.gr_complex_to_real_0_2_1_0, 0))
-		self.connect((self.gr_complex_to_real_0_2_1, 0), (self.wxgui_scopesink2_0_0_0, 2))
+		self.connect((self.eecs_xcor2_0, 0), (self.gr_complex_to_real_0_2_1_0_0_0, 0))
+		self.connect((self.gr_complex_to_real_0_2_1_0_0_0, 0), (self.wxgui_scopesink2_0_0_0, 0))
+		self.connect((self.eecs_phase_shifter_0, 0), (self.eecs_xcor2_0, 0))
 
 
 	def get_fc(self):
@@ -113,7 +105,7 @@ class top_block(grc_wxgui.top_block_gui):
 		self.fc = fc
 		self.set_wl(300e6/self.fc)
 		self.analog_sig_source_x_0.set_frequency(self.fc)
-		self.set_samp_rate(self.fc*10)
+		self.set_samp_rate(self.fc*5)
 
 	def get_wl(self):
 		return self.wl
@@ -137,9 +129,9 @@ class top_block(grc_wxgui.top_block_gui):
 
 	def set_samp_rate(self, samp_rate):
 		self.samp_rate = samp_rate
-		self.gr_throttle_0.set_sample_rate(self.samp_rate)
-		self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
 		self.wxgui_scopesink2_0_0_0.set_sample_rate(self.samp_rate)
+		self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
+		self.gr_throttle_0.set_sample_rate(self.samp_rate)
 		self.eecs_xcor2_0.set_sampRate(self.samp_rate)
 
 if __name__ == '__main__':

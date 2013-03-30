@@ -77,11 +77,12 @@ namespace gr {
         return noutput_items;
     }
 
-	void xcor2_impl::xcorr(const gr_complex* r1, const gr_complex* r2, gr_complex xout[])
+	void xcor2_impl::xcorr(const gr_complex* ir1, const gr_complex* r2, gr_complex xout[])
 	{
-		//gr_complex r1;
-		//	r1 = gnuradio.gr.conjugate_cc(ir1);
-		
+		gr_complex r1[2*p_nSamples];
+		for (int i = 0; i < p_nSamples-1; i++){
+			r1[i] = conj(ir1[i]);}
+			
 		for(int i = 0; i < p_nSamples-1; i++){							
 			xout[i] = 0;												
 			for (int j = 0; j <= i; j++){								
@@ -99,8 +100,8 @@ namespace gr {
 		int max_index = 0;
 		
 		for (int i = 0; i < 2*p_nSamples-1; i++){							//for i = 1:len
-			if (abs(sig[i]) > max_val){
-				max_val = abs(sig[i]);
+			if (real(sig[i]) > max_val){
+				max_val = real(sig[i]);
 				max_index = i;
 		}}
 		if (max_index < p_nSamples)
