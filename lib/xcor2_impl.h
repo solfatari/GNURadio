@@ -29,21 +29,17 @@ namespace gr {
     class xcor2_impl : public xcor2
     {
     private:
-		float p_sampRate;
 		int p_nSamples;
 		
 		void 	xcorr(const gr_complex* r1, const gr_complex* r2, gr_complex xout[]);
 		int findTheta(gr_complex sig[]);
     
     public:
-      xcor2_impl(float sampRate,
-				  int nSamples);
+      xcor2_impl(int nSamples);
       ~xcor2_impl();
 
-      float sampRate() const{ return p_sampRate;}
 	  int nSamples() const{return p_nSamples;}
 	  
-	  void set_sampRate(float sampRate);
 	  void set_nSamples(int nSamples);
 	  
       int work(int noutput_items,

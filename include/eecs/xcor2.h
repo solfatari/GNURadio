@@ -46,13 +46,10 @@ namespace gr {
         * class. eecs::xcor2::make is the public interface for
         * creating new instances.
         */
-       static sptr make(float sampRate,
-						 int nSamples);
+       static sptr make( int nSamples);
 		
-		virtual float sampRate() const = 0;
 		virtual int	  nSamples() const = 0;
 		
-		virtual void set_sampRate(float sampRate) = 0;
 		virtual void set_nSamples(int nSamples) = 0;
     };
 

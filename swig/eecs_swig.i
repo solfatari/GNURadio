@@ -27,3 +27,4 @@ GR_SWIG_BLOCK_MAGIC2(eecs, x_corr);
 
 %include "eecs/xcor2.h"
 GR_SWIG_BLOCK_MAGIC2(eecs, xcor2);
+

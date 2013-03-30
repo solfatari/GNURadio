@@ -3,19 +3,12 @@
   <key>eecs_xcor2</key>
   <category>EECS</category>
   <import>import eecs</import>
-  <make>eecs.xcor2($sampRate, $nSamples)</make>
-  <callback>set_sampRate($sampRate)</callback>
+  <make>eecs.xcor2($nSamples)</make>
   <callback>set_nSamples($nSamples)</callback>
-  <param>
-    <name>Samprate</name>
-    <key>sampRate</key>
-    <value>samp_rate</value>
-    <type>real</type>
-  </param>
   <param>
     <name>Nsamples</name>
     <key>nSamples</key>
-    <value>512</value>
+    <value>2**8</value>
     <type>int</type>
   </param>
   <sink>
@@ -26,6 +19,6 @@
   <source>
     <name>out</name>
     <type>complex</type>
-    <nports>2</nports>
+    <nports>3</nports>
   </source>
 </block>

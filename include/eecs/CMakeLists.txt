@@ -26,5 +26,6 @@ install(FILES
     phase_shifter.h
     rev_phase_shifter.h
     x_corr.h
-    xcor2.h DESTINATION include/eecs
+    xcor2.h
+    DESTINATION include/eecs
 )
