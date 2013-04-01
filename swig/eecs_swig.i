@@ -13,6 +13,8 @@
 #include "eecs/rev_phase_shifter.h"
 #include "eecs/x_corr.h"
 #include "eecs/xcor2.h"
+#include "eecs/max_energy.h"
+#include "eecs/xcorr_vec.h"
 %}
 
 
@@ -28,3 +30,7 @@ GR_SWIG_BLOCK_MAGIC2(eecs, x_corr);
 %include "eecs/xcor2.h"
 GR_SWIG_BLOCK_MAGIC2(eecs, xcor2);
 
+%include "eecs/max_energy.h"
+GR_SWIG_BLOCK_MAGIC2(eecs, max_energy);
+%include "eecs/xcorr_vec.h"
+GR_SWIG_BLOCK_MAGIC2(eecs, xcorr_vec);

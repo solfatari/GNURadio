@@ -30,7 +30,8 @@ add_library(gnuradio-eecs SHARED
     rev_phase_shifter_impl.cc
     x_corr_impl.cc
     xcor2_impl.cc
-    )
+    max_energy_impl.cc
+    xcorr_vec_impl.cc )
 target_link_libraries(gnuradio-eecs ${Boost_LIBRARIES} ${GRUEL_LIBRARIES} ${GNURADIO_CORE_LIBRARIES})
 set_target_properties(gnuradio-eecs PROPERTIES DEFINE_SYMBOL "gnuradio_eecs_EXPORTS")
 

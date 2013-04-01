@@ -22,5 +22,6 @@ install(FILES
     eecs_rev_phase_shifter.xml
     eecs_x_corr.xml
     eecs_xcor2.xml
-    DESTINATION share/gnuradio/grc/blocks
+    eecs_max_energy.xml
+    eecs_xcorr_vec.xml DESTINATION share/gnuradio/grc/blocks
 )

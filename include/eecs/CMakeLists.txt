@@ -27,5 +27,6 @@ install(FILES
     rev_phase_shifter.h
     x_corr.h
     xcor2.h
-    DESTINATION include/eecs
+    max_energy.h
+    xcorr_vec.h DESTINATION include/eecs
 )
