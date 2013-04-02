@@ -1,0 +1,24 @@
+<block>
+  <name>Max Energy</name>
+  <key>eecs_max_energy</key>
+  <category>EECS</category>
+  <import>import eecs</import>
+  <make>eecs.max_energy($window)</make>
+  <callback>set_window($window)</callback>
+  <param>
+    <name>Window</name>
+    <key>window</key>
+    <value>512</value>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <nports>4</nports>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <nports>2</nports>
+  </source>
+</block>

@@ -39,8 +39,8 @@ namespace gr {
      */
     xcorr_vec_impl::xcorr_vec_impl()
       : gr_sync_block("xcorr_vec",
-		      gr_make_io_signature(<+MIN_IN+>, <+MAX_IN+>, sizeof (<+float+>)),
-		      gr_make_io_signature(<+MIN_IN+>, <+MAX_IN+>, sizeof (<+float+>)))
+		      gr_make_io_signature(1, 1, sizeof (float)),
+		      gr_make_io_signature(1, 1, sizeof (float)))
     {}
 
     /*

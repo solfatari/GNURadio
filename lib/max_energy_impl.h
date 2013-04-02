@@ -29,13 +29,17 @@ namespace gr {
     class max_energy_impl : public max_energy
     {
     private:
-      // Nothing to declare in this block.
-
+		int p_window;
+		
+		int dmax(const gr_complex* s1, const gr_complex* s2,
+				 const gr_complex* s3, const gr_complex* s4);
     public:
-      max_energy_impl();
+      max_energy_impl(int window);
       ~max_energy_impl();
+		
+	  int window() const{return p_window;}	  
+	  void set_window(int window);
 
-      // Where all the action really happens
       int work(int noutput_items,
 	       gr_vector_const_void_star &input_items,
 	       gr_vector_void_star &output_items);

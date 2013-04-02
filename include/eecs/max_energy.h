@@ -46,7 +46,11 @@ namespace gr {
         * class. eecs::max_energy::make is the public interface for
         * creating new instances.
         */
-       static sptr make();
+       static sptr make(int window);
+       
+		virtual int	  window() const = 0;
+		virtual void set_window(int window) = 0;
+		
     };
 
   } // namespace eecs

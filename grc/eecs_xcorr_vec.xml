@@ -1,0 +1,15 @@
+<block>
+  <name>Xcorr vec</name>
+  <key>eecs_xcorr_vec</key>
+  <category>EECS</category>
+  <import>import eecs</import>
+  <make>eecs.xcorr_vec()</make>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
