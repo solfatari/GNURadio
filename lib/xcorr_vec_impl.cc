@@ -23,24 +23,27 @@
 #endif
 
 #include <gr_io_signature.h>
+#include <cmath>
+#include <complex>
 #include "xcorr_vec_impl.h"
 
 namespace gr {
   namespace eecs {
 
     xcorr_vec::sptr
-    xcorr_vec::make()
+    xcorr_vec::make(int block_len)
     {
-      return gnuradio::get_initial_sptr (new xcorr_vec_impl());
+      return gnuradio::get_initial_sptr (new xcorr_vec_impl(block_len));
     }
 
     /*
      * The private constructor
      */
-    xcorr_vec_impl::xcorr_vec_impl()
+    xcorr_vec_impl::xcorr_vec_impl(int block_len)
       : gr_sync_block("xcorr_vec",
-		      gr_make_io_signature(1, 1, sizeof (float)),
-		      gr_make_io_signature(1, 1, sizeof (float)))
+		      gr_make_io_signature(2, 2, block_len * sizeof (gr_complex)),
+		      gr_make_io_signature(2, 2, block_len * sizeof (gr_complex))),
+		      p_block_len(block_len)
     {}
 
     /*
@@ -55,15 +58,26 @@ namespace gr {
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
-        const float *in = (const float *) input_items[0];
-        float *out = (float *) output_items[0];
+        const gr_complex *r1 = (const gr_complex *) input_items[0];
+        const gr_complex *r2 = (const gr_complex *) input_items[1];
+        gr_complex *out1 = (gr_complex *) output_items[0];
+		gr_complex *out2 = (gr_complex *) output_items[1];
+		
+		unsigned int input_data_size = input_signature()->sizeof_stream_item (0);
+		unsigned int output_data_size = output_signature()->sizeof_stream_item (0);
 
-        // Do <+signal processing+>
-
-        // Tell runtime system how many output items we produced.
+		int count = 0;
+		
+        while (count++ < noutput_items){
+			
+		
+		}
         return noutput_items;
     }
 
+	void xcorr_vec_impl::set_block_len(int block_len)
+	{	p_block_len = block_len;}
+	
   } /* namespace eecs */
 } /* namespace gr */
 

@@ -46,7 +46,10 @@ namespace gr {
         * class. eecs::zero_seek::make is the public interface for
         * creating new instances.
         */
-       static sptr make();
+       static sptr make(int block_len);
+       
+       virtual int	  block_len() const = 0;
+	   virtual void set_block_len(int block_len) = 0;
     };
 
   } // namespace eecs

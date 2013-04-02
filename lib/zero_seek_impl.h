@@ -29,13 +29,20 @@ namespace gr {
     class zero_seek_impl : public zero_seek
     {
     private:
-      // Nothing to declare in this block.
+      int blockLen;
+      int sampRate;
+      
+      int findFreq(const gr_complex* s);
 
     public:
-      zero_seek_impl();
+      zero_seek_impl(int blockLen, int sampRate);
       ~zero_seek_impl();
 
-      // Where all the action really happens
+      int blockLen() const{return p_blockLen;}	  
+	  void set_blockLen(int blockLen);
+	  int sampRate() const{return p_sampRate;}	  
+	  void set_sampRate(int sampRate);
+	  
       int work(int noutput_items,
 	       gr_vector_const_void_star &input_items,
 	       gr_vector_void_star &output_items);

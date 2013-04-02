@@ -29,13 +29,16 @@ namespace gr {
     class xcorr_vec_impl : public xcorr_vec
     {
     private:
-      // Nothing to declare in this block.
+      int p_block_len;
 
     public:
-      xcorr_vec_impl();
+      xcorr_vec_impl(int block_len);
       ~xcorr_vec_impl();
 
-      // Where all the action really happens
+	  int block_len() const{return p_block_len;}	  
+	  void set_block_len(int block_len);
+	  
+	  
       int work(int noutput_items,
 	       gr_vector_const_void_star &input_items,
 	       gr_vector_void_star &output_items);
