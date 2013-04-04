@@ -19,6 +19,6 @@
   <source>
     <name>out</name>
     <type>complex</type>
-    <nports>2</nports>
+    <nports>4</nports>
   </source>
 </block>

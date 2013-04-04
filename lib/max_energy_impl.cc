@@ -40,7 +40,7 @@ namespace gr {
     max_energy_impl::max_energy_impl(int window)
       : gr_sync_block("max_energy",
 		      gr_make_io_signature(4, 4, sizeof (gr_complex)),
-		      gr_make_io_signature(2, 2, sizeof (gr_complex))),
+		      gr_make_io_signature(4, 4, sizeof (gr_complex))),
 		      p_window(window)
     {
 		set_history(p_window);
@@ -58,51 +58,70 @@ namespace gr {
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
-        const gr_complex *s1 = (const gr_complex *) input_items[0];
-        const gr_complex *s2 = (const gr_complex *) input_items[1];
-        const gr_complex *s3 = (const gr_complex *) input_items[2];
-        const gr_complex *s4 = (const gr_complex *) input_items[3];
-        gr_complex *max = (gr_complex *) output_items[0];
-        gr_complex *du_signal = (gr_complex *) output_items[1];
+		gr_complex *s1 = (gr_complex *) input_items[0];
+		gr_complex *s2 = (gr_complex *) input_items[1];
+		gr_complex *s3 = (gr_complex *) input_items[2];
+		gr_complex *s4 = (gr_complex *) input_items[3];
+        gr_complex *max1 = (gr_complex *) output_items[0];
+        gr_complex *max2 = (gr_complex *) output_items[1];
+        gr_complex *max3 = (gr_complex *) output_items[2];
+        gr_complex *max4 = (gr_complex *) output_items[3];
 		s1 += p_window; s2 +=p_window;
 		s3 += p_window; s4 +=p_window;
-		int m_sig = 1;
 		
-		m_sig = dmax(s1,s2,s3,s4);
+		int order[4] = {0,1,2,3};
+		
+		dmax(s1,s2,s3,s4,order);
 		
 		for (int i =0; i <noutput_items; i++){
-			if (m_sig == 2)
-				max[i] = s2[i];
-			else if (m_sig ==3)
-				max[i] = s3[i];
-			else if (m_sig ==4)
-				max[i] = s4[i];
-			else
-				max[i] = s1[i];
-			du_signal[i] = m_sig;
+				gr_complex *s1 = (gr_complex *) input_items[order[0]];
+				gr_complex *s2 = (gr_complex *) input_items[order[1]];
+				gr_complex *s3 = (gr_complex *) input_items[order[2]];
+				gr_complex *s4 = (gr_complex *) input_items[order[3]];
+				max1[i] = s1[i];
+				max2[i] = s2[i];
+				max3[i] = s3[i];
+				max4[i] = s4[i];
 		}
        return noutput_items;
     }
 	
-	int max_energy_impl::dmax(const gr_complex* ms1, const gr_complex* ms2,
-						  const gr_complex* ms3, const gr_complex* ms4){
-		float t_s1, t_s2, t_s3, t_s4;
+	void max_energy_impl::dmax(gr_complex* ms1, gr_complex* ms2,
+						       gr_complex* ms3, gr_complex* ms4, int out[]){
+		bool done = 0;
+		float t_s1, t_s2, t_s3, t_s4, tmp;
 		for(int i = 0; i < p_window; i++){
 			t_s1 += abs(ms1[i])*abs(ms1[i]);
 			t_s2 += abs(ms2[i])*abs(ms2[i]);
 			t_s3 += abs(ms3[i])*abs(ms3[i]);
 			t_s4 += abs(ms4[i])*abs(ms4[i]); 
 		}
-		t_s1 = t_s1/p_window;	t_s3 = t_s3/p_window;
-		t_s2 = t_s2/p_window;	t_s4 = t_s4/p_window;
-		if (t_s4>t_s3 && t_s4>t_s2 && t_s4>t_s1)
-			return 4;
-		else if (t_s3>t_s2 && t_s3>t_s1)	
-			return 3;
-		else if (t_s2>t_s1)
-			return 2;
-		else
-			return 1;
+		
+		float t[4] = {t_s1, t_s2, t_s3, t_s4};
+		
+		while(!done){
+			if (t[0] <t[1]){
+				tmp = t[0];	t[0] = t[1]; t[1] = tmp;
+			}
+			else if (t[1] < t[2]){
+				tmp = t[1];	t[1] = t[2]; t[2] = tmp;
+			}
+			else if (t[2] <t[3]){
+				tmp = t[2];	t[2] = t[3]; t[3] = tmp;
+			}
+			else
+				done = 1;
+		}
+		for (int i = 0; i < 3; i++){
+			if (t[i] == t_s1)
+				out[i] = 0;
+			if (t[i] == t_s2)
+				out[i] = 1;
+			if (t[i] == t_s3)
+				out[i] = 2;
+			if (t[i] == t_s4)
+				out[i] = 3;
+		}
 	}
 	  
 	void max_energy_impl::set_window(int window)

@@ -1,21 +1,7 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2013 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2013 Costa and Acosta Space Systems.
  * 
- * This is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3, or (at your option)
- * any later version.
- * 
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this software; see the file COPYING.  If not, write to
- * the Free Software Foundation, Inc., 51 Franklin Street,
- * Boston, MA 02110-1301, USA.
  */
 
 #ifndef INCLUDED_EECS_MAX_ENERGY_IMPL_H
@@ -31,8 +17,8 @@ namespace gr {
     private:
 		int p_window;
 		
-		int dmax(const gr_complex* s1, const gr_complex* s2,
-				 const gr_complex* s3, const gr_complex* s4);
+		void dmax(gr_complex* s1, gr_complex* s2,
+				  gr_complex* s3, gr_complex* s4, int out[]);
     public:
       max_energy_impl(int window);
       ~max_energy_impl();
