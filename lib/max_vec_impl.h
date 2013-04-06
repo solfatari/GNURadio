@@ -18,43 +18,36 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#ifndef INCLUDED_EECS_MAX_VEC_IMPL_H
+#define INCLUDED_EECS_MAX_VEC_IMPL_H
 
-#ifndef INCLUDED_EECS_XCORR_VEC_H
-#define INCLUDED_EECS_XCORR_VEC_H
-
-#include <eecs/api.h>
-#include <gr_sync_block.h>
+#include <eecs/max_vec.h>
 
 namespace gr {
   namespace eecs {
 
-    /*!
-     * \brief <+description of block+>
-     * \ingroup eecs
-     *
-     */
-    class EECS_API xcorr_vec : virtual public gr_sync_block
+    class max_vec_impl : public max_vec
     {
-    public:
-       typedef boost::shared_ptr<xcorr_vec> sptr;
+    private:
+		int p_window;
+		void dmax(gr_complex* s1, gr_complex* s2,
+				  gr_complex* s3, gr_complex* s4, int out[]);
 
-       /*!
-        * \brief Return a shared_ptr to a new instance of eecs::xcorr_vec.
-        *
-        * To avoid accidental use of raw pointers, eecs::xcorr_vec's
-        * constructor is in a private implementation
-        * class. eecs::xcorr_vec::make is the public interface for
-        * creating new instances.
-        */
-		static sptr make(int window);
-       
-		virtual int	  window() const = 0;
-		virtual void set_window(int window) = 0;
-		
+    public:
+		max_vec_impl(int window);
+		~max_vec_impl();
+
+      // Where all the action really happens
+		int work(int noutput_items,
+			gr_vector_const_void_star &input_items,
+			gr_vector_void_star &output_items);
+			
+		int window() const{return p_window;}	  
+		void set_window(int window);
     };
 
   } // namespace eecs
 } // namespace gr
 
-#endif /* INCLUDED_EECS_XCORR_VEC_H */
+#endif /* INCLUDED_EECS_MAX_VEC_IMPL_H */
 

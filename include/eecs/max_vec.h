@@ -19,8 +19,8 @@
  */
 
 
-#ifndef INCLUDED_EECS_XCORR_VEC_H
-#define INCLUDED_EECS_XCORR_VEC_H
+#ifndef INCLUDED_EECS_MAX_VEC_H
+#define INCLUDED_EECS_MAX_VEC_H
 
 #include <eecs/api.h>
 #include <gr_sync_block.h>
@@ -33,28 +33,27 @@ namespace gr {
      * \ingroup eecs
      *
      */
-    class EECS_API xcorr_vec : virtual public gr_sync_block
+    class EECS_API max_vec : virtual public gr_sync_block
     {
     public:
-       typedef boost::shared_ptr<xcorr_vec> sptr;
+       typedef boost::shared_ptr<max_vec> sptr;
 
        /*!
-        * \brief Return a shared_ptr to a new instance of eecs::xcorr_vec.
+        * \brief Return a shared_ptr to a new instance of eecs::max_vec.
         *
-        * To avoid accidental use of raw pointers, eecs::xcorr_vec's
+        * To avoid accidental use of raw pointers, eecs::max_vec's
         * constructor is in a private implementation
-        * class. eecs::xcorr_vec::make is the public interface for
+        * class. eecs::max_vec::make is the public interface for
         * creating new instances.
         */
 		static sptr make(int window);
        
 		virtual int	  window() const = 0;
 		virtual void set_window(int window) = 0;
-		
     };
 
   } // namespace eecs
 } // namespace gr
 
-#endif /* INCLUDED_EECS_XCORR_VEC_H */
+#endif /* INCLUDED_EECS_MAX_VEC_H */
 

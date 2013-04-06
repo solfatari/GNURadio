@@ -29,15 +29,18 @@ namespace gr {
     class xcorr_vec_impl : public xcorr_vec
     {
     private:
-      int p_block_len;
-
+		int p_window;
+		gr_complex *saved[100];
+		
+		void xcorr(const gr_complex* r1, const gr_complex* r2, gr_complex xout[]);
+		int findTheta(gr_complex sig[]);
+   
     public:
-      xcorr_vec_impl(int block_len);
+      xcorr_vec_impl(int window);
       ~xcorr_vec_impl();
 
-	  int block_len() const{return p_block_len;}	  
-	  void set_block_len(int block_len);
-	  
+	  int window() const{return p_window;}	  
+	  void set_window(int window);
 	  
       int work(int noutput_items,
 	       gr_vector_const_void_star &input_items,

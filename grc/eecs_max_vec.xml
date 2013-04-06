@@ -1,9 +1,9 @@
 <block>
-  <name>Xcorr vec</name>
-  <key>eecs_xcorr_vec</key>
+  <name>Max vec</name>
+  <key>eecs_max_vec</key>
   <category>EECS</category>
   <import>import eecs</import>
-  <make>eecs.xcorr_vec($window)</make>
+  <make>eecs.max_vec($window)</make>
   <callback>set_window($window)</callback>
   <param>
     <name>Window</name>
@@ -15,12 +15,12 @@
     <name>in</name>
     <type>complex</type>
     <vlen>$window</vlen>
-    <nports>2</nports>
+    <nports>4</nports>
   </sink>
   <source>
     <name>out</name>
     <type>complex</type>
     <vlen>$window</vlen>
-    <nports>2</nports>
+    <nports>4</nports>
   </source>
 </block>

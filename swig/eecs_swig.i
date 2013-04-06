@@ -15,6 +15,7 @@
 #include "eecs/xcor2.h"
 #include "eecs/max_energy.h"
 #include "eecs/xcorr_vec.h"
+#include "eecs/max_vec.h"
 %}
 
 
@@ -34,3 +35,5 @@ GR_SWIG_BLOCK_MAGIC2(eecs, xcor2);
 GR_SWIG_BLOCK_MAGIC2(eecs, max_energy);
 %include "eecs/xcorr_vec.h"
 GR_SWIG_BLOCK_MAGIC2(eecs, xcorr_vec);
+%include "eecs/max_vec.h"
+GR_SWIG_BLOCK_MAGIC2(eecs, max_vec);

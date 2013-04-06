@@ -23,5 +23,6 @@ install(FILES
     eecs_x_corr.xml
     eecs_xcor2.xml
     eecs_max_energy.xml
-    eecs_xcorr_vec.xml DESTINATION share/gnuradio/grc/blocks
+    eecs_xcorr_vec.xml
+    eecs_max_vec.xml DESTINATION share/gnuradio/grc/blocks
 )
