@@ -18,38 +18,42 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_EECS_XCORR_VEC_IMPL_H
-#define INCLUDED_EECS_XCORR_VEC_IMPL_H
 
-#include <eecs/xcorr_vec.h>
+#ifndef INCLUDED_EECS_FFT_MAX_H
+#define INCLUDED_EECS_FFT_MAX_H
+
+#include <eecs/api.h>
+#include <gr_sync_block.h>
 
 namespace gr {
   namespace eecs {
 
-    class xcorr_vec_impl : public xcorr_vec
+    /*!
+     * \brief <+description of block+>
+     * \ingroup eecs
+     *
+     */
+    class EECS_API fft_max : virtual public gr_sync_block
     {
-    private:
-		int p_window;
-		gr_complex *stored1[1025];
-		gr_complex *stored2[1025];
-		
-		void xcorr(const gr_complex* r1, const gr_complex* r2, gr_complex xout[]);
-		int findTheta(gr_complex sig[]);
-   
     public:
-      xcorr_vec_impl(int window);
-      ~xcorr_vec_impl();
+       typedef boost::shared_ptr<fft_max> sptr;
 
-	  int window() const{return p_window;}	  
-	  void set_window(int window);
-	  
-      int work(int noutput_items,
-	       gr_vector_const_void_star &input_items,
-	       gr_vector_void_star &output_items);
+       /*!
+        * \brief Return a shared_ptr to a new instance of eecs::fft_max.
+        *
+        * To avoid accidental use of raw pointers, eecs::fft_max's
+        * constructor is in a private implementation
+        * class. eecs::fft_max::make is the public interface for
+        * creating new instances.
+        */
+       static sptr make(int window);
+       
+		virtual int	  window() const = 0;
+		virtual void set_window(int window) = 0;
     };
 
   } // namespace eecs
 } // namespace gr
 
-#endif /* INCLUDED_EECS_XCORR_VEC_IMPL_H */
+#endif /* INCLUDED_EECS_FFT_MAX_H */
 

@@ -29,5 +29,6 @@ install(FILES
     xcor2.h
     max_energy.h
     xcorr_vec.h
-    max_vec.h DESTINATION include/eecs
+    max_vec.h
+    fft_max.h DESTINATION include/eecs
 )

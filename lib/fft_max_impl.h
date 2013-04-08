@@ -18,38 +18,35 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_EECS_XCORR_VEC_IMPL_H
-#define INCLUDED_EECS_XCORR_VEC_IMPL_H
+#ifndef INCLUDED_EECS_FFT_MAX_IMPL_H
+#define INCLUDED_EECS_FFT_MAX_IMPL_H
 
-#include <eecs/xcorr_vec.h>
+#include <eecs/fft_max.h>
 
 namespace gr {
   namespace eecs {
 
-    class xcorr_vec_impl : public xcorr_vec
+    class fft_max_impl : public fft_max
     {
     private:
-		int p_window;
-		gr_complex *stored1[1025];
-		gr_complex *stored2[1025];
-		
-		void xcorr(const gr_complex* r1, const gr_complex* r2, gr_complex xout[]);
-		int findTheta(gr_complex sig[]);
-   
+        int p_window;
+		void max(float in[], int out[]);
     public:
-      xcorr_vec_impl(int window);
-      ~xcorr_vec_impl();
+      fft_max_impl(int window);
+      ~fft_max_impl();
 
-	  int window() const{return p_window;}	  
-	  void set_window(int window);
-	  
-      int work(int noutput_items,
+      // Where all the action really happens
+		int work(int noutput_items,
 	       gr_vector_const_void_star &input_items,
 	       gr_vector_void_star &output_items);
+		
+		int window() const{return p_window;}	  
+		void set_window(int window);
+    
     };
-
+	
   } // namespace eecs
 } // namespace gr
 
-#endif /* INCLUDED_EECS_XCORR_VEC_IMPL_H */
+#endif /* INCLUDED_EECS_FFT_MAX_IMPL_H */
 

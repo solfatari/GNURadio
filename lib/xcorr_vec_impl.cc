@@ -41,8 +41,12 @@ namespace gr {
 		      gr_make_io_signature(2, 2, window*sizeof (gr_complex)),
 		      gr_make_io_signature(2, 2, window*sizeof (gr_complex))),
 		      p_window(window)
-    {}
-
+    {
+	//	for (int i = 0; i<1025; i++){
+	//		stored1[i] = 0;
+	//		stored2[i] = 0;
+	//	}
+	}
     xcorr_vec_impl::~xcorr_vec_impl(){}
 
     int
@@ -63,17 +67,21 @@ namespace gr {
 		
 		for(int i = 0; i <noutput_items; i++){
 			if (offset < 0 || offset== 0){		// Neg theta offset
-				memcpy(out1, r1, noutput_items*block_size);
-				for (int j = 0; j < p_window-offset; j++)
-					memcpy(&out2[j], &r2[j+offset], sizeof(gr_complex));
-		//		for (int j = p_window-offset; j < p_window; j++)
-		//			memcpy(&out2[j], &r1[j], sizeof(gr_complex));
-			for (int i = 0; i < offset;i++)		//copy what we need for the next one
-				memcpy(&saved[i], &r2[p_window-offset+i], sizeof(gr_complex));
+				//memcpy(out1, stored1, noutput_items*block_size);
+				for (int j = 0; j < p_window-offset; j++){
+					memcpy(&out2[j], &stored2[j+offset], sizeof(gr_complex));
+					memcpy(&out1[j], &stored1[j], sizeof(gr_complex));}
+				for (int j = p_window-offset; j < p_window; j++){
+					memcpy(&out2[j], &r2[j], sizeof(gr_complex));
+					memcpy(&out1[j], &stored1[j], sizeof(gr_complex));}
 			}			
 		}
-	
-        return noutput_items;
+		
+		for (int i = 0; i < p_window; i++){
+			memcpy(&stored1[i], &r1[i], sizeof(gr_complex));
+			memcpy(&stored2[i], &r2[i], sizeof(gr_complex));
+		}
+		return noutput_items;
     }
 
 	void xcorr_vec_impl::xcorr(const gr_complex* ir1, const gr_complex* r2, gr_complex xout[])

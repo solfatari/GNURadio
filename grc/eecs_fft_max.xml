@@ -1,0 +1,24 @@
+<block>
+  <name>Fft max</name>
+  <key>eecs_fft_max</key>
+  <category>EECS</category>
+  <import>import eecs</import>
+  <make>eecs.fft_max($window)</make>
+  <callback>set_window($window)</callback>
+  <param>
+    <name>Window</name>
+    <key>window</key>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>$window</vlen>
+    <nports>2</nports>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>float</type>
+    <nports>2</nports>
+  </source>
+</block>

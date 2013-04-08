@@ -32,7 +32,8 @@ add_library(gnuradio-eecs SHARED
     xcor2_impl.cc
     max_energy_impl.cc
     xcorr_vec_impl.cc
-    max_vec_impl.cc )
+    max_vec_impl.cc
+    fft_max_impl.cc )
 target_link_libraries(gnuradio-eecs ${Boost_LIBRARIES} ${GRUEL_LIBRARIES} ${GNURADIO_CORE_LIBRARIES})
 set_target_properties(gnuradio-eecs PROPERTIES DEFINE_SYMBOL "gnuradio_eecs_EXPORTS")
 
