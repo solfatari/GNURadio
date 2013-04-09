@@ -17,6 +17,7 @@
 #include "eecs/xcorr_vec.h"
 #include "eecs/max_vec.h"
 #include "eecs/fft_max.h"
+#include "eecs/fft_shift.h"
 %}
 
 
@@ -40,3 +41,5 @@ GR_SWIG_BLOCK_MAGIC2(eecs, xcorr_vec);
 GR_SWIG_BLOCK_MAGIC2(eecs, max_vec);
 %include "eecs/fft_max.h"
 GR_SWIG_BLOCK_MAGIC2(eecs, fft_max);
+%include "eecs/fft_shift.h"
+GR_SWIG_BLOCK_MAGIC2(eecs, fft_shift);

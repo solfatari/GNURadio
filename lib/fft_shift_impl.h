@@ -18,35 +18,37 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_EECS_FFT_MAX_IMPL_H
-#define INCLUDED_EECS_FFT_MAX_IMPL_H
+#ifndef INCLUDED_EECS_FFT_SHIFT_IMPL_H
+#define INCLUDED_EECS_FFT_SHIFT_IMPL_H
 
-#include <eecs/fft_max.h>
+#include <eecs/fft_shift.h>
 
 namespace gr {
   namespace eecs {
 
-    class fft_max_impl : public fft_max
+    class fft_shift_impl : public fft_shift
     {
     private:
-        int p_window;
-		int max(float in[]);
-    public:
-      fft_max_impl(int window);
-      ~fft_max_impl();
+      int p_window;
+      int p_shift;
 
-      // Where all the action really happens
+    public:
+		fft_shift_impl(int window, int shift);
+		~fft_shift_impl();
+
 		int work(int noutput_items,
-	       gr_vector_const_void_star &input_items,
-	       gr_vector_void_star &output_items);
-		
+			gr_vector_const_void_star &input_items,
+			gr_vector_void_star &output_items);
+    
 		int window() const{return p_window;}	  
 		void set_window(int window);
+		int shift() const{return p_shift;}	  
+		void set_shift(int shift);
     
     };
-	
+
   } // namespace eecs
 } // namespace gr
 
-#endif /* INCLUDED_EECS_FFT_MAX_IMPL_H */
+#endif /* INCLUDED_EECS_FFT_SHIFT_IMPL_H */
 

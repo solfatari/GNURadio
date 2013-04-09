@@ -23,76 +23,58 @@
 #endif
 
 #include <gr_io_signature.h>
-#include "fft_max_impl.h"
+#include "fft_shift_impl.h"
 
 namespace gr {
   namespace eecs {
 
-    fft_max::sptr
-    fft_max::make(int window)
+    fft_shift::sptr
+    fft_shift::make(int window, int shift)
     {
-      return gnuradio::get_initial_sptr (new fft_max_impl(window));
+      return gnuradio::get_initial_sptr (new fft_shift_impl(window, shift));
     }
 
     /*
      * The private constructor
      */
-    fft_max_impl::fft_max_impl(int window)
-      : gr_sync_block("fft_max",
-		      gr_make_io_signature(2, 2, window*sizeof(gr_complex)),
-		      gr_make_io_signature(2, 2, sizeof(float))),
-		      p_window(window)
+    fft_shift_impl::fft_shift_impl(int window, int shift)
+      : gr_sync_block("fft_shift",
+		      gr_make_io_signature(1, 1, window*sizeof (gr_complex)),
+		      gr_make_io_signature(1, 1, window*sizeof (gr_complex))),
+		      p_window(window), p_shift(shift)
     {}
 
     /*
      * Our virtual destructor.
      */
-    fft_max_impl::~fft_max_impl()
+    fft_shift_impl::~fft_shift_impl()
     {
     }
 
     int
-    fft_max_impl::work(int noutput_items,
+    fft_shift_impl::work(int noutput_items,
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
+        const gr_complex *in = (const gr_complex*) input_items[0];
+        gr_complex *out = (gr_complex*) output_items[0];
         size_t block_size = output_signature()->sizeof_stream_item (0);
-        const gr_complex *in1 = (const gr_complex*) input_items[0];
-        const gr_complex *in2 = (const gr_complex *) input_items[1];
-        float *out1 = (gr_complex *) output_items[0];
-        float *out2 = (gr_complex *) output_items[1];
+		gr_complex tmp[noutput_items*block_size];
 		
-		float mag1[p_window], mag2[p_window];
-		
-		for (int i = 0; i < p_window; i++){
-			mag1[i] = floor(abs(in1[i]));
-			mag2[i] = floor(abs(in2[i]));
-		}
-        int o1[2] = {0,0};
-        o1[0] = max(mag1);
-		o1[1] = max(mag2);
-				
-		for (int i = 0; i < noutput_items; i++){
-			out1[i] = o1[0];
-			out2[i] = o1[1];
-		}
+		for (int i = 0; i < p_shift; i++)
+			tmp[i] = 0;
+		for (int i = p_shift; i < p_window; i++)
+			tmp[i-p_shift] = in[i]; 
+		for (int i =0; i <noutput_items; i++)
+			memcpy(out, tmp, noutput_items*block_size);
+
         return noutput_items;
     }
-
-	int fft_max_impl::max(float in[]){
-		float max_val = 0;
-		int index = 0;
-		for (int i = 0; i < p_window; i++){	
-			if (in[i] > max_val){
-				max_val = in[i];
-				index = i;
-		}}
-		return index;
-	}
 	
-	void fft_max_impl::set_window(int window)
-		{p_window = window;}	
-
+	void fft_shift_impl::set_window(int window)
+		{p_window = window;}
+	void fft_shift_impl::set_shift(int shift)
+		{p_shift = shift;}
   } /* namespace eecs */
 } /* namespace gr */
 
