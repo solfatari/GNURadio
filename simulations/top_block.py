@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Mon Apr  8 19:59:54 2013
+# Generated: Mon Apr  8 22:58:36 2013
 ##################################################
 
 from gnuradio import analog
@@ -16,6 +16,7 @@ from gnuradio.gr import firdes
 from gnuradio.wxgui import fftsink2
 from gnuradio.wxgui import forms
 from gnuradio.wxgui import numbersink2
+from gnuradio.wxgui import scopesink2
 from grc_gnuradio import wxgui as grc_wxgui
 from optparse import OptionParser
 import eecs
@@ -31,9 +32,10 @@ class top_block(grc_wxgui.top_block_gui):
 		##################################################
 		# Variables
 		##################################################
-		self.samp_rate = samp_rate = 32000
-		self.offset = offset = 100
 		self.fft_window = fft_window = 2**10
+		self.window_type = window_type = window.hamming(fft_window)
+		self.samp_rate = samp_rate = 2**20
+		self.offset = offset = 200
 		self.fft_shift = fft_shift = 1
 
 		##################################################
@@ -47,7 +49,7 @@ class top_block(grc_wxgui.top_block_gui):
 		self.Add(self.nb)
 		_offset_sizer = wx.BoxSizer(wx.VERTICAL)
 		self._offset_text_box = forms.text_box(
-			parent=self.GetWin(),
+			parent=self.nb.GetPage(1).GetWin(),
 			sizer=_offset_sizer,
 			value=self.offset,
 			callback=self.set_offset,
@@ -56,18 +58,18 @@ class top_block(grc_wxgui.top_block_gui):
 			proportion=0,
 		)
 		self._offset_slider = forms.slider(
-			parent=self.GetWin(),
+			parent=self.nb.GetPage(1).GetWin(),
 			sizer=_offset_sizer,
 			value=self.offset,
 			callback=self.set_offset,
 			minimum=0,
-			maximum=1000,
+			maximum=2000,
 			num_steps=100,
 			style=wx.SL_HORIZONTAL,
 			cast=float,
 			proportion=1,
 		)
-		self.Add(_offset_sizer)
+		self.nb.GetPage(1).Add(_offset_sizer)
 		_fft_shift_sizer = wx.BoxSizer(wx.VERTICAL)
 		self._fft_shift_text_box = forms.text_box(
 			parent=self.nb.GetPage(2).GetWin(),
@@ -91,7 +93,21 @@ class top_block(grc_wxgui.top_block_gui):
 			proportion=1,
 		)
 		self.nb.GetPage(2).Add(_fft_shift_sizer)
-		self.wxgui_numbersink2_0_0_0 = numbersink2.number_sink_c(
+		self.wxgui_scopesink2_0 = scopesink2.scope_sink_f(
+			self.nb.GetPage(3).GetWin(),
+			title="Reference/Offset/Shifted",
+			sample_rate=samp_rate,
+			v_scale=0,
+			v_offset=0,
+			t_scale=0,
+			ac_couple=False,
+			xy_mode=False,
+			num_inputs=2,
+			trig_mode=gr.gr_TRIG_MODE_AUTO,
+			y_axis_label="Counts",
+		)
+		self.nb.GetPage(3).Add(self.wxgui_scopesink2_0.win)
+		self.wxgui_numbersink2_0_0_0 = numbersink2.number_sink_f(
 			self.nb.GetPage(1).GetWin(),
 			unit="Units",
 			minval=-100,
@@ -108,7 +124,7 @@ class top_block(grc_wxgui.top_block_gui):
 			show_gauge=True,
 		)
 		self.nb.GetPage(1).Add(self.wxgui_numbersink2_0_0_0.win)
-		self.wxgui_numbersink2_0_0 = numbersink2.number_sink_c(
+		self.wxgui_numbersink2_0_0 = numbersink2.number_sink_f(
 			self.nb.GetPage(1).GetWin(),
 			unit="Units",
 			minval=-100,
@@ -120,12 +136,12 @@ class top_block(grc_wxgui.top_block_gui):
 			number_rate=15,
 			average=False,
 			avg_alpha=None,
-			label="Number Plot",
+			label="Channel2",
 			peak_hold=False,
 			show_gauge=True,
 		)
 		self.nb.GetPage(1).Add(self.wxgui_numbersink2_0_0.win)
-		self.wxgui_numbersink2_0 = numbersink2.number_sink_c(
+		self.wxgui_numbersink2_0 = numbersink2.number_sink_f(
 			self.nb.GetPage(1).GetWin(),
 			unit="Units",
 			minval=-100,
@@ -137,7 +153,7 @@ class top_block(grc_wxgui.top_block_gui):
 			number_rate=15,
 			average=False,
 			avg_alpha=None,
-			label="Number Plot",
+			label="Channel1",
 			peak_hold=False,
 			show_gauge=True,
 		)
@@ -150,7 +166,7 @@ class top_block(grc_wxgui.top_block_gui):
 			ref_level=0,
 			ref_scale=2.0,
 			sample_rate=samp_rate,
-			fft_size=1024,
+			fft_size=fft_window,
 			fft_rate=15,
 			average=False,
 			avg_alpha=None,
@@ -167,7 +183,7 @@ class top_block(grc_wxgui.top_block_gui):
 			ref_level=0,
 			ref_scale=2.0,
 			sample_rate=samp_rate,
-			fft_size=1024,
+			fft_size=fft_window,
 			fft_rate=15,
 			average=False,
 			avg_alpha=None,
@@ -184,7 +200,7 @@ class top_block(grc_wxgui.top_block_gui):
 			ref_level=0,
 			ref_scale=2.0,
 			sample_rate=samp_rate,
-			fft_size=1024,
+			fft_size=fft_window,
 			fft_rate=15,
 			average=False,
 			avg_alpha=None,
@@ -193,82 +209,98 @@ class top_block(grc_wxgui.top_block_gui):
 		)
 		self.nb.GetPage(2).Add(self.wxgui_fftsink2_0.win)
 		self.gr_null_source_0 = gr.null_source(gr.sizeof_gr_complex*fft_window)
-		self.gr_null_sink_0 = gr.null_sink(gr.sizeof_gr_complex*fft_window)
-		self.fft_vxx_0_0_0 = fft.fft_vcc(1024, False, (window.blackmanharris(1024)), True, 1)
-		self.fft_vxx_0_0 = fft.fft_vcc(1024, True, (window.blackmanharris(1024)), True, 1)
-		self.fft_vxx_0 = fft.fft_vcc(1024, True, (window.blackmanharris(1024)), True, 1)
+		self.gr_null_sink_0 = gr.null_sink(gr.sizeof_float*fft_window)
+		self.gr_complex_to_real_0_0_0 = gr.complex_to_real(1)
+		self.gr_complex_to_real_0 = gr.complex_to_real(1)
+		self.fft_vxx_0_0_0 = fft.fft_vcc(fft_window, False, (window_type), True, 1)
+		self.fft_vxx_0_0 = fft.fft_vcc(fft_window, True, (window_type), True, 1)
+		self.fft_vxx_0 = fft.fft_vcc(fft_window, True, (window_type), True, 1)
 		self.eecs_fft_shift_0 = eecs.fft_shift(fft_window, fft_shift)
 		self.eecs_fft_max_0_0 = eecs.fft_max(fft_window)
 		self.eecs_fft_max_0 = eecs.fft_max(fft_window)
-		self.blocks_vector_to_stream_0_0_0_1_0 = blocks.vector_to_stream(gr.sizeof_gr_complex*1, fft_window)
-		self.blocks_vector_to_stream_0_0_0_1 = blocks.vector_to_stream(gr.sizeof_gr_complex*1, fft_window)
-		self.blocks_vector_to_stream_0_0_0_0 = blocks.vector_to_stream(gr.sizeof_gr_complex*1, fft_window)
+		self.blocks_vector_to_stream_0_0_0_1_0 = blocks.vector_to_stream(gr.sizeof_float*1, fft_window)
+		self.blocks_vector_to_stream_0_0_0_1 = blocks.vector_to_stream(gr.sizeof_float*1, fft_window)
+		self.blocks_vector_to_stream_0_0_0_0 = blocks.vector_to_stream(gr.sizeof_float*1, fft_window)
 		self.blocks_vector_to_stream_0_0_0 = blocks.vector_to_stream(gr.sizeof_gr_complex*1, fft_window)
-		self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate)
-		self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate)
+		self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, 3*samp_rate)
+		self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, 3*samp_rate)
+		self.blocks_stream_to_vector_0_0_0 = blocks.stream_to_vector(gr.sizeof_gr_complex*1, fft_window)
 		self.blocks_stream_to_vector_0_0 = blocks.stream_to_vector(gr.sizeof_gr_complex*1, fft_window)
-		self.blocks_stream_to_vector_0 = blocks.stream_to_vector(gr.sizeof_gr_complex*1, fft_window)
-		self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 1000+offset, 1, 0)
-		self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 1000, 1, 0)
+		self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vcc((2**-10, ))
+		self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 4000+offset, 1, 0)
+		self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 4000, 1, 0)
 
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.blocks_stream_to_vector_0, 0), (self.fft_vxx_0, 0))
-		self.connect((self.analog_sig_source_x_0, 0), (self.wxgui_fftsink2_0_0, 0))
-		self.connect((self.analog_sig_source_x_0_0, 0), (self.wxgui_fftsink2_0_0_0, 0))
-		self.connect((self.fft_vxx_0, 0), (self.eecs_fft_max_0, 0))
-		self.connect((self.blocks_throttle_0_0, 0), (self.blocks_stream_to_vector_0_0, 0))
+		self.connect((self.blocks_throttle_0, 0), (self.wxgui_fftsink2_0_0, 0))
+		self.connect((self.blocks_throttle_0_0, 0), (self.wxgui_fftsink2_0_0_0, 0))
 		self.connect((self.analog_sig_source_x_0_0, 0), (self.blocks_throttle_0_0, 0))
-		self.connect((self.blocks_stream_to_vector_0_0, 0), (self.fft_vxx_0_0, 0))
-		self.connect((self.blocks_throttle_0, 0), (self.blocks_stream_to_vector_0, 0))
 		self.connect((self.analog_sig_source_x_0, 0), (self.blocks_throttle_0, 0))
-		self.connect((self.eecs_fft_max_0, 0), (self.blocks_vector_to_stream_0_0_0_0, 0))
 		self.connect((self.blocks_vector_to_stream_0_0_0_0, 0), (self.wxgui_numbersink2_0, 0))
 		self.connect((self.blocks_vector_to_stream_0_0_0_1, 0), (self.wxgui_numbersink2_0_0, 0))
-		self.connect((self.eecs_fft_shift_0, 0), (self.fft_vxx_0_0_0, 0))
-		self.connect((self.fft_vxx_0_0, 0), (self.eecs_fft_shift_0, 0))
 		self.connect((self.blocks_vector_to_stream_0_0_0, 0), (self.wxgui_fftsink2_0, 0))
 		self.connect((self.fft_vxx_0_0_0, 0), (self.blocks_vector_to_stream_0_0_0, 0))
-		self.connect((self.eecs_fft_max_0, 1), (self.blocks_vector_to_stream_0_0_0_1, 0))
-		self.connect((self.fft_vxx_0_0, 0), (self.eecs_fft_max_0, 1))
-		self.connect((self.blocks_vector_to_stream_0_0_0_1_0, 0), (self.wxgui_numbersink2_0_0_0, 0))
-		self.connect((self.eecs_fft_shift_0, 0), (self.eecs_fft_max_0_0, 0))
 		self.connect((self.eecs_fft_max_0_0, 0), (self.blocks_vector_to_stream_0_0_0_1_0, 0))
-		self.connect((self.gr_null_source_0, 0), (self.eecs_fft_max_0_0, 1))
 		self.connect((self.eecs_fft_max_0_0, 1), (self.gr_null_sink_0, 0))
+		self.connect((self.blocks_vector_to_stream_0_0_0_1_0, 0), (self.wxgui_numbersink2_0_0_0, 0))
+		self.connect((self.blocks_vector_to_stream_0_0_0, 0), (self.blocks_multiply_const_vxx_0, 0))
+		self.connect((self.blocks_multiply_const_vxx_0, 0), (self.gr_complex_to_real_0, 0))
+		self.connect((self.gr_complex_to_real_0_0_0, 0), (self.wxgui_scopesink2_0, 0))
+		self.connect((self.blocks_throttle_0, 0), (self.gr_complex_to_real_0_0_0, 0))
+		self.connect((self.gr_complex_to_real_0, 0), (self.wxgui_scopesink2_0, 1))
+		self.connect((self.gr_null_source_0, 0), (self.eecs_fft_max_0_0, 1))
+		self.connect((self.eecs_fft_shift_0, 0), (self.eecs_fft_max_0_0, 0))
+		self.connect((self.fft_vxx_0_0, 0), (self.eecs_fft_max_0, 1))
+		self.connect((self.eecs_fft_max_0, 1), (self.blocks_vector_to_stream_0_0_0_1, 0))
+		self.connect((self.fft_vxx_0_0, 0), (self.eecs_fft_shift_0, 0))
+		self.connect((self.eecs_fft_shift_0, 0), (self.fft_vxx_0_0_0, 0))
+		self.connect((self.eecs_fft_max_0, 0), (self.blocks_vector_to_stream_0_0_0_0, 0))
+		self.connect((self.fft_vxx_0, 0), (self.eecs_fft_max_0, 0))
+		self.connect((self.blocks_stream_to_vector_0_0, 0), (self.fft_vxx_0_0, 0))
+		self.connect((self.blocks_stream_to_vector_0_0_0, 0), (self.fft_vxx_0, 0))
+		self.connect((self.blocks_throttle_0, 0), (self.blocks_stream_to_vector_0_0_0, 0))
+		self.connect((self.blocks_throttle_0_0, 0), (self.blocks_stream_to_vector_0_0, 0))
 
-
-	def get_samp_rate(self):
-		return self.samp_rate
-
-	def set_samp_rate(self, samp_rate):
-		self.samp_rate = samp_rate
-		self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
-		self.wxgui_fftsink2_0_0_0.set_sample_rate(self.samp_rate)
-		self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate)
-		self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
-		self.blocks_throttle_0_0.set_sample_rate(self.samp_rate)
-		self.blocks_throttle_0.set_sample_rate(self.samp_rate)
-		self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
-
-	def get_offset(self):
-		return self.offset
-
-	def set_offset(self, offset):
-		self.offset = offset
-		self.analog_sig_source_x_0_0.set_frequency(1000+self.offset)
-		self._offset_slider.set_value(self.offset)
-		self._offset_text_box.set_value(self.offset)
 
 	def get_fft_window(self):
 		return self.fft_window
 
 	def set_fft_window(self, fft_window):
 		self.fft_window = fft_window
-		self.eecs_fft_max_0.set_window(self.fft_window)
+		self.set_window_type(window.hamming(self.fft_window))
 		self.eecs_fft_shift_0.set_window(self.fft_window)
+		self.eecs_fft_max_0.set_window(self.fft_window)
 		self.eecs_fft_max_0_0.set_window(self.fft_window)
+
+	def get_window_type(self):
+		return self.window_type
+
+	def set_window_type(self, window_type):
+		self.window_type = window_type
+
+	def get_samp_rate(self):
+		return self.samp_rate
+
+	def set_samp_rate(self, samp_rate):
+		self.samp_rate = samp_rate
+		self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
+		self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
+		self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate)
+		self.wxgui_fftsink2_0_0_0.set_sample_rate(self.samp_rate)
+		self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
+		self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
+		self.blocks_throttle_0.set_sample_rate(3*self.samp_rate)
+		self.blocks_throttle_0_0.set_sample_rate(3*self.samp_rate)
+
+	def get_offset(self):
+		return self.offset
+
+	def set_offset(self, offset):
+		self.offset = offset
+		self.analog_sig_source_x_0_0.set_frequency(4000+self.offset)
+		self._offset_slider.set_value(self.offset)
+		self._offset_text_box.set_value(self.offset)
 
 	def get_fft_shift(self):
 		return self.fft_shift

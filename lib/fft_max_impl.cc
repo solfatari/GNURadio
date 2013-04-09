@@ -40,7 +40,7 @@ namespace gr {
     fft_max_impl::fft_max_impl(int window)
       : gr_sync_block("fft_max",
 		      gr_make_io_signature(2, 2, window*sizeof(gr_complex)),
-		      gr_make_io_signature(2, 2, sizeof(float))),
+		      gr_make_io_signature(2, 2, window*sizeof(float))),
 		      p_window(window)
     {}
 
@@ -59,8 +59,8 @@ namespace gr {
         size_t block_size = output_signature()->sizeof_stream_item (0);
         const gr_complex *in1 = (const gr_complex*) input_items[0];
         const gr_complex *in2 = (const gr_complex *) input_items[1];
-        float *out1 = (gr_complex *) output_items[0];
-        float *out2 = (gr_complex *) output_items[1];
+        float *out1 = (float *) output_items[0];
+        float *out2 = (float *) output_items[1];
 		
 		float mag1[p_window], mag2[p_window];
 		
@@ -68,25 +68,27 @@ namespace gr {
 			mag1[i] = floor(abs(in1[i]));
 			mag2[i] = floor(abs(in2[i]));
 		}
-        int o1[2] = {0,0};
-        o1[0] = max(mag1);
-		o1[1] = max(mag2);
-				
-		for (int i = 0; i < noutput_items; i++){
-			out1[i] = o1[0];
-			out2[i] = o1[1];
-		}
+        float o1[2] = {0,0};
+			o1[0] = max(mag1);
+			o1[1] = max(mag2);
+		for (int i =0; i <noutput_items; i++){
+			for (int i = 0; i < p_window; i++){
+				memcpy(&out1[i], &o1[0], block_size);
+				memcpy(&out2[i], &o1[1], block_size);
+		}}
         return noutput_items;
     }
 
-	int fft_max_impl::max(float in[]){
+	float fft_max_impl::max(float in[]){
 		float max_val = 0;
-		int index = 0;
+		float index = 0;
 		for (int i = 0; i < p_window; i++){	
 			if (in[i] > max_val){
 				max_val = in[i];
 				index = i;
 		}}
+		if (index > p_window)		//might fix a weird overflow
+				index = p_window;
 		return index;
 	}
 	

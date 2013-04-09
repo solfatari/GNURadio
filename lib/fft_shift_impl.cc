@@ -59,14 +59,14 @@ namespace gr {
         const gr_complex *in = (const gr_complex*) input_items[0];
         gr_complex *out = (gr_complex*) output_items[0];
         size_t block_size = output_signature()->sizeof_stream_item (0);
-		gr_complex tmp[noutput_items*block_size];
+		gr_complex tmp[p_window];
 		
-		for (int i = 0; i < p_shift; i++)
+		for (int i = 0; i < p_window-p_shift; i++)
+			tmp[i] = in[i+p_shift]; 
+		for (int i = p_window-p_shift; i < p_window; i++)
 			tmp[i] = 0;
-		for (int i = p_shift; i < p_window; i++)
-			tmp[i-p_shift] = in[i]; 
 		for (int i =0; i <noutput_items; i++)
-			memcpy(out, tmp, noutput_items*block_size);
+			memcpy(out, tmp, p_window*sizeof(gr_complex));
 
         return noutput_items;
     }

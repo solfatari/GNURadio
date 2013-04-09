@@ -30,7 +30,7 @@ namespace gr {
     {
     private:
         int p_window;
-		int max(float in[]);
+		float max(float in[]);
     public:
       fft_max_impl(int window);
       ~fft_max_impl();
