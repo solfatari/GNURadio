@@ -83,7 +83,6 @@ namespace gr {
 
 	void max_vec_impl::dmax(gr_complex* ms1, gr_complex* ms2,
 							gr_complex* ms3, gr_complex* ms4, int out[]){
-
 		bool done = 0;
 		float t_s1, t_s2, t_s3, t_s4, tmp;
 		for(int i = 0; i < p_window; i++){
@@ -92,18 +91,14 @@ namespace gr {
 			t_s3 += abs(ms3[i])*abs(ms3[i]);
 			t_s4 += abs(ms4[i])*abs(ms4[i]); 
 		}
-
 		float t[4] = {t_s1, t_s2, t_s3, t_s4};
 		while(!done){
 			if (t[0] <t[1]){
-				tmp = t[0];	t[0] = t[1]; t[1] = tmp;
-			}
+				tmp = t[0];	t[0] = t[1]; t[1] = tmp;}
 			else if (t[1] < t[2]){
-				tmp = t[1];	t[1] = t[2]; t[2] = tmp;
-			}
+				tmp = t[1];	t[1] = t[2]; t[2] = tmp;}
 			else if (t[2] <t[3]){
-				tmp = t[2];	t[2] = t[3]; t[3] = tmp;
-			}
+				tmp = t[2];	t[2] = t[3]; t[3] = tmp;}
 			else
 				done = 1;
 		}

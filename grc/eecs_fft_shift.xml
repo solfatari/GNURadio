@@ -1,25 +1,31 @@
 <block>
-  <name>Fft max</name>
-  <key>eecs_fft_max</key>
+  <name>Fft shift</name>
+  <key>eecs_fft_shift</key>
   <category>EECS</category>
   <import>import eecs</import>
-  <make>eecs.fft_max($window)</make>
+  <make>eecs.fft_shift($window, $shift)</make>
   <callback>set_window($window)</callback>
+  <callback>set_shift($shift)</callback>
   <param>
     <name>Window</name>
     <key>window</key>
+	<value>fft_size</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Shift</name>
+    <key>shift</key>
+    <value>0</value>
     <type>int</type>
   </param>
   <sink>
     <name>in</name>
     <type>complex</type>
     <vlen>$window</vlen>
-    <nports>2</nports>
   </sink>
   <source>
     <name>out</name>
-    <type>float</type>
+    <type>complex</type>
     <vlen>$window</vlen>
-    <nports>2</nports>
   </source>
 </block>
