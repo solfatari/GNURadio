@@ -108,7 +108,7 @@ namespace gr {
 				out[1] = i;
 			}}}
 		}
-	}
+	//}
 	
 	void fft_max_impl::set_window(int window)
 		{p_window = window;}	
