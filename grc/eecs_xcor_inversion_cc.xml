@@ -1,0 +1,24 @@
+<block>
+  <name>Xcor inversion cc</name>
+  <key>eecs_xcor_inversion_cc</key>
+  <category>EECS</category>
+  <import>import eecs</import>
+  <make>eecs.xcor_inversion_cc($nSamples)</make>
+  <callback>set_nSamples($nSamples)</callback>
+  <param>
+    <name>Nsamples</name>
+    <key>nSamples</key>
+    <value>500</value>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <nports>2</nports>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <nports>2</nports>
+  </source>
+</block>
