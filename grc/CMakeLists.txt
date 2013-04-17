@@ -28,4 +28,6 @@ install(FILES
     eecs_fft_max.xml
     eecs_fft_shift.xml
     eecs_cross_corr_ff.xml DESTINATION share/gnuradio/grc/blocks
+    eecs_VCO_cc.xml
+    eecs_xcor_inversion_cc.xml DESTINATION share/gnuradio/grc/blocks
 )
