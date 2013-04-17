@@ -31,5 +31,6 @@ install(FILES
     xcorr_vec.h
     max_vec.h
     fft_max.h
-    fft_shift.h DESTINATION include/eecs
+    fft_shift.h
+    cross_corr_ff.h DESTINATION include/eecs
 )
