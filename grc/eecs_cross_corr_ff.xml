@@ -1,24 +1,23 @@
 <block>
-  <name>Cross Correlation No-Freq</name>
-  <key>eecs_xcor2</key>
+  <name>Cross corr ff</name>
+  <key>eecs_cross_corr_ff</key>
   <category>EECS</category>
   <import>import eecs</import>
-  <make>eecs.xcor2($nSamples)</make>
+  <make>eecs.cross_corr_ff($nSamples)</make>
   <callback>set_nSamples($nSamples)</callback>
   <param>
     <name>Nsamples</name>
     <key>nSamples</key>
-    <value>2**8</value>
     <type>int</type>
   </param>
   <sink>
     <name>in</name>
-    <type>complex</type>
+    <type>float</type>
     <nports>2</nports>
   </sink>
   <source>
     <name>out</name>
-    <type>complex</type>
+    <type>float</type>
     <nports>2</nports>
   </source>
 </block>

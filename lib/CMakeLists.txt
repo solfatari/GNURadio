@@ -35,6 +35,7 @@ add_library(gnuradio-eecs SHARED
     max_vec_impl.cc
     fft_max_impl.cc
     fft_shift_impl.cc
+    cross_corr_ff_impl.cc )
     VCO_cc_impl.cc
     xcor_inversion_cc_impl.cc )
 target_link_libraries(gnuradio-eecs ${Boost_LIBRARIES} ${GRUEL_LIBRARIES} ${GNURADIO_CORE_LIBRARIES})
