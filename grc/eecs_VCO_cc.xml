@@ -1,0 +1,23 @@
+<block>
+  <name>Vco cc</name>
+  <key>eecs_VCO_cc</key>
+  <category>EECS</category>
+  <import>import eecs</import>
+  <make>eecs.VCO_cc($sampRate)</make>
+  <callback>set_sampRate($sampRate)</callback>
+  <param>
+    <name>Samprate</name>
+    <key>sampRate</key>
+    <value>samp_rate</value>
+    <type>real</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>float</type>
+    <nports>2</nports>
+  </source>
+</block>
